@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Jānis Pūgulis — Personīgais Atlants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4EFE6;
+  --paper-dim:#EAE2D2;
+  --ink:#1A1712;
+  --ink-soft:#6A6250;
+  --hair:rgba(26,23,18,.18);
+  --sans:'Archivo',-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+  --ease:cubic-bezier(.77,0,.18,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--ink);color:var(--paper)}
+
+/* ---- paper grain ---- */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:120;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+/* ---- nav ---- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 28px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.08em;
+  background:transparent;transition:background .4s,border-color .4s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{background:rgba(244,239,230,.92);backdrop-filter:blur(8px);border-bottom-color:var(--hair)}
+nav .mark{font-weight:500;text-transform:uppercase}
+nav .mark b{font-weight:500;border:1px solid var(--ink);padding:2px 6px;margin-right:8px}
+nav .links{display:flex;gap:26px}
+nav a{color:var(--ink);text-decoration:none;text-transform:uppercase;position:relative}
+nav a::after{content:"";position:absolute;left:0;bottom:-4px;height:1px;width:0;background:var(--ink);transition:width .3s var(--ease)}
+nav a:hover::after{width:100%}
+
+/* ---- hero ---- */
+.hero{
+  position:relative;height:100svh;min-height:560px;overflow:hidden;
+}
+.hero svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-name{
+  position:absolute;left:28px;bottom:96px;z-index:5;line-height:.86;
+  font-weight:900;text-transform:uppercase;letter-spacing:-.02em;
+  font-size:clamp(56px,11vw,164px);
+}
+.hero-name span{display:block}
+.hero-sub{
+  position:absolute;left:28px;bottom:52px;z-index:5;
+  font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);
+}
+.hero-edition{
+  position:absolute;top:76px;right:28px;z-index:5;text-align:right;
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);line-height:1.9;
+}
+.hero-status{
+  position:absolute;top:76px;left:28px;z-index:5;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);
+  display:flex;align-items:center;gap:8px;
+}
+.hero-status .dot{width:7px;height:7px;border-radius:50%;background:#C8401F;animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.scroll-cue{
+  position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:5;
+  font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);
+  animation:cue 2.6s infinite;
+}
+@keyframes cue{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,6px)}}
+
+/* map svg internals */
+.grid-line{stroke:var(--ink);stroke-width:.5;opacity:.055}
+.contour{fill:none;stroke:var(--ink);stroke-width:.8;opacity:.07}
+.route{fill:none;stroke-width:2.25;stroke-linecap:round;stroke-linejoin:round}
+.route-marker{stroke:none}
+.map-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;fill:var(--ink);opacity:.45}
+.map-num{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.05em}
+
+/* ---- section heads ---- */
+.section-head{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:22px 28px 14px;border-bottom:1px solid var(--hair);
+  font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+}
+.section-head .r{color:var(--ink-soft)}
+
+/* ---- index ---- */
+.index{position:relative}
+.row{
+  position:relative;display:grid;cursor:pointer;
+  grid-template-columns:110px 1fr 300px 60px;
+  align-items:center;gap:24px;
+  padding:30px 28px;border-bottom:1px solid var(--hair);
+  text-decoration:none;color:var(--ink);
+  opacity:0;transform:translateY(26px);
+  transition:opacity .7s var(--ease),transform .7s var(--ease);
+}
+.row.in{opacity:1;transform:none}
+.row .plate{
+  position:absolute;inset:0;opacity:0;transition:opacity .45s var(--ease);
+  background:
+    radial-gradient(120% 160% at 85% 20%, color-mix(in srgb, var(--w) 88%, white) 0%, var(--w) 45%, color-mix(in srgb, var(--w) 72%, black) 100%);
+  pointer-events:none;
+}
+.row .plate::after{
+  content:"";position:absolute;inset:0;opacity:.18;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='420' fill='none' stroke='%23F4EFE6' stroke-width='1'%3E%3Cpath d='M60 340c90-30 90-110 190-120s130-90 240-80 150 60 150 60'/%3E%3Cpath d='M40 380c110-40 130-150 250-160s160-110 300-90'/%3E%3Cpath d='M90 300c70-20 80-80 160-90s110-70 200-60 180 40 180 40'/%3E%3C/svg%3E");
+  background-size:cover;background-position:center;
+}
+.row>*{position:relative;z-index:2}
+.row .num{
+  font-family:var(--mono);font-size:13px;letter-spacing:.08em;color:var(--ink-soft);
+  transition:color .35s;
+}
+.row .name{
+  font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:1;
+  font-size:clamp(30px,4.6vw,58px);
+  transition:color .35s,transform .45s var(--ease);
+}
+.row .teaser{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-soft);margin-top:9px;transition:color .35s;
+}
+.row .datum{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-soft);text-align:right;line-height:1.8;transition:color .35s;
+}
+.row .arrow{
+  font-family:var(--mono);font-size:20px;text-align:right;color:var(--ink-soft);
+  transition:color .35s,transform .45s var(--ease);
+}
+.row .num::before{
+  content:"";display:inline-block;width:9px;height:9px;border-radius:50%;
+  background:var(--w);margin-right:12px;vertical-align:1px;
+}
+@media(hover:hover){
+  .row:hover .plate{opacity:1}
+  .row:hover .num,.row:hover .name,.row:hover .teaser,.row:hover .datum,.row:hover .arrow{color:var(--paper)}
+  .row:hover .name{transform:translateX(14px)}
+  .row:hover .arrow{transform:translateX(8px)}
+  .row:hover .num::before{background:var(--paper)}
+}
+
+/* ---- featured ---- */
+.featured{
+  position:relative;overflow:hidden;
+  background:var(--paper-dim);border-bottom:1px solid var(--hair);
+  padding:96px 28px 110px;
+}
+.featured svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.featured .stamp{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);
+  display:flex;gap:22px;margin-bottom:26px;
+}
+.featured h2{
+  font-weight:800;text-transform:uppercase;line-height:.95;letter-spacing:-.015em;
+  font-size:clamp(38px,6.4vw,88px);max-width:15ch;position:relative;z-index:2;
+}
+.featured p{
+  font-family:var(--mono);font-size:13px;line-height:2;max-width:52ch;
+  margin-top:30px;color:var(--ink-soft);position:relative;z-index:2;
+}
+.featured .more{
+  display:inline-block;margin-top:34px;font-family:var(--mono);font-size:12px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink);text-decoration:none;
+  border-bottom:1px solid var(--ink);padding-bottom:4px;
+}
+
+/* ---- footer ---- */
+footer{padding:90px 28px 46px}
+footer .big{
+  font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:.95;
+  font-size:clamp(34px,5.4vw,72px);
+}
+footer .big a{color:var(--ink);text-decoration:none;border-bottom:3px solid var(--ink)}
+.foot-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:30px;
+  margin-top:64px;padding-top:26px;border-top:1px solid var(--hair);
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;line-height:2.1;
+}
+.foot-grid .h{color:var(--ink-soft);margin-bottom:6px}
+.foot-grid a{color:var(--ink);text-decoration:none}
+.foot-grid a:hover{border-bottom:1px solid var(--ink)}
+.colophon{
+  margin-top:56px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-soft);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+
+/* ---- world panel (transition model) ---- */
+.panel{
+  position:fixed;inset:0;z-index:200;background:var(--w,#333);color:var(--paper);
+  transform:translateY(102%);transition:transform .6s var(--ease);
+  display:flex;flex-direction:column;padding:26px 28px;overflow:hidden;
+}
+.panel.open{transform:translateY(0)}
+.panel::before{
+  content:"";position:absolute;inset:0;opacity:.14;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='420' fill='none' stroke='%23F4EFE6' stroke-width='1'%3E%3Cpath d='M60 340c90-30 90-110 190-120s130-90 240-80 150 60 150 60'/%3E%3Cpath d='M40 380c110-40 130-150 250-160s160-110 300-90'/%3E%3Cpath d='M90 300c70-20 80-80 160-90s110-70 200-60 180 40 180 40'/%3E%3C/svg%3E");
+  background-size:cover;background-position:center;
+}
+.panel-top{display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;position:relative;z-index:2}
+.panel-close{background:none;border:1px solid rgba(244,239,230,.5);color:var(--paper);font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:10px 18px;cursor:pointer;transition:background .3s,color .3s}
+.panel-close:hover{background:var(--paper);color:var(--ink)}
+.panel-body{flex:1;display:flex;flex-direction:column;justify-content:flex-end;position:relative;z-index:2;padding-bottom:14px}
+.panel-num{font-family:var(--mono);font-size:13px;letter-spacing:.12em;opacity:.75;margin-bottom:14px}
+.panel-name{font-weight:900;text-transform:uppercase;line-height:.88;letter-spacing:-.02em;font-size:clamp(52px,12vw,150px)}
+.panel-teaser{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;margin-top:24px;opacity:.85;max-width:60ch;line-height:2}
+.panel-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-top:38px;flex-wrap:wrap}
+.panel-datum{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.75;line-height:2}
+.panel-cta{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);text-decoration:none;border:1px solid rgba(244,239,230,.6);padding:14px 24px;transition:background .3s,color .3s}
+.panel-cta:hover{background:var(--paper);color:var(--ink)}
+.panel .stagger{opacity:0;transform:translateY(30px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.panel.open .stagger{opacity:1;transform:none}
+.panel.open .stagger:nth-child(1){transition-delay:.18s}
+.panel.open .stagger:nth-child(2){transition-delay:.26s}
+.panel.open .stagger:nth-child(3){transition-delay:.34s}
+.panel.open .stagger:nth-child(4){transition-delay:.42s}
+
+/* ---- mobile ---- */
+@media(max-width:760px){
+  nav{padding:14px 18px}
+  nav .links{gap:16px}
+  nav .links a:nth-child(2){display:none}
+  .hero-name{left:18px;bottom:104px;font-size:clamp(52px,15.5vw,96px)}
+  .hero-sub{left:18px;bottom:60px;font-size:10px;right:18px}
+  .hero-status{left:18px;top:64px}
+  .hero-edition{display:none}
+  .section-head{padding:18px 18px 12px}
+  .row{
+    grid-template-columns:1fr;gap:6px;padding:26px 18px;
+  }
+  .row .name{font-size:clamp(34px,9.5vw,46px)}
+  .row .datum{text-align:left;margin-top:8px;color:var(--ink-soft)}
+  .row .arrow{display:none}
+  .row .num{margin-bottom:4px}
+  .featured{padding:70px 18px 80px}
+  footer{padding:70px 18px 40px}
+  .foot-grid{grid-template-columns:1fr;gap:26px}
+  .panel{padding:20px 18px}
+}
+
+/* ---- reduced motion ---- */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .row{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="mark"><b>JP</b>Personīgais Atlants</div>
+  <div class="links">
+    <a href="#saturs">Saturs</a>
+    <a href="#jaunakais">Jaunākais</a>
+    <a href="#kontakti">Kontakti</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <!-- coordinate grid -->
+    <g>
+      <line class="grid-line" x1="120" y1="0" x2="120" y2="900"/><line class="grid-line" x1="240" y1="0" x2="240" y2="900"/>
+      <line class="grid-line" x1="360" y1="0" x2="360" y2="900"/><line class="grid-line" x1="480" y1="0" x2="480" y2="900"/>
+      <line class="grid-line" x1="600" y1="0" x2="600" y2="900"/><line class="grid-line" x1="720" y1="0" x2="720" y2="900"/>
+      <line class="grid-line" x1="840" y1="0" x2="840" y2="900"/><line class="grid-line" x1="960" y1="0" x2="960" y2="900"/>
+      <line class="grid-line" x1="1080" y1="0" x2="1080" y2="900"/><line class="grid-line" x1="1200" y1="0" x2="1200" y2="900"/>
+      <line class="grid-line" x1="1320" y1="0" x2="1320" y2="900"/>
+      <line class="grid-line" x1="0" y1="150" x2="1440" y2="150"/><line class="grid-line" x1="0" y1="300" x2="1440" y2="300"/>
+      <line class="grid-line" x1="0" y1="450" x2="1440" y2="450"/><line class="grid-line" x1="0" y1="600" x2="1440" y2="600"/>
+      <line class="grid-line" x1="0" y1="750" x2="1440" y2="750"/>
+    </g>
+    <!-- edge coordinates -->
+    <text class="map-label" x="14" y="144">57°N</text>
+    <text class="map-label" x="14" y="444">56°N</text>
+    <text class="map-label" x="14" y="744">55°N</text>
+    <text class="map-label" x="352" y="890">24°E</text>
+    <text class="map-label" x="712" y="890">25°E</text>
+    <text class="map-label" x="1072" y="890">26°E</text>
+    <!-- topographic contours -->
+    <g>
+      <path class="contour" d="M560 380c40-56 150-70 220-34s86 108 30 158-190 54-250 6-40-74 0-130z"/>
+      <path class="contour" d="M590 400c30-42 112-52 165-25s64 81 22 118-142 40-187 4-30-55 0-97z"/>
+      <path class="contour" d="M620 420c20-28 75-35 110-17s43 54 15 79-95 27-125 3-20-37 0-65z"/>
+      <path class="contour" d="M1010 590c50-60 170-72 240-30s70 120 0 165-210 45-265-10-25-65 25-125z"/>
+      <path class="contour" d="M1045 615c38-45 128-54 180-22s52 90 0 124-158 34-199-8-19-49 19-94z"/>
+      <path class="contour" d="M150 180c45-50 145-58 205-22s62 98 5 138-175 40-222-5-33-61 12-111z"/>
+      <path class="contour" d="M185 205c32-36 104-42 147-16s45 70 4 99-126 29-160-4-23-43 9-79z"/>
+    </g>
+    <!-- routes: one per world -->
+    <g id="routes">
+      <path class="route" data-w="travel"  stroke="#B0742A" d="M175 215 C 320 158, 385 262, 525 228 S 765 148, 885 212 S 1125 302, 1265 248"/>
+      <path class="route" data-w="tri"     stroke="#C8401F" d="M140 625 C 262 562, 342 646, 472 602 S 702 522, 832 588 S 1062 662, 1242 608"/>
+      <path class="route" data-w="velo"    stroke="#5C7A2E" d="M225 762 C 362 702, 482 792, 622 748 S 902 692, 1062 758 S 1252 796, 1352 752"/>
+      <path class="route" data-w="snow"    stroke="#2E6E9E" d="M1152 118 L 1104 192 L 1172 254 L 1108 332 L 1182 402 L 1128 462"/>
+      <path class="route" data-w="serviss" stroke="#3E8578" d="M952 822 H 1002 M 1014 822 H 1064 M 1076 822 H 1126 M 1138 822 H 1188"/>
+      <path class="route" data-w="baltais" stroke="#4956A8" d="M642 422 C 702 380, 782 400, 792 462 C 798 522, 702 546, 652 512 C 606 480, 602 452, 642 422 Z"/>
+      <path class="route" data-w="rajons"  stroke="#7D4E24" d="M282 472 L 415 448 L 442 542 L 309 566 Z"/>
+      <path class="route" data-w="tech"    stroke="#5F4E9E" d="M425 322 h 88 v 58 h 108 v -42 h 82 v 64"/>
+    </g>
+    <!-- markers + numbers -->
+    <g>
+      <circle class="route-marker" cx="175" cy="215" r="4.5" fill="#B0742A"/><text class="map-num" fill="#B0742A" x="152" y="200">01</text>
+      <circle class="route-marker" cx="140" cy="625" r="4.5" fill="#C8401F"/><text class="map-num" fill="#C8401F" x="118" y="610">02</text>
+      <circle class="route-marker" cx="225" cy="762" r="4.5" fill="#5C7A2E"/><text class="map-num" fill="#5C7A2E" x="202" y="747">03</text>
+      <circle class="route-marker" cx="1152" cy="118" r="4.5" fill="#2E6E9E"/><text class="map-num" fill="#2E6E9E" x="1165" y="112">04</text>
+      <circle class="route-marker" cx="952" cy="822" r="4.5" fill="#3E8578"/><text class="map-num" fill="#3E8578" x="922" y="812">05</text>
+      <circle class="route-marker" cx="642" cy="422" r="4.5" fill="#4956A8"/><text class="map-num" fill="#4956A8" x="614" y="410">06</text>
+      <circle class="route-marker" cx="282" cy="472" r="4.5" fill="#7D4E24"/><text class="map-num" fill="#7D4E24" x="256" y="460">07</text>
+      <circle class="route-marker" cx="425" cy="322" r="4.5" fill="#5F4E9E"/><text class="map-num" fill="#5F4E9E" x="398" y="312">08</text>
+    </g>
+  </svg>
+
+  <div class="hero-status"><span class="dot"></span><span>Status — pēdējais treniņš · velo 64 km · šorīt<sup>*</sup></span></div>
+  <div class="hero-edition">Personīgais Atlants<br>2026. gada izdevums<br>PUGULIS.COM</div>
+  <h1 class="hero-name"><span>Jānis</span><span>Pūgulis</span></h1>
+  <p class="hero-sub">Viena dzīve · daudzas teritorijas — one life, many territories</p>
+  <div class="scroll-cue">Saturs ↓</div>
+</header>
+
+<!-- ================= INDEX ================= -->
+<main class="index" id="saturs">
+  <div class="section-head"><span>Saturs — Contents</span><span class="r">08 teritorijas</span></div>
+
+  <a class="row" style="--w:#B0742A" href="https://jptravel.pugulis.com/" target="_blank" rel="noopener"
+     data-num="01" data-name="Ceļojumi" data-teaser="Travel — mountains · expeditions · cultures · photography">
+    <span class="num">01</span>
+    <span><span class="name">Ceļojumi</span><span class="teaser" style="display:block">Travel — kalni, ekspedīcijas, kultūras, fotogrāfija</span></span>
+    <span class="datum">jptravel.pugulis.com<br>Logbook — atvērts ↗</span>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="row" style="--w:#C8401F" href="#"
+     data-num="02" data-name="Triatlons" data-teaser="Triathlon — Ironman ceļš · treniņi · sacensības · dati"
+     data-datum="Swim · Bike · Run — 226 km">
+    <span class="num">02</span>
+    <span><span class="name">Triatlons</span><span class="teaser" style="display:block">Ironman ceļš — treniņi, sacensības, izturība, dati</span></span>
+    <span class="datum">Swim · Bike · Run<br>226 km — mērķis<sup>*</sup></span>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="row" style="--w:#5C7A2E" href="#"
+     data-num="03" data-name="Velo ekspedīcijas" data-teaser="Cycling expeditions — vairāku dienu piedzīvojumi · GPX · hronikas"
+     data-datum="GPX arhīvs · kartes · hronikas">
+    <span class="num">03</span>
+    <span><span class="name">Velo ekspedīcijas</span><span class="teaser" style="display:block">Vairāku dienu braucieni — kartes, GPX, hronikas</span></span>
+    <span class="datum">GPX arhīvs<br>Ekspedīciju hronikas<sup>*</sup></span>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="row" style="--w:#2E6E9E" href="#"
+     data-num="04" data-name="Snovbords" data-teaser="Snowboarding — braukšana · instruktāža · ziemas dzīve"
+     data-datum="Instruktors · ziemas sezonas">
+    <span class="num">04</span>
+    <span><span class="name">Snovbords</span><span class="teaser" style="display:block">Braukšana, instruktāža, kalni, ziemas dzīvesveids</span></span>
+    <span class="datum">Instruktors<br>Ziemas sezonas</span>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="row" style="--w:#3E8578" href="https://v0-ski-and-snowboard-landing-page.vercel.app/" target="_blank" rel="noopener"
+     data-num="05" data-name="Inventāra serviss" data-teaser="Ski & snowboard service — vasks · kantis · apkope">
+    <span class="num">05</span>
+    <span><span class="name">Inventāra serviss</span><span class="teaser" style="display:block">Slēpju un snovbordu apkope — vasks, kantis, serviss</span></span>
+    <span class="datum">Vasks · kantis · remonts<br>Servisa lapa ↗</span>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="row" style="--w:#4956A8" href="#"
+     data-num="06" data-name="Baltais Kalns" data-teaser="Ziema · kopiena · vietējā kalna dzīve"
+     data-datum="56.82°N 24.60°E">
+    <span class="num">06</span>
+    <span><span class="name">Baltais Kalns</span><span class="teaser" style="display:block">Ziema, kopiena un vietējā kalna aktivitāte</span></span>
+    <span class="datum">56.82°N 24.60°E<sup>*</sup><br>Ziemas bāze</span>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="row" style="--w:#7D4E24" href="https://skr.lv/" target="_blank" rel="noopener"
+     data-num="07" data-name="SK Rajons" data-teaser="Novuss · volejbols · šahs · hokejs">
+    <span class="num">07</span>
+    <span><span class="name">SK Rajons</span><span class="teaser" style="display:block">Novuss, volejbols, šahs un hokejs</span></span>
+    <span class="datum">skr.lv ↗<br>Kluba dzīve</span>
+    <span class="arrow">→</span>
+  </a>
+
+  <a class="row" style="--w:#5F4E9E" href="#"
+     data-num="08" data-name="Tehnoloģijas" data-teaser="Technology — infrastruktūra · automatizācija · AI eksperimenti"
+     data-datum="Infra · automation · AI">
+    <span class="num">08</span>
+    <span><span class="name">Tehnoloģijas</span><span class="teaser" style="display:block">IT infrastruktūra, automatizācija, mājaslapas, AI</span></span>
+    <span class="datum">Infra · Automation · AI<br>Projektu darbnīca</span>
+    <span class="arrow">→</span>
+  </a>
+</main>
+
+<!-- ================= FEATURED ================= -->
+<section class="featured" id="jaunakais">
+  <svg viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <path id="featRoute" fill="none" stroke="#5C7A2E" stroke-width="2" opacity=".5"
+      d="M-20 520 C 180 460, 300 560, 480 500 S 800 380, 980 450 S 1280 540, 1480 460"/>
+    <circle cx="480" cy="500" r="4" fill="#5C7A2E" opacity=".6"/>
+    <circle cx="980" cy="450" r="4" fill="#5C7A2E" opacity=".6"/>
+  </svg>
+  <div class="stamp"><span>Jaunākais ieraksts — Nr. 042<sup>*</sup></span><span>2026 · Jūlijs</span><span>Velo ekspedīcija</span></div>
+  <h2>Vidzemes grants loks — trīs dienas, 412 km<sup>*</sup></h2>
+  <p>Paraugsaturs prototipam: vairāku dienu grants ekspedīcija pa Vidzemes augstieni — maršruts, GPX celiņš, nakšņošanas punkti un fotogrāfijas. Gala versijā šeit rotēs jaunākais stāsts no jebkuras teritorijas.</p>
+  <a class="more" href="#">Lasīt hroniku → (izstrādē)</a>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer id="kontakti">
+  <p class="big">Sazināties —<br><a href="mailto:pugulis@gmail.com">pugulis@gmail.com</a></p>
+  <div class="foot-grid">
+    <div>
+      <div class="h">Teritorijas tīklā</div>
+      <a href="https://jptravel.pugulis.com/" target="_blank" rel="noopener">jptravel.pugulis.com ↗</a><br>
+      <a href="https://skr.lv/" target="_blank" rel="noopener">skr.lv ↗</a><br>
+      <a href="https://v0-ski-and-snowboard-landing-page.vercel.app/" target="_blank" rel="noopener">Inventāra serviss ↗</a>
+    </div>
+    <div>
+      <div class="h">Atlants</div>
+      <a href="#saturs">Saturs</a><br>
+      <a href="#jaunakais">Jaunākais ieraksts</a><br>
+      <a href="#">Par atlantu (izstrādē)</a>
+    </div>
+    <div>
+      <div class="h">Kolofons</div>
+      <span>Salikts ar Archivo un IBM Plex Mono</span><br>
+      <span>Maršruti — personīgais GPX arhīvs</span><br>
+      <span>© Jānis Pūgulis, 2026</span>
+    </div>
+  </div>
+  <div class="colophon">
+    <span>Personīgais Atlants — prototips v0.1</span>
+    <span><sup>*</sup> Paraugdati — tiks aizstāti ar reāliem</span>
+  </div>
+</footer>
+
+<!-- ================= WORLD PANEL ================= -->
+<div class="panel" id="panel" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="panel-top">
+    <span id="pTop">Teritorija</span>
+    <button class="panel-close" id="pClose">Aizvērt ✕</button>
+  </div>
+  <div class="panel-body">
+    <div class="stagger panel-num" id="pNum">—</div>
+    <div class="stagger panel-name" id="pName">—</div>
+    <div class="stagger panel-teaser" id="pTeaser">—</div>
+    <div class="stagger panel-foot">
+      <div class="panel-datum" id="pDatum">—</div>
+      <span class="panel-cta">Teritorija tiek kartēta — drīzumā</span>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* nav background on scroll */
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 40); };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* hero routes draw themselves */
+  if(!reduced){
+    var routes = document.querySelectorAll('.hero .route');
+    routes.forEach(function(p, i){
+      var len;
+      try{ len = p.getTotalLength(); }catch(e){ return; }
+      p.style.strokeDasharray = len;
+      p.style.strokeDashoffset = len;
+      p.style.transition = 'none';
+      requestAnimationFrame(function(){
+        p.style.transition = 'stroke-dashoffset 2.2s cubic-bezier(.5,0,.2,1) ' + (0.35 + i*0.18) + 's';
+        p.style.strokeDashoffset = '0';
+      });
+    });
+  }
+
+  /* index rows reveal on scroll */
+  var rows = document.querySelectorAll('.row');
+  if('IntersectionObserver' in window && !reduced){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {threshold:.15});
+    rows.forEach(function(r){ io.observe(r); });
+  } else {
+    rows.forEach(function(r){ r.classList.add('in'); });
+  }
+
+  /* world panel — transition model for internal territories */
+  var panel = document.getElementById('panel');
+  var pTop = document.getElementById('pTop'), pNum = document.getElementById('pNum'),
+      pName = document.getElementById('pName'), pTeaser = document.getElementById('pTeaser'),
+      pDatum = document.getElementById('pDatum');
+
+  function openPanel(row){
+    var w = getComputedStyle(row).getPropertyValue('--w').trim();
+    panel.style.setProperty('--w', w);
+    pTop.textContent = 'Teritorija ' + row.dataset.num + ' / 08';
+    pNum.textContent = 'Nr. ' + row.dataset.num + ' — Personīgais Atlants';
+    pName.textContent = row.dataset.name;
+    pTeaser.textContent = row.dataset.teaser;
+    pDatum.innerHTML = (row.dataset.datum || '').replace(/·/g,'&middot;');
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden','false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePanel(){
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden','true');
+    document.body.style.overflow = '';
+  }
+
+  rows.forEach(function(row){
+    row.addEventListener('click', function(ev){
+      var href = row.getAttribute('href');
+      if(href === '#'){ ev.preventDefault(); openPanel(row); }
+      /* external rows follow their link normally */
+    });
+  });
+  document.getElementById('pClose').addEventListener('click', closePanel);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closePanel(); });
+})();
+</script>
+</body>
+</html>
