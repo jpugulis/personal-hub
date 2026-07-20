@@ -1,11 +1,6 @@
 export default function Footer() {
   return (
     <footer className="site-footer" id="kontakti">
-      <p className="big">
-        Sazināties —
-        <br />
-        <a href="mailto:pugulis@gmail.com">pugulis@gmail.com</a>
-      </p>
       <div className="foot-grid">
         <div>
           <div className="h">Teritorijas tīklā</div>
@@ -15,6 +10,22 @@ export default function Footer() {
           <br />
           <a href="https://skr.lv/" target="_blank" rel="noopener">
             skr.lv ↗
+          </a>
+          <br />
+          <a
+            href="https://jpsnowboard.vercel.app/"
+            target="_blank"
+            rel="noopener"
+          >
+            jpsnowboard ↗
+          </a>
+          <br />
+          <a
+            href="https://www.baltaiskalns.lv/"
+            target="_blank"
+            rel="noopener"
+          >
+            baltaiskalns.lv ↗
           </a>
           <br />
           <a
@@ -34,6 +45,10 @@ export default function Footer() {
           <span className="muted">Par atlantu (izstrādē)</span>
         </div>
         <div>
+          <div className="h">Kontakti</div>
+          <a href="mailto:pugulis@gmail.com">pugulis@gmail.com</a>
+        </div>
+        <div>
           <div className="h">Kolofons</div>
           <span>Salikts ar Archivo un IBM Plex Mono</span>
           <br />
@@ -43,7 +58,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="colophon">
-        <span>Personīgais Atlants — v1.0</span>
+        <span>Personīgais Atlants — v1.1</span>
         <span>
           <sup>*</sup> Paraugdati — tiks aizstāti ar reāliem
         </span>

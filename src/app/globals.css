@@ -161,36 +161,6 @@ body::after {
   color: var(--ink-soft);
   line-height: 1.9;
 }
-.hero-status {
-  position: absolute;
-  top: 76px;
-  left: 28px;
-  z-index: 5;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.hero-status .dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #c8401f;
-  animation: pulse 2.4s infinite;
-}
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.25;
-  }
-}
 .scroll-cue {
   position: absolute;
   bottom: 20px;
@@ -224,7 +194,7 @@ body::after {
   fill: none;
   stroke: var(--ink);
   stroke-width: 0.8;
-  opacity: 0.07;
+  opacity: 0.09;
 }
 .route {
   fill: none;
@@ -250,29 +220,22 @@ body::after {
 }
 .place-mark line {
   stroke: var(--ink);
-  stroke-width: 1;
-  opacity: 0.55;
+  stroke-width: 0.9;
+  opacity: 0.4;
 }
 .place-mark circle {
   fill: none;
   stroke: var(--ink);
-  stroke-width: 1;
-  opacity: 0.4;
+  stroke-width: 0.9;
+  opacity: 0.22;
 }
 .place-label {
   font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
+  font-size: 9px;
+  letter-spacing: 0.16em;
   fill: var(--ink);
-  opacity: 0.62;
+  opacity: 0.45;
   text-transform: uppercase;
-}
-.place-coords {
-  font-family: var(--mono);
-  font-size: 8.5px;
-  letter-spacing: 0.1em;
-  fill: var(--ink);
-  opacity: 0.4;
 }
 
 /* hero routes draw themselves (pathLength=1 technique, no JS) */
@@ -448,9 +411,20 @@ body::after {
   grid-template-columns: repeat(3, 1fr);
 }
 .rcard {
+  display: block;
   padding: 40px 28px 52px;
   border-left: 1px solid var(--hair);
   min-width: 0;
+  color: inherit;
+  text-decoration: none;
+}
+.rcard:hover .rpath {
+  stroke-width: 3.4;
+}
+.rcard:hover h3 {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
 .rcard:first-child {
   border-left: 0;
@@ -532,27 +506,12 @@ body::after {
 
 /* ---- footer ---- */
 .site-footer {
-  padding: 90px 28px 46px;
-}
-.site-footer .big {
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-  line-height: 0.95;
-  font-size: clamp(34px, 5.4vw, 72px);
-}
-.site-footer .big a {
-  color: var(--ink);
-  text-decoration: none;
-  border-bottom: 3px solid var(--ink);
+  padding: 64px 28px 46px;
 }
 .foot-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
-  margin-top: 64px;
-  padding-top: 26px;
-  border-top: 1px solid var(--hair);
   font-family: var(--mono);
   font-size: 11.5px;
   letter-spacing: 0.1em;
@@ -732,6 +691,9 @@ body::after {
   .routes-grid {
     grid-template-columns: 1fr;
   }
+  .foot-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .rcard {
     border-left: 0;
     border-top: 1px solid var(--hair);
@@ -749,8 +711,7 @@ body::after {
     font-size: 11px;
     letter-spacing: 0.06em;
   }
-  .place-label,
-  .place-coords {
+  .place-label {
     display: none;
   }
   .place-mark line,
@@ -778,10 +739,6 @@ body::after {
     bottom: 60px;
     font-size: 10px;
     right: 18px;
-  }
-  .hero-status {
-    left: 18px;
-    top: 64px;
   }
   .hero-edition {
     display: none;
@@ -815,11 +772,7 @@ body::after {
     padding: 0 18px 30px;
   }
   .site-footer {
-    padding: 70px 18px 40px;
-  }
-  /* keep the email on one line without overflowing the viewport */
-  .site-footer .big {
-    font-size: clamp(24px, 7.5vw, 48px);
+    padding: 56px 18px 40px;
   }
   .foot-grid {
     grid-template-columns: 1fr;
