@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import { territories } from "@/data/territories";
 import type { Territory } from "@/lib/types";
 import TerritoryPanel from "@/components/TerritoryPanel";
@@ -85,6 +86,14 @@ export default function TerritoryIndex() {
             </>
           );
           const style = { "--w": t.ink } as React.CSSProperties;
+
+          if (t.hrefInternal) {
+            return (
+              <Link key={t.id} className="row" style={style} href={t.hrefInternal}>
+                {inner}
+              </Link>
+            );
+          }
 
           return t.href ? (
             <a

@@ -1,8 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
-export default function Nav() {
+/**
+ * @param sub — true on pages other than the homepage, so the section
+ *              anchors resolve back to the root document.
+ */
+export default function Nav({ sub = false }: { sub?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -12,15 +17,25 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const base = sub ? "/" : "";
+
   return (
     <nav className={`site-nav${scrolled ? " scrolled" : ""}`}>
       <div className="mark">
-        <b>JP</b>Personīgais Atlants
+        {sub ? (
+          <Link href="/" style={{ display: "inline" }}>
+            <b>JP</b>Personīgais Atlants
+          </Link>
+        ) : (
+          <>
+            <b>JP</b>Personīgais Atlants
+          </>
+        )}
       </div>
       <div className="links">
-        <a href="#saturs">Saturs</a>
-        <a href="#jaunakais">Jaunākais</a>
-        <a href="#kontakti">Kontakti</a>
+        <a href={`${base}#saturs`}>Saturs</a>
+        <a href={`${base}#jaunakais`}>Jaunākais</a>
+        <a href={`${base}#kontakti`}>Kontakti</a>
       </div>
     </nav>
   );

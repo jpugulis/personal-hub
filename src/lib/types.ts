@@ -36,6 +36,8 @@ export interface Territory {
   ink: string;
   /** External live site, if one exists. */
   href?: string;
+  /** Internal route on this site, if the territory is mapped here. */
+  hrefInternal?: string;
   heroRoute: HeroRoute;
 }
 

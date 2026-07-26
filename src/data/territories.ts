@@ -27,10 +27,9 @@ export const territories: Territory[] = [
     name: "Triatlons",
     teaser: "Ironman ceļš — treniņi, sacensības, izturība, dati",
     teaserPanel: "Triathlon — Ironman ceļš · treniņi · sacensības · dati",
-    datumLines: ["Swim · Bike · Run", "226 km — mērķis"],
-    sample: true,
-    sampleOnLine: 1,
+    datumLines: ["Podersdorf — 06.09.2026", "Treniņu analīze →"],
     ink: "#C8401F",
+    hrefInternal: "/triatlons",
     heroRoute: {
       d: "M140 625 C 262 562, 342 646, 472 602 S 702 522, 832 588 S 1062 662, 1242 608",
       marker: [140, 625],
