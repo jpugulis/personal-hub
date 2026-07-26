@@ -1,0 +1,19 @@
+# Python deps for the scripts in this folder.
+#
+# Homebrew's Python refuses system-wide installs (PEP 668), so use a venv:
+#
+#     python3 -m venv .venv
+#     source .venv/bin/activate
+#     pip install -r scripts/requirements.txt
+#
+# After that, every new terminal needs `source .venv/bin/activate` before
+# running a script — or call it directly with .venv/bin/python.
+
+# sync_media.py — photo downscaling and EXIF rotation.
+# Optional: without it photos are copied at full phone resolution.
+pillow>=11.0
+
+# analyze_fit.py — .FIT parsing, metrics, charts.
+fitdecode>=1.4
+numpy>=1.26
+matplotlib>=3.8

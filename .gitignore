@@ -48,3 +48,9 @@ public/vercel.svg
 public/window.svg
 public/globe.svg
 public/file.svg
+
+# raw media drop zone (processed by scripts/sync_media.py)
+media-inbox/
+
+# python venv for scripts/
+.venv/

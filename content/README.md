@@ -121,22 +121,25 @@ photos/saulkrasti.jpg | Pretvējš uz Saulkrastiem
 
 One `path | caption` per line. Stacks to one column on mobile.
 
-### `video` — Bunny Stream, or a short local clip
+### `video` — three sources
+
+**Don't write these by hand — `scripts/sync_media.py` prints them for you.**
+
+**1. Bunny Storage + pull zone (the normal case).** Plain MP4 over the CDN. Right
+choice for clips of a few seconds to a few minutes; no transcoding involved.
 
 ```
 ​```video
-library: 123456
-id: 8a7b6c5d-1234-5678-9abc-def012345678
+src: https://endurance-data.b-cdn.net/triatlons/2026-07-25/murjani-climb.mp4
+poster: photos/murjani-still.jpg
 caption: Murjāņu kāpums — 941 W sprints
 ​```
 ```
 
-Get `library` and `id` from the Bunny dashboard (Stream → your library → the
-video → Embed). **Video belongs on Bunny, not in this repo** — git keeps every
-version of every binary forever, and `/public` video gets no adaptive bitrate
-and bills as Vercel bandwidth.
+`poster` is optional and relative to `mediaBase`. Worth setting — without it the
+first frame is a black rectangle until the user presses play.
 
-For a clip under ~5 MB it's fine to skip Bunny and point `id` at a local file:
+**2. A local clip under ~5 MB.** Not worth a CDN round trip:
 
 ```
 ​```video
@@ -144,6 +147,21 @@ id: photos/cramp-walk.mp4
 caption: Otrais krampis — pirmie soļi
 ​```
 ```
+
+**3. Bunny Stream**, for anything long enough to need adaptive bitrate — a full
+race edit, say. Dashboard → Stream → library → video → Embed:
+
+```
+​```video
+library: 123456
+id: 8a7b6c5d-1234-5678-9abc-def012345678
+caption: Sacensību diena
+​```
+```
+
+**Video above ~5 MB does not belong in this repo.** Git keeps every version of
+every binary forever, and `/public` video gets no adaptive bitrate while billing
+as Vercel bandwidth.
 
 ### `note` — a side remark
 

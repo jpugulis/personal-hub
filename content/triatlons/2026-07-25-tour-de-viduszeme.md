@@ -100,6 +100,24 @@ Strava parāda, ka pauzes bija, bet ne to, cik gara bija katra. No taimera notik
 
 47 minūšu kafejnīcas pauze nav noapaļošanas kļūda. Ķermeņa temperatūra normalizējās, plazmas tilpums daļēji atjaunojās, kājas atdzisa un sastinga. Viss pēc Limbažiem faktiski bija otrs brauciens, kas sākts uz jau bojātām kājām.
 
+```figure
+src: photos/whatsapp-image-2026-07-25-at-11-33-05.jpeg
+alt: No brauciena, 11:33
+caption: No brauciena — 11:33
+```
+
+```video
+src: https://endurance-data.b-cdn.net/triatlons/2026-07-25/whatsapp-video-2026-07-25-at-11-32-06.mp4
+poster: photos/whatsapp-video-2026-07-25-at-11-32-06-poster.jpg
+caption: No brauciena — 11:32
+```
+
+```video
+src: https://endurance-data.b-cdn.net/triatlons/2026-07-25/whatsapp-video-2026-07-25-at-11-32-49.mp4
+poster: photos/whatsapp-video-2026-07-25-at-11-32-49-poster.jpg
+caption: No brauciena — 11:32
+```
+
 ### Jaudas līkne
 
 ```figure
@@ -173,6 +191,13 @@ note: Sarkanie = krampja ietekmētie km
 | 15:12:25 | 4,7 min | Zeķe + krampis #1, kreisais vastus medialis |
 | 15:23:30 | 1,4 min | — |
 | **15:34:55** | 4,0 min | Krampis #2, otra kāja — 2 min līdz varēja paiet |
+
+```figure
+src: photos/whatsapp-image-2026-07-25-at-15-17-45.jpeg
+alt: No skrējiena, 15:17
+caption: No skrējiena — 15:17
+note: Starp pirmo un otro krampi
+```
 
 **87,7% no skrējiena bija 3. sirdsdarbības zonā. Nulle sekunžu 4. zonā.** Maksimālā SF bija 166 — divdesmit divi sitieni zem velo maksimuma. Sirds un asinsvadu sistēmai šis skrējiens bija viegls. Katrs ierobežojums bija muskulārs.
 

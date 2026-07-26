@@ -77,16 +77,27 @@ function Paras({ text }: { text: string }) {
   );
 }
 
-function Video({ base, id, library, caption }: {
-  base: string; id?: string; library?: string; caption?: string;
+function Video({ base, src, poster, id, library, caption }: {
+  base: string; src?: string; poster?: string;
+  id?: string; library?: string; caption?: string;
 }) {
-  // Bunny Stream embed. A local file (mp4 under /public) also works via `id`
-  // ending in .mp4, which keeps short clips simple.
-  const isLocal = !!id && /\.(mp4|webm)$/i.test(id);
+  // Three sources, in order of preference:
+  //   src      a URL served over a CDN (Bunny Storage + pull zone) — plain
+  //            MP4, right choice for short clips, no transcoding needed
+  //   id .mp4  a file under /public — fine under ~5 MB
+  //   library+id  Bunny Stream — HLS and adaptive bitrate, for long video
+  const direct = src || (id && /\.(mp4|webm)$/i.test(id) ? id : undefined);
+
   return (
     <figure className="art-fig art-video">
-      {isLocal ? (
-        <video controls preload="metadata" playsInline src={resolve(base, id!)} />
+      {direct ? (
+        <video
+          controls
+          preload="metadata"
+          playsInline
+          src={resolve(base, direct)}
+          {...(poster ? { poster: resolve(base, poster) } : {})}
+        />
       ) : (
         <div className="art-video-frame">
           <iframe
@@ -184,7 +195,10 @@ export default function SheetBody({ body, base }: { body: string; base: string }
         }
         case "video": {
           const v = kv(src);
-          return <Video base={base} id={v.id} library={v.library} caption={v.caption} />;
+          return (
+            <Video base={base} src={v.src} poster={v.poster} id={v.id}
+              library={v.library} caption={v.caption} />
+          );
         }
         case "gallery":
           return <Gallery base={base} src={src} />;
