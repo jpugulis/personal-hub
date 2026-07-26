@@ -45,16 +45,19 @@ export default function LatestRoutes() {
       </div>
       <div className="routes-grid">
         {stravaRoutes.map((r, i) => (
-          <article
+          <a
             key={r.id}
             className="rcard"
+            href={`https://www.strava.com/activities/${r.id}`}
+            target="_blank"
+            rel="noopener"
             style={{ "--i": i } as React.CSSProperties}
           >
             <div className="stamp">
               <span>
                 R-{String(i + 1).padStart(2, "0")} · {r.sportLv}
               </span>
-              <span>{r.dateLv}</span>
+              <span>{r.dateLv} ↗</span>
             </div>
             <div className="rmap">
               <svg
@@ -91,14 +94,14 @@ export default function LatestRoutes() {
             <p className="rstats">
               {r.distanceKm} km · {r.movingTime} · +{r.elevationGain} m
               <br />
-              Maršruta forma — bez precīzām koordinātām
+              Atvērt aktivitāti Strava ↗
             </p>
-          </article>
+          </a>
         ))}
       </div>
       <p className="routes-note">
         Dati — personīgais Strava arhīvs · skrējieni, braucieni un takas virs
-        dažiem kilometriem · vietas tikai reģiona precizitātē
+        dažiem kilometriem
       </p>
     </section>
   );
