@@ -934,10 +934,10 @@ body::after {
   padding: 0 28px 90px;
   max-width: 1180px;
 }
-.art-sec {
+:is(.art-sec, .art-body) {
   padding-top: 62px;
 }
-.art-sec > h2 {
+:is(.art-sec, .art-body) > h2 {
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.015em;
@@ -947,7 +947,7 @@ body::after {
   border-bottom: 1px solid var(--hair);
   margin-bottom: 30px;
 }
-.art-sec > h2 .n {
+:is(.art-sec, .art-body) > h2 .n {
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 500;
@@ -957,7 +957,7 @@ body::after {
   margin-bottom: 14px;
   text-transform: uppercase;
 }
-.art-sec h3 {
+:is(.art-sec, .art-body) h3 {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.01em;
@@ -965,7 +965,7 @@ body::after {
   margin: 44px 0 16px;
   max-width: 60ch;
 }
-.art-sec h4 {
+:is(.art-sec, .art-body) h4 {
   font-family: var(--mono);
   font-size: 12px;
   font-weight: 500;
@@ -974,40 +974,40 @@ body::after {
   color: var(--ink-soft);
   margin: 34px 0 12px;
 }
-.art-sec p {
+:is(.art-sec, .art-body) p {
   font-size: 16.5px;
   line-height: 1.72;
   max-width: 68ch;
   margin-bottom: 18px;
 }
-.art-sec ul,
-.art-sec ol {
+:is(.art-sec, .art-body) ul,
+:is(.art-sec, .art-body) ol {
   max-width: 68ch;
   margin: 0 0 20px 0;
   padding-left: 0;
   list-style: none;
 }
-.art-sec li {
+:is(.art-sec, .art-body) li {
   font-size: 16.5px;
   line-height: 1.66;
   margin-bottom: 12px;
   padding-left: 26px;
   position: relative;
 }
-.art-sec ul > li::before {
+:is(.art-sec, .art-body) ul > li::before {
   content: "—";
   position: absolute;
   left: 0;
   color: var(--ink-soft);
   font-family: var(--mono);
 }
-.art-sec ol {
+:is(.art-sec, .art-body) ol {
   counter-reset: art;
 }
-.art-sec ol > li {
+:is(.art-sec, .art-body) ol > li {
   counter-increment: art;
 }
-.art-sec ol > li::before {
+:is(.art-sec, .art-body) ol > li::before {
   content: counter(art);
   position: absolute;
   left: 0;
@@ -1016,21 +1016,21 @@ body::after {
   color: var(--ink-soft);
   top: 3px;
 }
-.art-sec strong {
+:is(.art-sec, .art-body) strong {
   font-weight: 700;
 }
-.art-sec em {
+:is(.art-sec, .art-body) em {
   font-style: italic;
 }
-.art-sec a {
+:is(.art-sec, .art-body) a {
   color: var(--ink);
   text-decoration: none;
   border-bottom: 1px solid var(--hair);
 }
-.art-sec a:hover {
+:is(.art-sec, .art-body) a:hover {
   border-bottom-color: var(--ink);
 }
-.art-sec code {
+:is(.art-sec, .art-body) code {
   font-family: var(--mono);
   font-size: 0.88em;
   background: var(--paper-dim);
@@ -1437,8 +1437,8 @@ body::after {
   .art-soon {
     padding: 32px 18px 50px;
   }
-  .art-sec p,
-  .art-sec li {
+  :is(.art-sec, .art-body) p,
+  :is(.art-sec, .art-body) li {
     font-size: 16px;
   }
   .art-note,
@@ -1447,5 +1447,80 @@ body::after {
   }
   .art-dia {
     padding: 18px 12px 14px;
+  }
+}
+
+/* ---- markdown-rendered sheets: h2 acts as the section break ---- */
+.art-body > h2 {
+  margin-top: 62px;
+}
+.art-body > h2:first-child {
+  margin-top: 8px;
+}
+.art-body > *:first-child {
+  margin-top: 0;
+}
+
+/* ---- video ---- */
+.art-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--hair);
+  background: var(--ink);
+}
+.art-video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--hair);
+  background: var(--ink);
+}
+.art-video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ---- photo gallery ---- */
+.art-gallery {
+  display: grid;
+  gap: 14px;
+  margin: 34px 0 40px;
+}
+.art-gallery-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.art-gallery-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.art-gallery figure {
+  margin: 0;
+  min-width: 0;
+}
+.art-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--hair);
+}
+.art-gallery figcaption {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-top: 10px;
+  line-height: 1.7;
+}
+@media (max-width: 760px) {
+  .art-gallery-2,
+  .art-gallery-3 {
+    grid-template-columns: 1fr;
+  }
+  .art-body > h2 {
+    margin-top: 46px;
   }
 }

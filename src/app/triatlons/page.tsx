@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
-import { articles } from "@/data/triArticles";
+import { getSheets } from "@/lib/sheets";
 
 const INK = "#C8401F";
 
@@ -24,18 +24,15 @@ export const metadata: Metadata = {
 /** Re-render daily so the countdown does not go stale between deploys. */
 export const revalidate = 86400;
 
-/** Days between today and race day. */
 function daysToRace() {
   const race = new Date("2026-09-06T00:00:00Z");
-  const now = new Date();
-  return Math.max(
-    0,
-    Math.ceil((race.getTime() - now.getTime()) / 86_400_000)
-  );
+  return Math.max(0, Math.ceil((race.getTime() - Date.now()) / 86_400_000));
 }
 
 export default function TriatlonsPage() {
   const left = daysToRace();
+  const sheets = getSheets();
+  const count = String(sheets.length).padStart(2, "0");
 
   return (
     <>
@@ -45,7 +42,9 @@ export default function TriatlonsPage() {
           <span>
             <Link href="/">Atlants</Link> — Teritorija 02
           </span>
-          <span className="r">Podersdorf · 06.09.2026 · atlikušas {left} dienas</span>
+          <span className="r">
+            Podersdorf · 06.09.2026 · atlikušas {left} dienas
+          </span>
         </div>
 
         <header className="art-head">
@@ -79,30 +78,28 @@ export default function TriatlonsPage() {
           </div>
           <div>
             <div className="k">Analīzes</div>
-            <div className="v">{String(articles.length).padStart(2, "0")}</div>
+            <div className="v">{count}</div>
             <div className="s">publicētas loksnes</div>
           </div>
         </div>
 
         <div className="section-head">
           <span>Analīzes — Sheets</span>
-          <span className="r">
-            {String(articles.length).padStart(2, "0")} loksnes
-          </span>
+          <span className="r">{count} loksnes</span>
         </div>
 
         <div className="art-list">
-          {articles.map((a) => (
-            <Link key={a.slug} className="art-card" href={`/triatlons/${a.slug}`}>
-              <span className="n">{a.sheet}</span>
+          {sheets.map((s) => (
+            <Link key={s.slug} className="art-card" href={`/triatlons/${s.slug}`}>
+              <span className="n">{s.sheet}</span>
               <span>
-                <h2>{a.titleLv}</h2>
-                <span className="sub">{a.subtitleLv}</span>
+                <h2>{s.titleLv}</h2>
+                <span className="sub">{s.subtitleLv}</span>
               </span>
               <span className="meta">
-                {a.dateLv}
+                {s.dateLv}
                 <br />
-                {a.metaLine}
+                {s.metaLine}
               </span>
               <span className="arrow" aria-hidden="true">
                 →
