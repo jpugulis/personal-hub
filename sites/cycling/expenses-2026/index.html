@@ -63,9 +63,17 @@
 
   .e{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line)}
   .e:last-child{border-bottom:none}
-  .e .t{flex:1;min-width:0}
+  .e .t{flex:1;min-width:0;cursor:pointer}
   .e .t b{display:block;font-size:14.5px;font-weight:600}
   .e .t span{display:block;font-size:11.5px;color:var(--muted);margin-top:1px}
+  .e .t em{font-style:normal;color:var(--accent);font-weight:600}
+  .erow{border-bottom:1px solid var(--line)}
+  .erow:last-child{border-bottom:none}
+  .erow .e{border-bottom:none}
+  .erow.editing{background:#fbfaf8}
+  .ed{padding:0 14px 14px;display:grid;gap:9px}
+  .ed label{font-size:10.5px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700}
+  .ed>label{margin-bottom:-5px}
   input[type=number],input[type=text],select{font:inherit;font-size:15px;padding:9px 10px;
     border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);width:100%}
   input[type=number]{text-align:right;font-variant-numeric:tabular-nums}
@@ -137,7 +145,8 @@
       </div>
     </details>
   </div>
-  <p class="hint">Anything you change here is saved for everyone.</p>
+  <p class="hint">Tap any expense description to change who paid it and who it's split between.
+    Everything you change is saved for everyone.</p>
 
   <div class="sec">Trip costs</div>
   <div class="card" id="shared"></div>
@@ -166,7 +175,7 @@ const SIX=ALL.slice(0,6);
 
 const DEFAULTS={
  ex:[
-  {id:"train",d:"Train tickets (7 × 11.80)",              p:ME,a:82.60,w:ALL},
+  {id:"train",d:"Train tickets (6 × 11.80)",              p:ME,a:70.80,w:[ME,"Tomāts","Ziemelis","Tomy","Katrīna","Artis"]},
   {id:"n1a",  d:"Night 1 · 4-person room",                p:ME,a:85,  w:[ME,"Tomāts","Ziemelis","Artis"]},
   {id:"n1b",  d:"Night 1 · Tomy & Katrīna room",          p:ME,a:60,  w:["Tomy","Katrīna"]},
   {id:"n1c",  d:"Night 1 · Artūrs room",                  p:ME,a:60,  w:["Artūrs"]},
@@ -229,24 +238,70 @@ async function save(){
 }
 
 /* ── render ─────────────────────────────────────────────── */
-function row(it,canDel){return `<div class="e">
-  <div class="t"><b>${it.d}</b><span>${it.p} paid · for ${whoTxt(it.w)}</span></div>
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+const item=id=>[...S.ex,...S.per].find(x=>x.id===id);
+
+function row(it,canDel){return `<div class="erow" id="r_${it.id}">
+ <div class="e">
+  <div class="t" data-edit="${it.id}"><b>${esc(it.d)}</b>
+    <span>${it.p} paid · for ${whoTxt(it.w)} · <em>edit</em></span></div>
   <input type="number" step="0.01" min="0" value="${it.a}" data-k="${it.id}">
-  ${canDel?`<button class="del" data-del="${it.id}">×</button>`:""}</div>`;}
+  ${canDel?`<button class="del" data-del="${it.id}">×</button>`:""}
+ </div>
+ <div class="ed" id="ed_${it.id}" hidden>
+   <label>Description</label>
+   <input type="text" data-desc="${it.id}" value="${esc(it.d)}">
+   <label>Who paid</label>
+   <select data-pay="${it.id}">${ALL.map(p=>`<option${p===it.p?" selected":""}>${p}</option>`).join("")}</select>
+   <label>Split between</label>
+   <div class="chips" data-chips="${it.id}">${ALL.map(p=>
+     `<div class="chip ${it.w.includes(p)?"on":""}" data-cw="${p}">${p}</div>`).join("")}</div>
+ </div></div>`;}
+
+function refreshRow(it){
+  const r=document.getElementById("r_"+it.id); if(!r) return;
+  r.querySelector(".t b").textContent=it.d;
+  r.querySelector(".t span").innerHTML=`${it.p} paid · for ${whoTxt(it.w)} · <em>edit</em>`;
+}
 
 function render(){
   document.getElementById("shared").innerHTML=S.ex.map(i=>row(i,false)).join("");
   document.getElementById("extras").innerHTML=S.per.map(i=>row(i,true)).join("");
   document.getElementById("cash").innerHTML=S.cash.map(c=>`<div class="e">
-      <div class="t"><b>${c.w}</b><span>${c.n}</span></div>
+      <div class="t" style="cursor:default"><b>${c.w}</b><span>${c.n}</span></div>
       <input type="number" step="0.01" min="0" value="${c.a}" data-c="${c.id}"></div>`).join("");
+
   document.querySelectorAll("[data-k]").forEach(el=>el.oninput=e=>{
-    const it=[...S.ex,...S.per].find(x=>x.id===e.target.dataset.k);
-    it.a=parseFloat(e.target.value)||0; calc(); queueSave();});
+    item(e.target.dataset.k).a=parseFloat(e.target.value)||0; calc(); queueSave();});
   document.querySelectorAll("[data-c]").forEach(el=>el.oninput=e=>{
     S.cash.find(x=>x.id===e.target.dataset.c).a=parseFloat(e.target.value)||0; calc(); queueSave();});
   document.querySelectorAll("[data-del]").forEach(el=>el.onclick=e=>{
     S.per.splice(S.per.findIndex(x=>x.id===e.target.dataset.del),1); render(); queueSave();});
+
+  /* open / close the per-row editor */
+  document.querySelectorAll("[data-edit]").forEach(el=>el.onclick=e=>{
+    const id=el.dataset.edit, ed=document.getElementById("ed_"+id);
+    ed.hidden=!ed.hidden;
+    document.getElementById("r_"+id).classList.toggle("editing",!ed.hidden);});
+
+  document.querySelectorAll("[data-desc]").forEach(el=>el.oninput=e=>{
+    const it=item(e.target.dataset.desc); it.d=e.target.value; refreshRow(it); queueSave();});
+  document.querySelectorAll("[data-pay]").forEach(el=>el.onchange=e=>{
+    const it=item(e.target.dataset.pay); it.p=e.target.value; refreshRow(it); calc(); queueSave();});
+  document.querySelectorAll("[data-chips]").forEach(box=>{
+    const it=item(box.dataset.chips);
+    box.querySelectorAll("[data-cw]").forEach(c=>c.onclick=()=>{
+      const p=c.dataset.cw;
+      if(it.w.includes(p)){
+        if(it.w.length===1){alert("An expense needs at least one person.");return;}
+        it.w=it.w.filter(x=>x!==p);
+      } else {
+        it.w=ALL.filter(x=>it.w.includes(x)||x===p);   // keep canonical order
+      }
+      c.classList.toggle("on",it.w.includes(p));
+      refreshRow(it); calc(); queueSave();});
+  });
+
   calc();
 }
 
