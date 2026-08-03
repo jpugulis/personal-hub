@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Expenses 2026 · Latvia trip</title>
+<meta name="description" content="Shared expense split for the 2026 cycling trip.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f4f2ee">
+<style>
+  :root{
+    --bg:#f4f2ee; --card:#fff; --ink:#191817; --muted:#75716a;
+    --line:#e5e1d9; --accent:#8a5a33; --accent-soft:#f3e7dc;
+    --pos:#17693f; --neg:#a83226; --neg-bg:#fbecea;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;background:var(--bg);color:var(--ink);
+       font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       padding:16px 14px calc(60px + env(safe-area-inset-bottom));}
+  .wrap{max-width:640px;margin:0 auto}
+  h1{font-size:22px;margin:0 0 2px;letter-spacing:-.02em}
+  .sub{color:var(--muted);font-size:13px;margin:0 0 14px}
+  .sub a{color:var(--accent)}
+  .sec{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);
+       font-weight:700;margin:26px 0 10px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+
+  .sync{position:sticky;top:0;z-index:20;margin:-16px -14px 14px;padding:8px 14px;
+        background:rgba(244,242,238,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+        display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)}
+  .dot{width:8px;height:8px;border-radius:50%;background:#c9c4bb;flex:none}
+  .dot.ok{background:#3fa06a} .dot.busy{background:#d8a13c} .dot.err{background:#c2503f}
+  .sync .grow{flex:1}
+  .mini{border:1px solid var(--line);background:#fff;border-radius:8px;padding:5px 9px;
+        font:inherit;font-size:12px;color:var(--accent);font-weight:600;cursor:pointer}
+
+  .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}
+  .stat .v{font-size:17px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+  .stat .k{font-size:10.5px;color:var(--muted);line-height:1.25;margin-top:2px}
+
+  .p{border-bottom:1px solid var(--line)}
+  .p:last-child{border-bottom:none}
+  .phead{display:flex;align-items:center;gap:10px;padding:14px;cursor:pointer;user-select:none}
+  .av{width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent);
+      display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
+  .pn{flex:1;min-width:0}
+  .pn b{display:block;font-size:16px;font-weight:650}
+  .pn span{display:block;font-size:12px;color:var(--muted)}
+  .amt{text-align:right;font-variant-numeric:tabular-nums;flex:none}
+  .amt b{display:block;font-size:17px;font-weight:750;letter-spacing:-.02em}
+  .amt span{font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
+  .pos b,.pos span{color:var(--pos)} .neg b,.neg span{color:var(--neg)}
+  .chev{flex:none;color:var(--muted);font-size:12px;transition:transform .15s}
+  .p.open .chev{transform:rotate(90deg)}
+  .pbody{display:none;padding:2px 14px 14px;background:#fbfaf8;border-top:1px solid var(--line)}
+  .p.open .pbody{display:block}
+  .ln{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:5px 0;border-bottom:1px dotted var(--line)}
+  .ln:last-child{border-bottom:none}
+  .ln span:last-child{font-variant-numeric:tabular-nums;flex:none}
+  .ln.tot{font-weight:700;border-bottom:none;border-top:1px solid var(--line);margin-top:4px;padding-top:7px}
+  .ln.cr{color:var(--pos)}
+
+  .e{display:flex;align-items:center;gap:10px;padding:11px 14px;border-bottom:1px solid var(--line)}
+  .e:last-child{border-bottom:none}
+  .e .t{flex:1;min-width:0}
+  .e .t b{display:block;font-size:14.5px;font-weight:600}
+  .e .t span{display:block;font-size:11.5px;color:var(--muted);margin-top:1px}
+  input[type=number],input[type=text],select{font:inherit;font-size:15px;padding:9px 10px;
+    border:1px solid var(--line);border-radius:9px;background:#fff;color:var(--ink);width:100%}
+  input[type=number]{text-align:right;font-variant-numeric:tabular-nums}
+  .e input[type=number]{width:92px;flex:none;font-weight:600}
+  input:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px}
+  .del{flex:none;width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:#fff;
+       color:var(--muted);font-size:16px;line-height:1;cursor:pointer}
+  .del:active{background:var(--neg-bg);color:var(--neg)}
+
+  .form{padding:14px;display:grid;gap:10px}
+  .form label{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);
+              font-weight:700;display:block;margin-bottom:5px}
+  .two{display:grid;grid-template-columns:1fr 110px;gap:10px}
+  .chips{display:flex;flex-wrap:wrap;gap:7px}
+  .chip{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;
+        font-size:14px;cursor:pointer;user-select:none}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+  .chip.q{background:#f0ede7;font-weight:600}
+  .btn{padding:13px;border-radius:11px;border:none;background:var(--accent);color:#fff;
+       font:inherit;font-weight:700;font-size:15px;cursor:pointer;width:100%}
+  .note{background:#fff8ee;border:1px solid #ecd9bd;border-radius:12px;padding:11px 13px;
+        font-size:13px;color:#5c4529;margin-top:10px}
+  .hint{font-size:12px;color:var(--muted);margin:8px 2px 0}
+  details.raw>summary{padding:12px 14px;font-size:13px;font-weight:600;color:var(--accent);
+        cursor:pointer;list-style:none}
+  details.raw>summary::-webkit-details-marker{display:none}
+  details.raw>summary::before{content:"▸ ";font-size:11px}
+  details.raw[open]>summary::before{content:"▾ "}
+  footer{margin-top:30px;font-size:11.5px;color:var(--muted);text-align:center;line-height:1.6}
+</style>
+</head>
+<body>
+
+<div class="sync">
+  <span class="dot" id="dot"></span>
+  <span id="syncTxt">connecting…</span>
+  <span class="grow"></span>
+  <button class="mini" id="reload">Refresh</button>
+</div>
+
+<div class="wrap">
+  <h1>Trip expense split · 2026</h1>
+  <p class="sub">6 went, Artis stayed home. Everyone edits the same numbers — tap a name for the breakdown.
+    <a href="/">← cycling</a></p>
+
+  <div class="strip">
+    <div class="stat"><div class="v" id="s1">—</div><div class="k">collected</div></div>
+    <div class="stat"><div class="v" id="s2">—</div><div class="k">Jānis paid out</div></div>
+    <div class="stat"><div class="v" id="s3">—</div><div class="k">to hand back</div></div>
+  </div>
+
+  <div class="sec">Settlement</div>
+  <div class="card" id="people"></div>
+  <div class="note" id="note" style="display:none"></div>
+
+  <div class="sec">Personal &amp; extras</div>
+  <div class="card">
+    <div id="extras"></div>
+    <details class="raw">
+      <summary>+ Add an expense</summary>
+      <div class="form">
+        <div class="two">
+          <div><label>What</label><input type="text" id="f_desc" placeholder="e.g. coffee at Virši"></div>
+          <div><label>Amount €</label><input type="number" id="f_amt" step="0.01" min="0" placeholder="0.00"></div>
+        </div>
+        <div><label>Who paid</label><select id="f_payer"></select></div>
+        <div><label>Who it was for — split between them</label><div class="chips" id="f_who"></div></div>
+        <button class="btn" id="f_add">Add expense</button>
+      </div>
+    </details>
+  </div>
+  <p class="hint">Anything you change here is saved for everyone.</p>
+
+  <div class="sec">Trip costs</div>
+  <div class="card" id="shared"></div>
+
+  <div class="sec">Cash handed to Jānis</div>
+  <div class="card" id="cash"></div>
+
+  <div class="sec">Danger zone</div>
+  <div class="card"><div class="form"><button class="btn" id="reset"
+    style="background:#fff;color:var(--neg);border:1px solid var(--line)">Reset everything to the original numbers</button></div></div>
+
+  <footer>cycling.pugulis.com · shared live · last change <span id="stamp">—</span></footer>
+</div>
+
+<script>
+/* ── config ───────────────────────────────────────────────
+   TRIP is the storage key. Anyone who opens this page can read
+   and edit that data — it is visible in the page source.
+   ───────────────────────────────────────────────────────── */
+const TRIP = "latvia-2026-k7m3xq";
+const ENDPOINT = `/api/trip?key=${TRIP}`;
+
+const ME="Jānis";
+const ALL=[ME,"Tomāts","Ziemelis","Tomy","Katrīna","Artūrs","Artis"];
+const SIX=ALL.slice(0,6);
+
+const DEFAULTS={
+ ex:[
+  {id:"train",d:"Train tickets (7 × 11.80)",              p:ME,a:82.60,w:ALL},
+  {id:"n1a",  d:"Night 1 · 4-person room",                p:ME,a:85,  w:[ME,"Tomāts","Ziemelis","Artis"]},
+  {id:"n1b",  d:"Night 1 · Tomy & Katrīna room",          p:ME,a:60,  w:["Tomy","Katrīna"]},
+  {id:"n1c",  d:"Night 1 · Artūrs room",                  p:ME,a:60,  w:["Artūrs"]},
+  {id:"n1f",  d:"Night 1 · pizzas 36.30 + drinks 28.08",  p:"Artūrs",a:64.38,w:SIX},
+  {id:"n2",   d:"Night 2 · cash paid (of 220 planned)",   p:ME,a:150, w:SIX},
+  {id:"n2d",  d:"Night 2 · communal drinks",              p:ME,a:15.46,w:SIX},
+  {id:"n2b",  d:"Night 2 · balzāms (Artūrs didn't drink)",p:"Ziemelis",a:21.43,w:[ME,"Tomāts","Ziemelis","Tomy","Katrīna"]},
+  {id:"n3a",  d:"Night 3 · Tomy & Katrīna room",          p:ME,a:50,  w:["Tomy","Katrīna"]},
+  {id:"n3b",  d:"Night 3 · 4-person room",                p:ME,a:70,  w:[ME,"Tomāts","Ziemelis","Artūrs"]}],
+ per:[
+  {id:"x1",d:"Virši · coffee for Ziemelis",p:ME,a:2,w:["Ziemelis"]},
+  {id:"x2",d:"Virši · burger for Tomāts",  p:ME,a:4,w:["Tomāts"]},
+  {id:"x3",d:"Coffee for Jānis",           p:"Artūrs",a:3,w:[ME]},
+  {id:"x4",d:"Coffee for Tomāts",          p:"Artūrs",a:3,w:["Tomāts"]}],
+ cash:[
+  {id:"c1",w:"Tomāts",a:100,n:"advance"},{id:"c2",w:"Ziemelis",a:100,n:"advance"},
+  {id:"c3",w:"Tomy",a:100,n:"advance"},  {id:"c4",w:"Katrīna",a:100,n:"advance"},
+  {id:"c5",w:"Artūrs",a:100,n:"advance"},{id:"c6",w:"Artis",a:100,n:"advance"},
+  {id:"c7",w:"Tomy",a:100,n:"2nd evening"},{id:"c8",w:"Artūrs",a:100,n:"3rd evening"}]
+};
+
+let S = structuredClone(DEFAULTS);
+let rev = 0, uid = 100, dirtyAt = 0, saveTimer = null, lastTouch = Date.now();
+const open = {};
+
+const eur=n=>(n<0?"−":"")+Math.abs(n).toFixed(2)+" €";
+const whoTxt=w=>(w.length===6&&w.every(x=>SIX.includes(x)))?"everyone (6)":(w.length===7?"all 7":w.join(", "));
+document.addEventListener("pointerdown",()=>lastTouch=Date.now());
+
+/* ── sync ───────────────────────────────────────────────── */
+function status(cls,txt){document.getElementById("dot").className="dot "+cls;
+  document.getElementById("syncTxt").textContent=txt;}
+
+async function pull(force){
+  try{
+    const r=await fetch(ENDPOINT,{cache:"no-store"});
+    if(!r.ok) throw new Error(await r.text());
+    const j=await r.json();
+    if(j && j.rev>rev && (force || Date.now()-dirtyAt>4000)){
+      rev=j.rev; S=j.data; render();
+      document.getElementById("stamp").textContent=new Date(j.updated).toLocaleString();
+    }
+    status("ok","in sync — everyone sees these numbers");
+  }catch(e){status("err","can't reach the server — showing local copy");}
+}
+
+function queueSave(){
+  dirtyAt=Date.now(); lastTouch=Date.now(); status("busy","saving…");
+  clearTimeout(saveTimer); saveTimer=setTimeout(save,1200);
+}
+async function save(){
+  try{
+    const r=await fetch(ENDPOINT,{method:"PUT",
+      headers:{"Content-Type":"application/json"},body:JSON.stringify({data:S})});
+    if(!r.ok) throw new Error(await r.text());
+    const j=await r.json(); rev=j.rev;
+    document.getElementById("stamp").textContent=new Date(j.updated).toLocaleString();
+    status("ok","saved for everyone");
+  }catch(e){status("err","save failed — try Refresh");}
+}
+
+/* ── render ─────────────────────────────────────────────── */
+function row(it,canDel){return `<div class="e">
+  <div class="t"><b>${it.d}</b><span>${it.p} paid · for ${whoTxt(it.w)}</span></div>
+  <input type="number" step="0.01" min="0" value="${it.a}" data-k="${it.id}">
+  ${canDel?`<button class="del" data-del="${it.id}">×</button>`:""}</div>`;}
+
+function render(){
+  document.getElementById("shared").innerHTML=S.ex.map(i=>row(i,false)).join("");
+  document.getElementById("extras").innerHTML=S.per.map(i=>row(i,true)).join("");
+  document.getElementById("cash").innerHTML=S.cash.map(c=>`<div class="e">
+      <div class="t"><b>${c.w}</b><span>${c.n}</span></div>
+      <input type="number" step="0.01" min="0" value="${c.a}" data-c="${c.id}"></div>`).join("");
+  document.querySelectorAll("[data-k]").forEach(el=>el.oninput=e=>{
+    const it=[...S.ex,...S.per].find(x=>x.id===e.target.dataset.k);
+    it.a=parseFloat(e.target.value)||0; calc(); queueSave();});
+  document.querySelectorAll("[data-c]").forEach(el=>el.oninput=e=>{
+    S.cash.find(x=>x.id===e.target.dataset.c).a=parseFloat(e.target.value)||0; calc(); queueSave();});
+  document.querySelectorAll("[data-del]").forEach(el=>el.onclick=e=>{
+    S.per.splice(S.per.findIndex(x=>x.id===e.target.dataset.del),1); render(); queueSave();});
+  calc();
+}
+
+function calc(){
+  const sh={},pf={},pi={},det={};
+  ALL.forEach(p=>{sh[p]=0;pf[p]=0;pi[p]=0;det[p]=[];});
+  [...S.ex,...S.per].forEach(it=>{
+    if(!it.a) return;
+    pf[it.p]=(pf[it.p]||0)+it.a;
+    const q=it.a/it.w.length;
+    it.w.forEach(p=>{sh[p]+=q;det[p].push([it.d,q]);});
+  });
+  S.cash.forEach(c=>pi[c.w]+=c.a);
+
+  document.getElementById("s1").textContent=eur(Object.values(pi).reduce((a,b)=>a+b,0));
+  document.getElementById("s2").textContent=eur(pf[ME]);
+
+  let html="",back=0,debts=[];
+  ALL.forEach(p=>{
+    const set=pi[p]+pf[p]-sh[p], isMe=p===ME, cls=set>=0?"pos":"neg";
+    if(!isMe){back+=set; if(set<-0.005) debts.push(`${p} owes Jānis ${eur(-set)}`);}
+    const lines=det[p].map(([d,v])=>`<div class="ln"><span>${d}</span><span>${eur(v)}</span></div>`).join("")
+      +`<div class="ln tot"><span>Share of everything</span><span>${eur(sh[p])}</span></div>`
+      +(pi[p]?`<div class="ln cr"><span>Cash given to Jānis</span><span>+${eur(pi[p])}</span></div>`:"")
+      +(pf[p]?`<div class="ln cr"><span>Paid for others</span><span>+${eur(pf[p])}</span></div>`:"")
+      +`<div class="ln tot ${isMe?"":cls}"><span>${isMe?"Own cost of the trip":(set>=0?"Jānis gives back":"Owes Jānis")}</span><span>${eur(isMe?sh[p]:Math.abs(set))}</span></div>`;
+    html+=`<div class="p ${open[p]?"open":""}" data-p="${p}"><div class="phead">
+      <div class="av">${p[0]}</div>
+      <div class="pn"><b>${p}${p==="Artis"?" · didn't come":""}</b>
+        <span>${isMe?`paid out ${eur(pf[p])}`:`in ${eur(pi[p]+pf[p])} · share ${eur(sh[p])}`}</span></div>
+      <div class="amt ${isMe?"":cls}">${isMe
+        ?`<b style="color:var(--muted)">${eur(sh[p])}</b><span style="color:var(--muted)">own share</span>`
+        :`<b>${eur(Math.abs(set))}</b><span>${set>=0?"gets back":"owes"}</span>`}</div>
+      <div class="chev">▶</div></div><div class="pbody">${lines}</div></div>`;
+  });
+  document.getElementById("people").innerHTML=html;
+  document.getElementById("s3").textContent=eur(back);
+  document.querySelectorAll("[data-p]").forEach(el=>el.querySelector(".phead").onclick=()=>{
+    open[el.dataset.p]=!open[el.dataset.p]; el.classList.toggle("open");});
+  const n=document.getElementById("note");
+  if(debts.length){n.style.display="block";n.innerHTML="<b>Note:</b> "+debts.join(" · ")+" — their advance didn't cover their share.";}
+  else n.style.display="none";
+}
+
+/* ── add form ───────────────────────────────────────────── */
+const sel=document.getElementById("f_payer");
+sel.innerHTML=SIX.map(p=>`<option${p===ME?" selected":""}>${p}</option>`).join("");
+const chipBox=document.getElementById("f_who");
+let picked=new Set();
+function drawChips(){
+  chipBox.innerHTML=`<div class="chip q" data-all="1">Everyone (6)</div>`+
+    ALL.map(p=>`<div class="chip ${picked.has(p)?"on":""}" data-w="${p}">${p}</div>`).join("");
+  chipBox.querySelectorAll("[data-w]").forEach(c=>c.onclick=()=>{
+    const p=c.dataset.w; picked.has(p)?picked.delete(p):picked.add(p); drawChips();});
+  chipBox.querySelector("[data-all]").onclick=()=>{
+    picked=(picked.size===6&&SIX.every(p=>picked.has(p)))?new Set():new Set(SIX); drawChips();};
+}
+drawChips();
+document.getElementById("f_add").onclick=()=>{
+  const d=document.getElementById("f_desc").value.trim()||"Expense";
+  const a=parseFloat(document.getElementById("f_amt").value)||0;
+  if(!a||!picked.size){alert("Add an amount and pick who it was for.");return;}
+  S.per.push({id:"u"+Date.now().toString(36)+(uid++),d,p:sel.value,a,w:ALL.filter(p=>picked.has(p))});
+  document.getElementById("f_desc").value="";document.getElementById("f_amt").value="";
+  picked=new Set();drawChips();render();queueSave();
+};
+
+document.getElementById("reload").onclick=()=>{lastTouch=Date.now();pull(true);};
+document.getElementById("reset").onclick=()=>{
+  if(!confirm("Reset all numbers back to the original trip data? This affects everyone.")) return;
+  S=structuredClone(DEFAULTS); render(); queueSave();
+};
+
+render();
+pull(true);
+// poll only while the tab is visible and recently used — keeps the free tier untouched
+setInterval(()=>{ if(!document.hidden && Date.now()-lastTouch < 10*60*1000) pull(false); },20000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden){lastTouch=Date.now();pull(false);}});
+</script>
+</body>
+</html>

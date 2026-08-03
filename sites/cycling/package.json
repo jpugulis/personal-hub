@@ -1,0 +1,6 @@
+{
+  "name": "cycling-pugulis",
+  "version": "1.0.0",
+  "private": true,
+  "description": "cycling.pugulis.com — static pages + one serverless function. No build step, no dependencies."
+}
