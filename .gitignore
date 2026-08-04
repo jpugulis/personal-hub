@@ -54,3 +54,6 @@ media-inbox/
 
 # python venv for scripts/
 .venv/
+
+# local visual-review build (not deployed)
+.preview/

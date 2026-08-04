@@ -29,8 +29,8 @@
   host.setAttribute('viewBox', D.viewBox);
   host.setAttribute('role', 'img');
   host.setAttribute('aria-label', solo
-    ? tours[0].title + ' route across ' + D.regionNames[tours[0].region]
-    : 'Map of Latvia and southern Estonia with four cycling expedition routes');
+    ? tours[0].title + ' — maršruts caur reģionu ' + D.regionNames[tours[0].region]
+    : 'Latvijas un Dienvidigaunijas karte ar četriem velo ekspedīciju maršrutiem');
 
   /* ---------- defs: ink wobble + paper shadow ---------- */
   var defs = el('defs', {}, host);
@@ -58,7 +58,7 @@
 
   var sh = el('filter', { id: 'landshadow', x: '-8%', y: '-8%', width: '116%', height: '116%' }, defs);
   el('feDropShadow', {
-    dx: 0, dy: 4, stdDeviation: 6, 'flood-color': '#6b6255', 'flood-opacity': 0.15
+    dx: 0, dy: 2, stdDeviation: 5, 'flood-color': '#1a1712', 'flood-opacity': 0.07
   }, sh);
 
   var gHalo   = el('g', { class: 'halo',  filter: 'url(#rough)' }, host);
@@ -160,17 +160,25 @@
     if (card) card.classList.toggle('hot', on);
   }
 
-  /* ---------- cards ---------- */
+  /* ---------- expedition rows ----------
+     Numbered as atlas sheets: territory 03, chronological from the
+     oldest expedition, so 03-01 is 2023 and the number never shifts
+     when a new tour is added. Display order stays newest-first. */
+  var chron = D.tours.map(function (t) { return t.year; }).sort();
+  function sheetNo(t) {
+    return '03-' + ('0' + (chron.indexOf(t.year) + 1)).slice(-2);
+  }
+
   var list = document.getElementById('tourlist');
   if (list) {
     D.tours.forEach(function (t) {
       var a = document.createElement('a');
       a.className = 't'; a.href = '/' + t.slug + '/'; a.setAttribute('data-slug', t.slug);
       a.innerHTML =
-        '<div class="ic" style="--k:' + TOUR_COL[t.slug] + '">' + t.year + '</div>' +
+        '<div class="ic" style="--k:' + TOUR_COL[t.slug] + '">Nr. ' + sheetNo(t) + '</div>' +
         '<div><b>' + t.title + '</b><span>' + t.sub + ' · ' + t.dates + '</span>' +
-        '<span class="meta">' + t.dist.toFixed(1) + ' km · ' +
-        t.climb.toLocaleString('en-GB') + ' m climbing · ' + t.days + ' days</span></div>' +
+        '<span class="meta">' + t.dist.toFixed(1).replace('.', ',') + ' km · ' +
+        t.climb.toLocaleString('lv-LV') + ' m kāpuma · ' + t.days + ' dienas</span></div>' +
         '<div class="arw">→</div>';
       a.addEventListener('mouseenter', function () { hi(t.slug, true); });
       a.addEventListener('mouseleave', function () { hi(t.slug, false); });
@@ -196,7 +204,7 @@
       var s = document.createElement('span');
       s.className = 'lgi static';
       s.innerHTML = '<i class="swatch" style="background:' + DAY_COL[i % DAY_COL.length] + '"></i>' +
-        (names[i] || ('Day ' + (i + 1)));
+        (names[i] || (i + 1) + '. diena');
       lg.appendChild(s);
     });
   }

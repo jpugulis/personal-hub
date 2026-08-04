@@ -43,10 +43,9 @@ export const territories: Territory[] = [
     teaser: "Vairāku dienu braucieni — kartes, GPX, hronikas",
     teaserPanel:
       "Cycling expeditions — vairāku dienu piedzīvojumi · GPX · hronikas",
-    datumLines: ["GPX arhīvs", "Ekspedīciju hronikas"],
-    sample: true,
-    sampleOnLine: 1,
+    datumLines: ["cycling.pugulis.com", "04 ekspedīcijas · 2023–2026 ↗"],
     ink: "#5C7A2E",
+    href: "https://cycling.pugulis.com/",
     heroRoute: {
       d: "M225 762 C 362 702, 482 792, 622 748 S 902 692, 1062 758 S 1252 796, 1352 752",
       marker: [225, 762],

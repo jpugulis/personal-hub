@@ -1,72 +1,87 @@
-/* Long-form expedition report pages */
-body.rp{background:var(--bg);padding:0}
-.rpwrap{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:232px minmax(0,1fr);
-        gap:44px;padding:26px 22px 90px;align-items:start}
-.rpnav{position:sticky;top:26px}
-.rpkick{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);
-        font-weight:700;margin:14px 0 16px;line-height:1.45}
-.toc{border-top:1px solid var(--line);padding-top:12px}
-.tochead{font-size:10.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);
-         font-weight:700;margin:0 0 8px}
-.toc a{display:block;font-size:13px;color:var(--muted);text-decoration:none;padding:4px 0;
-       line-height:1.35;border-left:2px solid transparent;padding-left:9px;margin-left:-9px}
+/* Long-form expedition reports — atlas dossier pages.
+   Inherits every token from site.css; this file only handles the
+   two-column reading layout and long-form typography. */
+
+body.rp{background:var(--paper);padding:0}
+.rpwrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:250px minmax(0,1fr);
+        gap:56px;padding:82px 28px 100px;align-items:start}
+
+/* ---- sticky side rail ---- */
+.rpnav{position:sticky;top:82px}
+.rpkick{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.14em;
+        color:var(--ink-soft);margin:16px 0 18px;line-height:1.75}
+.toc{border-top:1px solid var(--hair);padding-top:14px}
+.tochead{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.16em;
+         color:var(--ink-soft);margin:0 0 10px}
+.toc a{display:block;font-size:13px;color:var(--ink-soft);text-decoration:none;padding:5px 0;
+       line-height:1.4;border-left:1px solid transparent;padding-left:12px;margin-left:-12px;
+       transition:color .2s,border-color .2s}
 .toc a:hover{color:var(--ink)}
-.toc a.cur{color:var(--accent);border-left-color:var(--accent);font-weight:600}
-.rpdl{margin-top:18px;border-top:1px solid var(--line);padding-top:14px;display:flex;
-      flex-direction:column;gap:8px}
-.rpdl a{font-size:12.5px;color:var(--accent);text-decoration:none}
+.toc a.cur{color:var(--ink);border-left-color:var(--w);font-weight:600}
+.rpdl{margin-top:20px;border-top:1px solid var(--hair);padding-top:16px;display:flex;
+      flex-direction:column;gap:10px}
+.rpdl a{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+        color:var(--ink-soft);text-decoration:none;border-bottom:1px solid transparent}
+.rpdl a:hover{color:var(--ink);border-bottom-color:var(--ink)}
 
-.rpmain{min-width:0;font-size:16.5px;line-height:1.62}
-.rpmain h1{font-size:29px;letter-spacing:-.03em;margin:52px 0 16px;padding-top:14px;
-           border-top:1px solid var(--line);line-height:1.2}
-.rpmain > h1:first-child{margin-top:0;border-top:none;padding-top:0;font-size:34px}
-.rpmain h2{font-size:21px;letter-spacing:-.02em;margin:34px 0 10px}
-.rpmain h3{font-size:15.5px;margin:26px 0 6px;color:#3b3831}
-.rpmain p{margin:0 0 15px}
-.rpmain ul,.rpmain ol{margin:0 0 16px;padding-left:22px}
-.rpmain li{margin:0 0 7px}
-.rpmain hr{border:0;border-top:1px solid var(--line);margin:34px 0}
-.rpmain strong{font-weight:680}
-.rpmain a{color:var(--accent)}
-.rpmain em{color:#4a463f}
+/* ---- body ---- */
+.rpmain{min-width:0;font-size:17px;line-height:1.7}
+.rpmain h1{font-weight:900;text-transform:uppercase;letter-spacing:-.02em;
+           font-size:clamp(24px,3.2vw,40px);margin:64px 0 20px;padding-top:20px;
+           border-top:1px solid var(--hair);line-height:1.02}
+.rpmain > h1:first-child{margin-top:0;border-top:none;padding-top:0;
+           font-size:clamp(30px,4.6vw,56px)}
+.rpmain h2{font-weight:800;text-transform:uppercase;letter-spacing:-.01em;
+           font-size:clamp(18px,2vw,25px);margin:40px 0 12px;line-height:1.12}
+.rpmain h3{font-family:var(--mono);font-size:12px;text-transform:uppercase;letter-spacing:.14em;
+           margin:30px 0 8px;color:var(--ink-soft)}
+.rpmain p{margin:0 0 16px}
+.rpmain ul,.rpmain ol{margin:0 0 18px;padding-left:22px}
+.rpmain li{margin:0 0 8px}
+.rpmain hr{border:0;border-top:1px solid var(--hair);margin:40px 0}
+.rpmain strong{font-weight:700}
+.rpmain a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--w)}
+.rpmain em{font-style:italic;color:var(--ink-soft)}
 
-/* correction notice / callouts */
-.rpmain blockquote{margin:24px 0;padding:16px 20px;background:#fdf6ec;border:1px solid #ecdcc2;
-  border-left:3px solid var(--accent);border-radius:0 12px 12px 0}
-.rpmain blockquote h3{margin:0 0 10px;font-size:13px;text-transform:uppercase;
-  letter-spacing:.07em;color:var(--accent)}
-.rpmain blockquote p{margin:0 0 10px;font-size:14.5px;color:#5b554a}
+/* correction notices / callouts */
+.rpmain blockquote{margin:28px 0;padding:22px 26px;background:var(--paper-dim);
+  border:0;border-left:2px solid var(--w)}
+.rpmain blockquote h3{margin:0 0 12px;font-size:11px;text-transform:uppercase;
+  letter-spacing:.16em;color:var(--w)}
+.rpmain blockquote p{margin:0 0 12px;font-size:15.5px;color:var(--ink)}
 .rpmain blockquote p:last-child{margin:0}
 .rpmain blockquote table{font-size:13px}
 
-.tw{overflow-x:auto;background:var(--card);border:1px solid var(--line);
-    border-radius:12px;margin:0 0 20px}
-.rpmain blockquote .tw{background:#fffdf9}
-.rpmain table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums;margin:0}
-.rpmain th,.rpmain td{padding:8px 12px;border-bottom:1px solid var(--line);text-align:left;
-  vertical-align:top}
-.rpmain th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);
-  font-weight:700;white-space:nowrap}
+.tw{overflow-x:auto;background:none;border-top:1px solid var(--hair);margin:0 0 24px}
+.rpmain blockquote .tw{border-top-color:rgba(26,23,18,.22)}
+.rpmain table{width:100%;border-collapse:collapse;font-size:14px;
+  font-variant-numeric:tabular-nums;margin:0}
+.rpmain th,.rpmain td{padding:10px 14px;border-bottom:1px solid var(--hair);
+  text-align:left;vertical-align:top}
+.rpmain th{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--ink-soft);font-weight:500;white-space:nowrap}
 .rpmain tbody tr:last-child td{border-bottom:none}
+.rpmain tbody tr:hover{background:var(--paper-dim)}
 .rpmain td:nth-child(n+2){white-space:nowrap}
 .rpmain table td:first-child{white-space:normal}
 
-.rpmain footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line);
-  font-size:12px;color:var(--muted)}
+.rpmain footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--hair);
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;line-height:1.9;color:var(--ink-soft)}
 
-.tocbtn{display:none;position:fixed;right:16px;bottom:16px;z-index:30;
-  background:var(--ink);color:#fff;border:0;border-radius:999px;padding:11px 18px;
-  font:inherit;font-size:13px;font-weight:650;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.22)}
+.tocbtn{display:none;position:fixed;right:18px;bottom:18px;z-index:110;
+  background:var(--ink);color:var(--paper);border:0;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  padding:13px 20px;cursor:pointer}
 
 @media(max-width:820px){
-  .rpwrap{grid-template-columns:1fr;gap:0;padding:18px 16px 90px}
+  .rpwrap{grid-template-columns:1fr;gap:0;padding:66px 18px 90px}
   .rpnav{position:static}
-  .toc{display:none;margin-bottom:20px}
+  .toc{display:none;margin-bottom:22px}
   .toc.open{display:block}
-  .rpdl{flex-direction:row;flex-wrap:wrap;gap:14px}
+  .rpdl{flex-direction:row;flex-wrap:wrap;gap:16px}
   .tocbtn{display:block}
-  .rpmain{font-size:16px}
-  .rpmain > h1:first-child{font-size:27px}
-  .rpmain h1{font-size:23px;margin:40px 0 14px}
-  .rpmain h2{font-size:19px}
+  .rpmain{font-size:16.5px}
+  .rpmain > h1:first-child{font-size:26px}
+  .rpmain h1{font-size:21px;margin:44px 0 16px}
+  .rpmain h2{font-size:18px}
 }

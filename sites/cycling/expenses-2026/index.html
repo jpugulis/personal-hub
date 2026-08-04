@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="lv">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Expenses 2026 · Latvia trip</title>
-<meta name="description" content="Shared expense split for the 2026 cycling trip.">
+<title>Izdevumi 2026 · Tour de Kurzeme</title>
+<meta name="description" content="Kopīgā izdevumu dalīšana 2026. gada velo ekspedīcijai.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#f4f2ee">
+<link rel="stylesheet" href="/assets/fonts.css">
+<meta name="theme-color" content="#F4EFE6">
 <style>
   :root{
-    --bg:#f4f2ee; --card:#fff; --ink:#191817; --muted:#75716a;
-    --line:#e5e1d9; --accent:#8a5a33; --accent-soft:#f3e7dc;
-    --pos:#17693f; --neg:#a83226; --neg-bg:#fbecea;
+    --bg:#f4efe6; --card:#fbf8f2; --ink:#1a1712; --muted:#6a6250;
+    --line:rgba(26,23,18,.18); --accent:#5C7A2E; --accent-soft:#eae2d2;
+    --pos:#3E8578; --neg:#C8401F; --neg-bg:#f3e4de;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   body{margin:0;background:var(--bg);color:var(--ink);
-       font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       font:16px/1.45 "Archivo Variable","Archivo",-apple-system,"Helvetica Neue",Arial,sans-serif;
        padding:16px 14px calc(60px + env(safe-area-inset-bottom));}
   .wrap{max-width:640px;margin:0 auto}
   h1{font-size:22px;margin:0 0 2px;letter-spacing:-.02em}
@@ -158,7 +159,7 @@
   <div class="card"><div class="form"><button class="btn" id="reset"
     style="background:#fff;color:var(--neg);border:1px solid var(--line)">Reset everything to the original numbers</button></div></div>
 
-  <footer>cycling.pugulis.com · shared live · last change <span id="stamp">—</span></footer>
+  <footer><a href="/">← Teritorija 03 · Velo ekspedīcijas</a><br>cycling.pugulis.com · kopīgs, dzīvs · pēdējās izmaiņas <span id="stamp">—</span></footer>
 </div>
 
 <script>

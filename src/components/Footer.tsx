@@ -8,6 +8,10 @@ export default function Footer() {
             jptravel.pugulis.com ↗
           </a>
           <br />
+          <a href="https://cycling.pugulis.com/" target="_blank" rel="noopener">
+            cycling.pugulis.com ↗
+          </a>
+          <br />
           <a href="https://skr.lv/" target="_blank" rel="noopener">
             skr.lv ↗
           </a>
@@ -58,10 +62,8 @@ export default function Footer() {
         </div>
       </div>
       <div className="colophon">
-        <span>Personīgais Atlants — v1.1</span>
-        <span>
-          <sup>*</sup> Paraugdati — tiks aizstāti ar reāliem
-        </span>
+        <span>Personīgais Atlants — v1.2</span>
+        <span>07 no 08 teritorijām kartētas</span>
       </div>
     </footer>
   );
