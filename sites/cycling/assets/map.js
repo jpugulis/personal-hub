@@ -1,16 +1,21 @@
-/* Interactive expedition map. Renders from window.CYCLING into #map. */
+/* Interactive expedition map, drawn from window.CYCLING into #map.
+   Overview page  : one colour per expedition.
+   Article page   : one colour per riding day (data-only="<slug>"). */
 (function () {
   var D = window.CYCLING;
   var host = document.getElementById('map');
   if (!D || !host) return;
 
   var NS = 'http://www.w3.org/2000/svg';
-  var COL = {
+  var TOUR_COL = {
     '2026-kurzeme': 'var(--c2026)', '2025-latgale': 'var(--c2025)',
     '2024-gauja': 'var(--c2024)', '2023-estonia': 'var(--c2023)'
   };
-  var solo = host.getAttribute('data-only') || null;   // article pages show one tour
+  var DAY_COL = ['var(--d1)', 'var(--d2)', 'var(--d3)', 'var(--d4)', 'var(--d5)'];
+
+  var solo = host.getAttribute('data-only') || null;
   var tours = solo ? D.tours.filter(function (t) { return t.slug === solo; }) : D.tours;
+  if (!tours.length) return;
   var byRegion = {};
   tours.forEach(function (t) { byRegion[t.region] = t; });
 
@@ -27,27 +32,50 @@
     ? tours[0].title + ' route across ' + D.regionNames[tours[0].region]
     : 'Map of Latvia and southern Estonia with four cycling expedition routes');
 
-  /* --- defs: soft shadow under the landmass --- */
+  /* ---------- defs: ink wobble + paper shadow ---------- */
   var defs = el('defs', {}, host);
-  var f = el('filter', { id: 'landshadow', x: '-6%', y: '-6%', width: '112%', height: '112%' }, defs);
-  el('feDropShadow', {
-    dx: 0, dy: 3, stdDeviation: 5,
-    'flood-color': '#6b6255', 'flood-opacity': 0.16
-  }, f);
+  var seed = solo ? 11 : 5;
+  var rough = el('filter', {
+    id: 'rough', x: '-5%', y: '-5%', width: '110%', height: '110%',
+    filterUnits: 'objectBoundingBox'
+  }, defs);
+  el('feTurbulence', {
+    type: 'fractalNoise', baseFrequency: '0.014', numOctaves: '3', seed: seed, result: 'n'
+  }, rough);
+  el('feDisplacementMap', {
+    in: 'SourceGraphic', in2: 'n', scale: '7',
+    xChannelSelector: 'R', yChannelSelector: 'G'
+  }, rough);
 
-  var gHalo = el('g', { class: 'halo' }, host);
-  var gLand = el('g', { filter: 'url(#landshadow)' }, host);
-  var gWater = el('g', { class: 'water' }, host);
+  var soft = el('filter', { id: 'rough2', x: '-5%', y: '-5%', width: '110%', height: '110%' }, defs);
+  el('feTurbulence', {
+    type: 'fractalNoise', baseFrequency: '0.02', numOctaves: '2', seed: seed + 3, result: 'n2'
+  }, soft);
+  el('feDisplacementMap', {
+    in: 'SourceGraphic', in2: 'n2', scale: '4',
+    xChannelSelector: 'R', yChannelSelector: 'G'
+  }, soft);
+
+  var sh = el('filter', { id: 'landshadow', x: '-8%', y: '-8%', width: '116%', height: '116%' }, defs);
+  el('feDropShadow', {
+    dx: 0, dy: 4, stdDeviation: 6, 'flood-color': '#6b6255', 'flood-opacity': 0.15
+  }, sh);
+
+  var gHalo   = el('g', { class: 'halo',  filter: 'url(#rough)' }, host);
+  var gLand   = el('g', { class: 'land',  filter: 'url(#rough)' }, host);
+  var gInk    = el('g', { class: 'ink',   filter: 'url(#rough)' }, host);
+  var gWater  = el('g', { class: 'water', filter: 'url(#rough2)' }, host);
   var gRoutes = el('g', { class: 'routes' }, host);
-  var gTowns = el('g', { class: 'towns' }, host);
+  var gMark   = el('g', { class: 'marks' }, host);
+  var gTowns  = el('g', { class: 'towns' }, host);
   var gLabels = el('g', { class: 'labels' }, host);
 
-  /* --- coastline halo: makes the sea read as sea --- */
+  /* coast halo — makes the sea read as sea */
   Object.keys(D.regions).forEach(function (k) {
     el('path', { d: D.regions[k], class: 'halo-p' }, gHalo);
   });
 
-  /* --- regions --- */
+  /* land fills (hit targets) */
   Object.keys(D.regions).forEach(function (key) {
     var tour = byRegion[key];
     var cls = 'region' + (tour ? ' live' : ' inert') + (solo && tour ? ' on' : '');
@@ -70,42 +98,60 @@
     }
   });
 
-  /* --- rivers + lakes --- */
+  /* pen outline drawn over the fills */
+  Object.keys(D.regions).forEach(function (k) {
+    el('path', { d: D.regions[k], class: 'inkline' + (byRegion[k] ? ' live' : '') }, gInk);
+  });
+
   D.rivers.forEach(function (d) { el('path', { d: d, class: 'river' }, gWater); });
   D.lakes.forEach(function (d) { el('path', { d: d, class: 'lake' }, gWater); });
 
-  /* --- routes --- */
+  /* ---------- routes ---------- */
   tours.forEach(function (t) {
-    t.routes.forEach(function (pts) {
+    t.routes.forEach(function (pts, i) {
       el('polyline', {
-        points: pts, class: 'route' + (solo ? ' on' : ''),
-        stroke: COL[t.slug], 'data-slug': t.slug
+        points: pts,
+        class: 'route' + (solo ? ' on' : ''),
+        stroke: solo ? DAY_COL[i % DAY_COL.length] : TOUR_COL[t.slug],
+        'data-slug': t.slug
       }, gRoutes);
     });
   });
 
-  /* --- towns --- */
+  /* start / finish markers on the article map */
+  if (solo) {
+    var rs = tours[0].routes;
+    var first = rs[0].split(' ')[0].split(',');
+    var lastPts = rs[rs.length - 1].split(' ');
+    var last = lastPts[lastPts.length - 1].split(',');
+    el('circle', { cx: first[0], cy: first[1], r: 7, class: 'mk start' }, gMark);
+    el('circle', { cx: last[0], cy: last[1], r: 8, class: 'mk end' }, gMark);
+    el('circle', { cx: last[0], cy: last[1], r: 3.2, class: 'mk enddot' }, gMark);
+  }
+
+  /* ---------- towns ---------- */
   D.towns.forEach(function (t) {
     var g = el('g', { class: 'town t' + t.t }, gTowns);
     el('circle', { cx: t.x, cy: t.y, r: t.t === 1 ? 3.6 : t.t === 2 ? 2.8 : 2.1 }, g);
     if (t.t <= 2 || solo) {
-      var tx = el('text', { x: t.x + 7, y: t.y + 4 }, g);
-      tx.textContent = t.n;
+      var left = t.s === 'L';
+      el('text', {
+        x: t.x + (left ? -7 : 7), y: t.y + (t.dy == null ? 4 : t.dy),
+        'text-anchor': left ? 'end' : 'start'
+      }, g).textContent = t.n;
     }
   });
 
-  /* --- region names --- */
   Object.keys(D.labelPos).forEach(function (k) {
     if (solo && !byRegion[k]) return;
     var p = D.labelPos[k];
-    var t = el('text', { x: p[0], y: p[1], class: 'rlabel' + (byRegion[k] ? ' live' : '') }, gLabels);
-    t.textContent = D.regionNames[k];
+    el('text', { x: p[0], y: p[1], class: 'rlabel' + (byRegion[k] ? ' live' : '') }, gLabels)
+      .textContent = D.regionNames[k];
   });
 
   function go(slug) { window.location.href = '/' + slug + '/'; }
 
   function hi(slug, on) {
-    host.classList.toggle('focused', on);
     host.querySelectorAll('[data-slug]').forEach(function (n) {
       n.classList.toggle('on', on && n.getAttribute('data-slug') === slug);
       n.classList.toggle('dim', on && n.getAttribute('data-slug') !== slug);
@@ -114,14 +160,14 @@
     if (card) card.classList.toggle('hot', on);
   }
 
-  /* --- cards --- */
+  /* ---------- cards ---------- */
   var list = document.getElementById('tourlist');
   if (list) {
     D.tours.forEach(function (t) {
       var a = document.createElement('a');
       a.className = 't'; a.href = '/' + t.slug + '/'; a.setAttribute('data-slug', t.slug);
       a.innerHTML =
-        '<div class="ic" style="--k:' + COL[t.slug] + '">' + t.year + '</div>' +
+        '<div class="ic" style="--k:' + TOUR_COL[t.slug] + '">' + t.year + '</div>' +
         '<div><b>' + t.title + '</b><span>' + t.sub + ' · ' + t.dates + '</span>' +
         '<span class="meta">' + t.dist.toFixed(1) + ' km · ' +
         t.climb.toLocaleString('en-GB') + ' m climbing · ' + t.days + ' days</span></div>' +
@@ -132,16 +178,26 @@
     });
   }
 
+  /* ---------- legend ---------- */
   var lg = document.getElementById('legend');
-  if (lg) {
+  if (lg && !solo) {
     D.tours.forEach(function (t) {
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'lgi'; b.setAttribute('data-slug', t.slug);
-      b.innerHTML = '<i class="swatch" style="background:' + COL[t.slug] + '"></i>' + t.year;
+      b.innerHTML = '<i class="swatch" style="background:' + TOUR_COL[t.slug] + '"></i>' + t.year;
       b.addEventListener('click', function () { go(t.slug); });
       b.addEventListener('mouseenter', function () { hi(t.slug, true); });
       b.addEventListener('mouseleave', function () { hi(t.slug, false); });
       lg.appendChild(b);
+    });
+  } else if (lg && solo) {
+    var names = (tours[0].dayNames || []);
+    tours[0].routes.forEach(function (_, i) {
+      var s = document.createElement('span');
+      s.className = 'lgi static';
+      s.innerHTML = '<i class="swatch" style="background:' + DAY_COL[i % DAY_COL.length] + '"></i>' +
+        (names[i] || ('Day ' + (i + 1)));
+      lg.appendChild(s);
     });
   }
 })();
