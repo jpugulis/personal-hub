@@ -4,38 +4,32 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cycling · pugulis.com</title>
-<meta name="description" content="Baltic Cycling Expeditions — routes, trips and the arithmetic that follows them.">
-<meta name="theme-color" content="#f4f2ee">
-<style>
-  :root{--bg:#f4f2ee;--card:#fff;--ink:#191817;--muted:#75716a;--line:#e5e1d9;--accent:#8a5a33;--soft:#f3e7dc}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);padding:56px 18px 80px;
-       font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-  .wrap{max-width:620px;margin:0 auto}
-  .kicker{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:700;margin:0 0 8px}
-  h1{font-size:32px;margin:0 0 8px;letter-spacing:-.03em;line-height:1.1}
-  .sub{color:var(--muted);margin:0 0 34px;max-width:46ch}
-  .sec{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:700;margin:0 0 10px}
-  a.t{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);
-      border-radius:14px;padding:16px;text-decoration:none;color:inherit;margin-bottom:10px;transition:border-color .15s}
-  a.t:hover{border-color:var(--accent)}
-  .ic{width:40px;height:40px;border-radius:11px;background:var(--soft);display:grid;place-items:center;
-      font-size:18px;font-weight:700;color:var(--accent);flex:none}
-  .t b{display:block;font-size:16px}
-  .t span{display:block;font-size:13px;color:var(--muted)}
-  .arw{margin-left:auto;color:var(--muted)}
-  footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
-  footer a{color:var(--accent);text-decoration:none}
-</style>
+<meta name="description" content="Baltic Cycling Expeditions — four years of multi-day rides across Latvia and its neighbours.">
+<meta name="theme-color" content="#e4eaea">
+<link rel="stylesheet" href="/assets/site.css">
 </head>
 <body>
+
+<header class="hdr">
+  <div class="brand">
+    <p class="kicker">Baltic Cycling Expeditions</p>
+    <h1>Cycling</h1>
+  </div>
+  <div class="hdr-in">
+    <svg id="map"></svg>
+    <div class="legend" id="legend"></div>
+  </div>
+</header>
+
 <div class="wrap">
-  <p class="kicker">Baltic Cycling Expeditions</p>
-  <h1>Cycling</h1>
+  <p class="maphint">Pick a region to read that expedition.</p>
+
   <p class="sub">Multi-day rides across Latvia and its neighbours — routes, logistics, and the arithmetic that follows them.</p>
 
-  <p class="sec">Trips</p>
+  <p class="sec">Expeditions</p>
+  <div id="tourlist"></div>
 
+  <p class="sec">Tools</p>
   <a class="t" href="/expenses-2026/">
     <div class="ic">€</div>
     <div><b>Latvia 2026 · expense split</b><span>Live shared settlement — everyone can edit</span></div>
@@ -44,5 +38,8 @@
 
   <footer>Part of <a href="https://pugulis.com">pugulis.com</a></footer>
 </div>
+
+<script src="/assets/tours.js"></script>
+<script src="/assets/map.js"></script>
 </body>
 </html>

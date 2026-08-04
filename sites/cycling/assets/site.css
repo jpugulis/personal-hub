@@ -1,0 +1,135 @@
+/* cycling.pugulis.com — shared styles */
+:root{
+  --bg:#f4f2ee; --card:#fff; --ink:#191817; --muted:#75716a;
+  --line:#e5e1d9; --accent:#8a5a33; --soft:#f3e7dc;
+  --sea:#e4eaea; --sea2:#dbe4e5;
+  --land:#e9e3d6; --land-hi:#ddd3bf; --land-off:#efebe2; --coast:#c6bda9;
+  --river:#c2ced3; --lake:#cfdadd;
+  --c2026:#c2503f; --c2025:#3d9c68; --c2024:#8a5a33; --c2023:#3d6fa8;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+     -webkit-text-size-adjust:100%}
+.wrap{max-width:620px;margin:0 auto;padding:0 18px 80px}
+.wide{max-width:780px}
+.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);font-weight:700;margin:0 0 8px}
+h1{font-size:32px;margin:0 0 8px;letter-spacing:-.03em;line-height:1.1}
+.sub{color:var(--muted);margin:0 0 30px;max-width:46ch}
+.sec{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:700;margin:34px 0 10px}
+
+/* ============ header map ============ */
+.hdr{background:linear-gradient(180deg,var(--sea) 0%,var(--sea2) 62%,var(--bg) 100%);
+     border-bottom:1px solid var(--line);margin-bottom:26px;overflow:hidden;position:relative}
+.hdr-in{max-width:860px;margin:0 auto;padding:18px 14px 6px}
+.hdr .brand{position:absolute;top:16px;left:0;right:0;text-align:center;pointer-events:none;z-index:2}
+.hdr .brand .kicker{margin:0 0 2px;color:#7d8688}
+.hdr .brand h1{font-size:27px;margin:0;color:#2b2f30}
+#map{display:block;width:100%;height:auto;touch-action:manipulation}
+#map .halo-p{fill:none;stroke:#fff;stroke-width:9;opacity:.5}
+#map .region{fill:var(--land);stroke:var(--coast);stroke-width:1.3;transition:fill .18s}
+#map .region.inert{fill:var(--land-off);stroke:#d8d1c2}
+#map .region.live{cursor:pointer}
+#map .region.live:hover,#map .region.live.on{fill:var(--land-hi)}
+#map .region.live:focus{outline:none;fill:var(--land-hi)}
+#map .region.live:focus-visible{stroke:var(--accent);stroke-width:2.4}
+#map .river{fill:none;stroke:var(--river);stroke-width:2;stroke-linecap:round;opacity:.85}
+#map .lake{fill:var(--lake);stroke:#bcc9cd;stroke-width:.9}
+#map .route{fill:none;stroke-width:3.4;stroke-linejoin:round;stroke-linecap:round;
+            opacity:.94;pointer-events:none;transition:stroke-width .18s,opacity .18s}
+#map .route.on{stroke-width:5.4;opacity:1}
+#map .route.dim{opacity:.25}
+#map .town circle{fill:#fff;stroke:#8c8578;stroke-width:1.3}
+#map .town text{font-size:12.5px;fill:#6f6a5f;font-weight:500}
+#map .town.t1 text{font-size:13.5px;font-weight:650;fill:#5c574d}
+#map .town.t3 circle{stroke-width:1.1}
+#map .rlabel{font-size:16px;font-weight:700;letter-spacing:.08em;fill:#a79e8c;
+             text-anchor:middle;text-transform:uppercase;pointer-events:none}
+#map .rlabel.live{fill:#8f8571}
+.legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:2px 0 14px}
+.lgi{display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:12px;font-weight:650;
+     color:var(--ink);background:rgba(255,255,255,.72);border:1px solid var(--line);
+     border-radius:999px;padding:5px 11px;cursor:pointer}
+.lgi:hover{border-color:var(--accent)}
+.swatch{width:14px;height:3px;border-radius:2px;display:inline-block}
+.maphint{font-size:12px;color:var(--muted);margin:-14px 0 26px;text-align:center}
+
+/* ============ cards ============ */
+a.t{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:16px;text-decoration:none;color:inherit;margin-bottom:10px;
+    transition:border-color .15s,box-shadow .15s}
+a.t:hover{border-color:var(--accent)}
+a.t.hot{border-color:var(--accent);box-shadow:0 0 0 3px rgba(138,90,51,.10)}
+.ic{width:44px;height:44px;border-radius:11px;background:var(--soft);display:grid;place-items:center;
+    font-size:13px;font-weight:700;color:var(--accent);flex:none;font-variant-numeric:tabular-nums;
+    box-shadow:inset 0 -3px 0 var(--k,transparent)}
+.t b{display:block;font-size:16px}
+.t span{display:block;font-size:13px;color:var(--muted)}
+.t .meta{display:block;font-size:12px;color:var(--muted);margin-top:3px;font-variant-numeric:tabular-nums}
+.arw{margin-left:auto;color:var(--muted)}
+footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+footer a{color:var(--accent);text-decoration:none}
+
+/* ============ article ============ */
+.back{display:inline-block;font-size:13px;color:var(--accent);text-decoration:none;margin:20px 0 16px}
+.artmap{background:var(--sea);border:1px solid var(--line);border-radius:16px;padding:4px;margin:0 0 22px}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(98px,1fr));gap:8px;margin:0 0 26px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}
+.stat .v{font-size:18px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat .k{font-size:10.5px;color:var(--muted);line-height:1.25;margin-top:2px}
+article h2{font-size:20px;letter-spacing:-.02em;margin:32px 0 10px}
+article p{margin:0 0 14px}
+article blockquote{margin:18px 0;padding:12px 16px;background:var(--card);border-left:3px solid var(--accent);
+  border-radius:0 10px 10px 0;color:var(--muted);font-size:14.5px}
+article blockquote p:last-child{margin:0}
+table{width:100%;border-collapse:collapse;font-size:14px;margin:0;font-variant-numeric:tabular-nums}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:left}
+th{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700}
+td.n,th.n{text-align:right}
+tbody tr:last-child td{border-bottom:none}
+.tablecard{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow-x:auto;margin:0 0 22px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin:0 0 24px}
+.gallery button{padding:0;border:1px solid var(--line);background:none;border-radius:10px;
+  overflow:hidden;cursor:zoom-in;aspect-ratio:1/1;display:block}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block}
+.dl{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 0}
+.dl a{font-size:13px;color:var(--accent);text-decoration:none;border:1px solid var(--line);
+  background:var(--card);border-radius:10px;padding:9px 13px}
+.dl a:hover{border-color:var(--accent)}
+.note{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:30px}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(22,20,18,.93);display:none;z-index:99;
+    align-items:center;justify-content:center;padding:20px}
+.lb.open{display:flex}
+.lb img{max-width:100%;max-height:88vh;border-radius:8px;display:block}
+.lb button{position:absolute;background:rgba(255,255,255,.12);color:#fff;border:0;border-radius:50%;
+  width:46px;height:46px;font-size:22px;cursor:pointer;line-height:1}
+.lb .x{top:16px;right:16px}
+.lb .p{left:12px;top:50%;transform:translateY(-50%)}
+.lb .n{right:12px;top:50%;transform:translateY(-50%)}
+
+/* Phones. NOTE: SVG lengths are in viewBox units (1200 wide), so on a ~380px
+   screen everything is scaled by ~0.32 — these numbers look absurd but land
+   at roughly 3–12 real pixels. Sized for the narrowest common phone. */
+@media(max-width:560px){
+  .wrap{padding:0 14px 60px}
+  h1{font-size:25px}
+  .hdr .brand h1{font-size:21px}
+  .hdr-in{padding:14px 6px 2px}
+  #map .rlabel{font-size:38px;letter-spacing:2px}
+  #map .town.t2,#map .town.t3{display:none}
+  #map .town.t1 text{font-size:30px;font-weight:700}
+  #map .town.t1 circle{r:7}
+  #map .route{stroke-width:10}
+  #map .route.on{stroke-width:14}
+  #map .route.dim{opacity:.3}
+  #map .halo-p{stroke-width:18}
+  #map .region{stroke-width:3}
+  #map .river{stroke-width:5}
+  #map .lake{stroke-width:2}
+  .strip{grid-template-columns:repeat(2,1fr)}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .maphint{margin:-8px 0 22px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
