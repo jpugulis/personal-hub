@@ -61,7 +61,9 @@
     dx: 0, dy: 2, stdDeviation: 5, 'flood-color': '#1a1712', 'flood-opacity': 0.07
   }, sh);
 
-  var gHalo   = el('g', { class: 'halo',  filter: 'url(#rough)' }, host);
+  /* watercolour terrain plate — static artwork from tours.js */
+  var gArt    = el('g', { class: 'art' }, host);
+  if (D.art) gArt.innerHTML = D.art;
   var gLand   = el('g', { class: 'land',  filter: 'url(#rough)' }, host);
   var gInk    = el('g', { class: 'ink',   filter: 'url(#rough)' }, host);
   var gWater  = el('g', { class: 'water', filter: 'url(#rough2)' }, host);
@@ -70,12 +72,7 @@
   var gTowns  = el('g', { class: 'towns' }, host);
   var gLabels = el('g', { class: 'labels' }, host);
 
-  /* coast halo — makes the sea read as sea */
-  Object.keys(D.regions).forEach(function (k) {
-    el('path', { d: D.regions[k], class: 'halo-p' }, gHalo);
-  });
-
-  /* land fills (hit targets) */
+  /* region hit targets (transparent, light up on hover) */
   Object.keys(D.regions).forEach(function (key) {
     var tour = byRegion[key];
     var cls = 'region' + (tour ? ' live' : ' inert') + (solo && tour ? ' on' : '');
