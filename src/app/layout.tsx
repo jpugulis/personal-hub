@@ -4,6 +4,7 @@ import "@fontsource-variable/archivo/index.css";
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 import "./globals.css";
+import LangProvider from "@/components/LangProvider";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pugulis.com"),
@@ -12,11 +13,11 @@ export const metadata: Metadata = {
     "Viena dzīve · daudzas teritorijas. Jāņa Pūguļa personīgais atlants — ceļojumi, triatlons, velo ekspedīcijas, snovbords, Baltais Kalns, SK Rajons un tehnoloģijas vienā kartē.",
   openGraph: {
     title: "Jānis Pūgulis — Personīgais Atlants",
-    description:
-      "Viena dzīve · daudzas teritorijas — one life, many territories.",
+    description: "Viena dzīve · daudzas teritorijas.",
     url: "https://pugulis.com",
     siteName: "Personīgais Atlants",
     locale: "lv_LV",
+    alternateLocale: "en_GB",
     type: "website",
   },
 };
@@ -41,7 +42,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <LangProvider>{children}</LangProvider>
+      </body>
     </html>
   );
 }

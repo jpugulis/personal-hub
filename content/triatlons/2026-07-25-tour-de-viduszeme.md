@@ -2,7 +2,7 @@
 sheet: Nr. 02-01
 date: 2026-07-25
 titleLv: Viena treniņa anatomija
-subtitleEn: 154 km, brick skrējiens un divi krampji — Anatomy of a Key Session
+subtitleEn: 154 km, a brick run and two cramps — anatomy of a key session
 subtitleLv: 154 km · brick skrējiens · divi krampji — 43 dienas pirms Podersdorf
 crumbNote: 25.07.2026 · 43 dienas pirms Podersdorf
 metaLine: 154,4 km + 9,6 km
@@ -17,7 +17,7 @@ band: Brick skrējiens | 9,57 km | 51:16 · vid. SF 153
 band: Pauzes | 1:28 | 13 apstāšanās
 ---
 
-## Īsumā | Kopsavilkums — TL;DR
+## Īsumā
 
 - **Tas nebija garais brauciens, tas bija sacensības.** NP 220 W pie IF 0,85 četrarpus stundas, tostarp 30 minūtes pie 94–102% no FTP. 30 minūšu jauda (243 W) iznāca *lielāka* nekā 20 minūšu jauda (237 W) — tempu noteica grupa, nevis manas kājas.
 - **Motors ir apsteidzis grafiku.** 228 W pilnu stundu dziļi 4,5 stundu braucienā. Pēc tam 5:07–5:16/km no velo, sirds ritmam nemaz neizejot no 3. zonas.
@@ -26,7 +26,7 @@ band: Pauzes | 1:28 | 13 apstāšanās
 - **Nakts HRV līkne ir nedēļas interesantākie dati.** Tā sākās ap 40 ms un kāpa visu nakti līdz ~100 ms, nevis bija augsta jau no iemigšanas. Tā izskatās liels, bet veiksmīgi uzņemts stimuls.
 - **Kofeīns ir mainīgais, par kuru neviens nerunā.** Ap 440 mg brauciena laikā, ~200 mg no tā aptuveni 90 minūtes pirms sliktākā krampja. Kofeīns paaugstina motoneirona uzbudināmību — tieši nepareizajā virzienā.
 
-## Konteksts | 01 — The 48-hour setup
+## 01 | Konteksts: 48 stundas pirms
 
 ### Piektdiena, 24. jūlijs — diena pirms
 
@@ -59,7 +59,7 @@ note: Aplēstais TSS
 
 **53% no nedēļas slodzes iekrita vienā dienā.** Divas pilnas atpūtas dienas plus tikai divas mērenas kvalitātes dienas ir tieši tas, kāpēc sestdiena varēja aiziet tik strauji. Tas ir arī iemesls, kāpēc slodzes kāpums dienas ietvaros bija tik ass. Sešas dienas iepriekš bija pilna 70.3 simulācija (1,79 km / 90 km / 12,3 km). Tātad: puse Ironman un 154 km grupas brauciens pie IF 0,85 septiņu dienu laikā.
 
-## Velo | 02 — The bike
+## 02 | Velo
 
 154,4 km · 4:32:06 kustībā · 6:01:05 kopā · NP 220 W · vid. 190 W · IF 0,85 · 3 095 kJ · vid. SF 151 / maks. 188 · 543 m kāpuma · 17 → 33 °C · treniņa efekts 4,7 aerobais / 2,9 anaerobais.
 
@@ -159,7 +159,7 @@ label: Godīgs iebildums
 
 **Kreisās/labās puses balanss: 50,1 / 49,9.** Ideāli vienmērīgi. Nekādas mehāniskas asimetrijas — kas abpusējo krampi padara loģiskāku, nevis mazāk loģisku.
 
-## Brick skrējiens | 03 — The brick run
+## 03 | Brick skrējiens
 
 9,57 km · 51:16 kustībā · 1:06:43 kopā · vid. SF 153 · maks. SF 166 · skriešanas jauda 374 W (NP 408).
 
@@ -203,7 +203,7 @@ note: Starp pirmo un otro krampi
 
 Un mehānika stāsta šo stāstu ar neparastu precizitāti. 8. aplī — tajā 4:50 kilometrā — kontakta laiks bija 255 ms un soļa garums 1238 mm: **labākā mehānika visā dienā**. 9. aplī kontakta laiks uzsprāga līdz 298 ms un soļa garums sabruka līdz 1062 mm. Muskulis padevās tieši tajā mirklī, kad skrējiens bija vislabākais. Tā nav sagadīšanās — tas ir mehānisma paraksts.
 
-## Kas patiesībā tika uzņemts | 04 — Fuelling & hydration
+## 04 | Uzturs un hidratācija
 
 Šī ir tā sadaļa, kuras trūka pirmajā analīzē, un tā mainīja secinājumu.
 
@@ -268,7 +268,7 @@ label: Trūkstošais dators
 
 Paturiet to prātā nākamajai sadaļai. Aptuveni 200 mg pienāca ap 90 minūtēm pirms otrā, sliktākā krampja.
 
-## Krampis, izskaidrots pa īstam | 05 — The cramp mechanism
+## 05 | Krampja mehānisms
 
 Šo ir vērts saprast, jo mehānisms ir patiesi elegants un tas nosaka risinājumu.
 
@@ -370,7 +370,7 @@ Praktiskās sekas ir svarīgākas par klasifikāciju: **neiromuskulārā daļa t
 
 **Kreatīns, 9 g:** pierādījumi neatbalsta kreatīnu kā krampju cēloni — vairāki pētījumi atrod neitrālu vai nedaudz aizsargājošu efektu. Tas gan ievelk ūdeni muskulī intracelulāri, kas paaugstina kopējā ķermeņa ūdens vajadzību. Nevis problēma pati par sevi; vēl viens iemesls, kāpēc šķidruma uzņemšanai vajadzēja būt lielākai.
 
-## Nakts pēc | 06 — The night after
+## 06 | Nakts pēc
 
 Laiks gultā 8:42 · aizmidzis 8:07 · efektivitāte 94% · iemigšana 3 min · dziļais 1:38 · REM 1:35 · vieglais 4:54 · nomodā 0:35 · WHOOP Recovery 35% · dabiska pamošanās.
 
@@ -424,7 +424,7 @@ label: Godīgais lasījums
 Miera pulss nebija jēgpilni paaugstināts. Īstais signāls ir agrā nakts HRV nomāktība, un tā izzuda. Vispārējais likums — uzticies tendencēm vienas ierīces ietvaros, nekad absolūtām vērtībām starp divām.
 ```
 
-## Ko tas nozīmē Podersdorf | 07 — Race implications
+## 07 | Ko tas nozīmē Podersdorfā
 
 43 dienas līdz startam. Podersdorf ir līdzens un atklāts — vējš ir visa tā velo trases būtība. No šīs nedēļas nogales iznāca trīs konkrēti skaitļi.
 
@@ -457,7 +457,7 @@ Nekad virs 260 W ilgāk par 30 sekundēm. Nekad virs 300 W vispār. Līdzenā tr
 
 Kofeīna griesti ir reāla rekomendācija, nevis piemetinājums. Ņemot vērā 5. sadaļas mehānismu, 440 mg iekraušana krampjiem uzņēmīgā dienā ir darbs pret sevi.
 
-## Plāns no šī brīža | 08 — The plan from here
+## 08 | Plāns no šī brīža
 
 ### Šodien, svētdien 26. jūlijā
 
@@ -488,7 +488,7 @@ label: Traumu risks: mērens, nevis augsts
 Nekas strukturāls. Bet spēcīgs abpusējs kvadricepsa krampis, −8,6% atsaiste, 43 dienas līdz startam un šķidruma deficīts 4–5% robežās kopā nozīmē, ka nākamajām septiņām dienām jābūt patiesi vieglām. Risks nav sestdienas sesija. Risks ir tas, kas tiks izdarīts, atbildot uz to, cik labi sestdiena sajutās.
 ```
 
-## Kopumā | Apakšsvītra — Bottom line
+## Kopumā
 
 Motors ir apsteidzis grafiku. Trīsdesmit minūtes pie 94% no FTP 154 km brauciena vidū, 228 W pilnu stundu četras stundas dziļi, un 4:50 kilometrs no velo — tie visi ir spēcīgi rādītāji sešas nedēļas pirms starta. Podersdorf ir labi sasniedzams.
 
@@ -498,7 +498,7 @@ Kadence, ekscentriskais spēks, apzināts nātrijs un divi disciplinēti gari br
 
 **Tagad nedēļu jābūt garlaicīgam.**
 
-## Metode un avoti | Method & sources
+## Metode un avoti
 
 **Metode.** Viss iegūts no neapstrādātiem Garmin `.FIT` failiem, parsētiem ar Python (`fitdecode`), nevis no platformu kopsavilkumiem. Pauzes rekonstruētas no `timer` notikumu pāriem. Vidēji maksimālā jauda — slīdošā konvolūcija pār pilnu sekunžu jaudas rindu. Normalizētā jauda — 30 s slīdošais vidējais ceturtajā pakāpē, tad ceturtā sakne. Atsaiste — jaudas un sirdsdarbības attiecība 10 minūšu logos. Ogļhidrātu oksidācija modelēta no mehāniskā darba pie 23% pieņemtas bruto efektivitātes. Kreisās/labās puses balanss dekodēts no `left_right_balance` lauka. Sviedru zudumi aplēsti, nevis izmērīti.
 

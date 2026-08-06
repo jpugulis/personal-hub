@@ -215,11 +215,14 @@ export default function SheetBody({ body, base }: { body: string; base: string }
       const text = String(
         Array.isArray(children) ? children.join("") : children
       );
-      const [lv, en] = text.split("|").map((s) => s.trim());
+      /* "02 | Velo" — an optional section number, then the heading.
+         Both halves stay in the same language; the sheet is never bilingual. */
+      const parts = text.split("|").map((s) => s.trim());
+      const [kicker, heading] = parts.length > 1 ? parts : ["", parts[0]];
       return (
         <h2>
-          {en && <span className="n">{en}</span>}
-          {lv}
+          {kicker && <span className="n">{kicker}</span>}
+          {heading}
         </h2>
       );
     },

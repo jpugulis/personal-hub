@@ -1,9 +1,17 @@
+"use client";
+
+import LangSwitch from "@/components/LangSwitch";
+import { useLang } from "@/components/LangProvider";
+import { ui } from "@/lib/i18n";
+
 export default function Footer() {
+  const { lang } = useLang();
+
   return (
     <footer className="site-footer" id="kontakti">
       <div className="foot-grid">
         <div>
-          <div className="h">Teritorijas tīklā</div>
+          <div className="h">{ui.footNetwork[lang]}</div>
           <a href="https://jptravel.pugulis.com/" target="_blank" rel="noopener">
             jptravel.pugulis.com ↗
           </a>
@@ -37,33 +45,34 @@ export default function Footer() {
             target="_blank"
             rel="noopener"
           >
-            Inventāra serviss ↗
+            {ui.footServiceLink[lang]}
           </a>
         </div>
         <div>
-          <div className="h">Atlants</div>
-          <a href="#saturs">Saturs</a>
+          <div className="h">{ui.footAtlas[lang]}</div>
+          <a href="#saturs">{ui.navContents[lang]}</a>
           <br />
-          <a href="#jaunakais">Jaunākie maršruti</a>
+          <a href="#jaunakais">{ui.footLatest[lang]}</a>
           <br />
-          <span className="muted">Par atlantu (izstrādē)</span>
+          <span className="muted">{ui.footAbout[lang]}</span>
         </div>
         <div>
-          <div className="h">Kontakti</div>
+          <div className="h">{ui.footContact[lang]}</div>
           <a href="mailto:pugulis@gmail.com">pugulis@gmail.com</a>
         </div>
         <div>
-          <div className="h">Kolofons</div>
-          <span>Salikts ar Archivo un IBM Plex Mono</span>
+          <div className="h">{ui.footColophon[lang]}</div>
+          <span>{ui.footSetIn[lang]}</span>
           <br />
-          <span>Maršruti — Strava GPX arhīvs</span>
+          <span>{ui.footRoutes[lang]}</span>
           <br />
-          <span>© Jānis Pūgulis, 2026</span>
+          <span>{ui.footRights[lang]}</span>
         </div>
       </div>
       <div className="colophon">
-        <span>Personīgais Atlants — v1.2</span>
-        <span>07 no 08 teritorijām kartētas</span>
+        <span>{ui.colophonVersion[lang]}</span>
+        <LangSwitch place="foot" />
+        <span>{ui.colophonMapped[lang]}</span>
       </div>
     </footer>
   );

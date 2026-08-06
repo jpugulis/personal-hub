@@ -8,26 +8,23 @@ export type WorldId =
   | "rajons"
   | "tech";
 
-/** Geometry of a territory's route line on the hero map (1440×900 viewBox). */
-export interface HeroRoute {
-  d: string;
-  /** Start marker [cx, cy]. */
-  marker: [number, number];
-  /** Index-number label position [x, y]. */
-  label: [number, number];
-}
+/** Two supported site languages. Latvian is the default. */
+export type Lang = "lv" | "en";
+
+/** A value that exists separately in each language — never a mixed string. */
+export type Localized<T = string> = Record<Lang, T>;
 
 export interface Territory {
   id: WorldId;
   num: string;
-  /** Latvian display name (large editorial type). */
-  name: string;
-  /** Latvian teaser line under the name. */
-  teaser: string;
-  /** English teaser used in the territory panel. */
-  teaserPanel: string;
+  /** Display name (large editorial type). */
+  name: Localized;
+  /** Teaser line under the name, in the index. */
+  teaser: Localized;
+  /** Longer teaser used in the territory panel. */
+  teaserPanel: Localized;
   /** Two right-column datum lines. */
-  datumLines: [string, string];
+  datumLines: Localized<[string, string]>;
   /** True if datum still contains placeholder sample data (renders *). */
   sample?: boolean;
   /** Which datum line carries the sample marker (0 or 1). */
@@ -38,7 +35,6 @@ export interface Territory {
   href?: string;
   /** Internal route on this site, if the territory is mapped here. */
   hrefInternal?: string;
-  heroRoute: HeroRoute;
 }
 
 export type SportType = "Run" | "Ride" | "TrailRun" | "Hike";
@@ -50,13 +46,14 @@ export type SportType = "Run" | "Ride" | "TrailRun" | "Hike";
  */
 export interface StravaRoute {
   id: string;
-  name: string;
+  name: Localized;
   sport: SportType;
-  sportLv: string;
+  sportLabel: Localized;
   dateISO: string;
-  /** Display date, e.g. "19.07.2026". */
-  dateLv: string;
-  distanceKm: string;
+  /** Display date, e.g. "19.07.2026" / "19 Jul 2026". */
+  date: Localized;
+  /** Locale-formatted distance — comma decimal in LV, point in EN. */
+  distanceKm: Localized;
   movingTime: string;
   elevationGain: number;
   ink: string;

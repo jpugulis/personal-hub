@@ -2,9 +2,12 @@
 
 import { useEffect, useRef } from "react";
 import { stravaRoutes, stravaSyncedAt } from "@/data/stravaRoutes";
+import { useLang } from "@/components/LangProvider";
+import { ui } from "@/lib/i18n";
 
 export default function LatestRoutes() {
   const ref = useRef<HTMLElement>(null);
+  const { lang } = useLang();
 
   /* reveal cards + trigger route drawing on scroll */
   useEffect(() => {
@@ -40,8 +43,10 @@ export default function LatestRoutes() {
   return (
     <section className="routes" id="jaunakais" ref={ref}>
       <div className="section-head">
-        <span>Jaunākie maršruti — Strava</span>
-        <span className="r">Reāli GPX dati · {stravaSyncedAt}</span>
+        <span>{ui.routesHead[lang]}</span>
+        <span className="r">
+          {ui.routesSynced[lang]} {stravaSyncedAt[lang]}
+        </span>
       </div>
       <div className="routes-grid">
         {stravaRoutes.map((r, i) => (
@@ -55,9 +60,10 @@ export default function LatestRoutes() {
           >
             <div className="stamp">
               <span>
-                R-{String(i + 1).padStart(2, "0")} · {r.sportLv}
+                {ui.routeRef[lang]}-{String(i + 1).padStart(2, "0")} ·{" "}
+                {r.sportLabel[lang]}
               </span>
-              <span>{r.dateLv} ↗</span>
+              <span>{r.date[lang]} ↗</span>
             </div>
             <div className="rmap">
               <svg
@@ -90,19 +96,16 @@ export default function LatestRoutes() {
                 />
               </svg>
             </div>
-            <h3>{r.name}</h3>
+            <h3>{r.name[lang]}</h3>
             <p className="rstats">
-              {r.distanceKm} km · {r.movingTime} · +{r.elevationGain} m
+              {r.distanceKm[lang]} km · {r.movingTime} · +{r.elevationGain} m
               <br />
-              Atvērt aktivitāti Strava ↗
+              {ui.routesOpen[lang]}
             </p>
           </a>
         ))}
       </div>
-      <p className="routes-note">
-        Dati — personīgais Strava arhīvs · skrējieni, braucieni un takas virs
-        dažiem kilometriem
-      </p>
+      <p className="routes-note">{ui.routesNote[lang]}</p>
     </section>
   );
 }

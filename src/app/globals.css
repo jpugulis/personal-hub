@@ -88,7 +88,51 @@ body::after {
 }
 .site-nav .links {
   display: flex;
+  align-items: center;
   gap: 26px;
+}
+
+/* ---- language switch (styled as a map legend key) ---- */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+.lang-switch > span {
+  display: inline-flex;
+  align-items: center;
+}
+.lang-switch--nav {
+  padding-left: 22px;
+  margin-left: -4px;
+  border-left: 1px solid var(--hair);
+}
+.lang-sep {
+  display: inline-block;
+  width: 1px;
+  height: 9px;
+  margin: 0 8px;
+  background: var(--hair);
+}
+.lang-opt {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 2px 0;
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+  color: var(--ink-soft);
+  transition: color 0.25s var(--ease);
+}
+.lang-opt:hover {
+  color: var(--ink);
+}
+.lang-opt.is-on {
+  color: var(--ink);
+  box-shadow: inset 0 -1px 0 var(--ink);
 }
 .site-nav a {
   color: var(--ink);
@@ -148,6 +192,18 @@ body::after {
   text-transform: uppercase;
   color: var(--ink-soft);
 }
+.hero-legend {
+  position: absolute;
+  left: 28px;
+  bottom: 30px;
+  z-index: 5;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.62;
+}
 .hero-edition {
   position: absolute;
   top: 76px;
@@ -190,17 +246,31 @@ body::after {
   stroke-width: 0.5;
   opacity: 0.055;
 }
+/* generated topographic bands under the GPX traces */
 .contour {
   fill: none;
   stroke: var(--ink);
-  stroke-width: 0.8;
-  opacity: 0.09;
+  stroke-width: 0.7;
+  opacity: 0.075;
+}
+.topo path:nth-child(3n) {
+  stroke-width: 1.1;
+  opacity: 0.105;
 }
 .route {
   fill: none;
-  stroke-width: 2.25;
+  stroke-width: 1.9;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+/* paper-coloured underlay so a trace stays legible where it crosses itself */
+.route-halo {
+  fill: none;
+  stroke: var(--paper);
+  stroke-width: 4.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.72;
 }
 .route-marker {
   stroke: none;
@@ -244,11 +314,22 @@ body::after {
     stroke-dashoffset: 0;
   }
 }
-.hero .route {
+.hero .route,
+.hero .route-halo {
   stroke-dasharray: 1;
   stroke-dashoffset: 1;
-  animation: draw 2.2s cubic-bezier(0.5, 0, 0.2, 1) forwards;
-  animation-delay: calc(0.35s + var(--i, 0) * 0.18s);
+  animation: draw 2.6s cubic-bezier(0.5, 0, 0.2, 1) forwards;
+  animation-delay: calc(0.35s + var(--i, 0) * 0.16s);
+}
+
+/* contours fade up like a sheet being registered under the tracks */
+@keyframes topo-in {
+  from {
+    opacity: 0;
+  }
+}
+.hero .topo {
+  animation: topo-in 1.6s ease forwards;
 }
 
 /* ---- section heads ---- */
@@ -532,6 +613,10 @@ body::after {
 .foot-grid .muted {
   color: var(--ink-soft);
 }
+.colophon .lang-switch {
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+}
 .colophon {
   margin-top: 56px;
   font-family: var(--mono);
@@ -724,9 +809,19 @@ body::after {
     gap: 2px;
   }
   .site-nav .links {
-    gap: 16px;
+    gap: 14px;
   }
   .site-nav .links a:nth-child(2) {
+    display: none;
+  }
+  .lang-switch--nav {
+    padding-left: 12px;
+    margin-left: 0;
+  }
+  .lang-sep {
+    margin: 0 5px;
+  }
+  .hero-legend {
     display: none;
   }
   .hero-name {
@@ -797,9 +892,13 @@ body::after {
     transform: none;
   }
   .hero .route,
+  .hero .route-halo,
   .rcard .rpath {
     stroke-dasharray: none;
     stroke-dashoffset: 0;
+  }
+  .hero .topo {
+    opacity: 1;
   }
   .rcard .rend {
     opacity: 1;
@@ -883,6 +982,17 @@ body::after {
   margin-top: 20px;
   line-height: 1.9;
   max-width: 70ch;
+}
+.art-lang-note {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.72;
+  margin-top: 12px;
+  padding-left: 12px;
+  border-left: 2px solid var(--w, var(--hair));
 }
 .art-lede {
   font-size: clamp(17px, 1.7vw, 21px);

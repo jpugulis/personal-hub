@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react";
 import type { Territory } from "@/lib/types";
 import { territoryCount } from "@/data/territories";
+import { useLang } from "@/components/LangProvider";
+import { ui } from "@/lib/i18n";
 
 interface Props {
   territory: Territory | null;
@@ -12,6 +14,7 @@ interface Props {
 
 export default function TerritoryPanel({ territory, open, onClose }: Props) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const { lang } = useLang();
 
   useEffect(() => {
     if (!open) return;
@@ -29,6 +32,8 @@ export default function TerritoryPanel({ territory, open, onClose }: Props) {
   }, [open, onClose]);
 
   const total = String(territoryCount).padStart(2, "0");
+  const label = ui.panelTerritory[lang];
+  const datum = territory?.datumLines[lang];
 
   return (
     <div
@@ -36,12 +41,12 @@ export default function TerritoryPanel({ territory, open, onClose }: Props) {
       role="dialog"
       aria-modal="true"
       aria-hidden={!open}
-      aria-label={territory ? `Teritorija — ${territory.name}` : "Teritorija"}
+      aria-label={territory ? `${label} — ${territory.name[lang]}` : label}
       style={{ "--w": territory?.ink } as React.CSSProperties}
     >
       <div className="panel-top">
         <span>
-          Teritorija {territory?.num ?? "—"} / {total}
+          {label} {territory?.num ?? "—"} / {total}
         </span>
         <button
           ref={closeRef}
@@ -49,24 +54,24 @@ export default function TerritoryPanel({ territory, open, onClose }: Props) {
           className="panel-close"
           onClick={onClose}
         >
-          Aizvērt ✕
+          {ui.panelClose[lang]}
         </button>
       </div>
       <div className="panel-body">
         <div className="stagger panel-num">
-          Nr. {territory?.num ?? "—"} — Personīgais Atlants
+          {ui.panelNr[lang]} {territory?.num ?? "—"} — {ui.siteName[lang]}
         </div>
-        <div className="stagger panel-name">{territory?.name ?? "—"}</div>
+        <div className="stagger panel-name">{territory?.name[lang] ?? "—"}</div>
         <div className="stagger panel-teaser">
-          {territory?.teaserPanel ?? "—"}
+          {territory?.teaserPanel[lang] ?? "—"}
         </div>
         <div className="stagger panel-foot">
           <div className="panel-datum">
-            {territory?.datumLines[0]}
+            {datum?.[0]}
             <br />
-            {territory?.datumLines[1]}
+            {datum?.[1]}
           </div>
-          <span className="panel-cta">Teritorija tiek kartēta — drīzumā</span>
+          <span className="panel-cta">{ui.panelSoon[lang]}</span>
         </div>
       </div>
     </div>

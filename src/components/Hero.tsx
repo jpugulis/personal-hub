@@ -1,23 +1,17 @@
-import { territories } from "@/data/territories";
+"use client";
+
+import { heroTracks, topoContours } from "@/data/heroTracks";
+import { territoryInk, territoryNum } from "@/data/territories";
 import { importantPlaces, projectToHero } from "@/data/places";
-import { stravaRoutes } from "@/data/stravaRoutes";
+import { useLang } from "@/components/LangProvider";
+import { ui } from "@/lib/i18n";
 
 const GRID_X = [120, 240, 360, 480, 600, 720, 840, 960, 1080, 1200, 1320];
 const GRID_Y = [150, 300, 450, 600, 750];
 
-/**
- * Hero "topography": instead of decorative ellipses, the faint contour
- * clusters are the shapes of real recent Strava activities, each drawn
- * as a set of nested rings like elevation bands.
- */
-const TOPO: { routeIndex: number; cx: number; cy: number; s: number }[] = [
-  { routeIndex: 2, cx: 300, cy: 265, s: 0.82 }, // trail run — upper left
-  { routeIndex: 0, cx: 700, cy: 450, s: 0.74 }, // run loop — centre
-  { routeIndex: 1, cx: 1140, cy: 610, s: 0.85 }, // ride — lower right
-];
-const RINGS = [1, 0.8, 0.6];
-
 export default function Hero() {
+  const { lang } = useLang();
+
   return (
     <header className="hero">
       <svg
@@ -25,7 +19,14 @@ export default function Hero() {
         preserveAspectRatio="xMidYMid slice"
         aria-hidden="true"
       >
-        {/* coordinate grid */}
+        {/* terrain: generated contour bands, drawn first so tracks sit on top */}
+        <g className="topo">
+          {topoContours.map((d, i) => (
+            <path key={`c${i}`} className="contour" d={d} />
+          ))}
+        </g>
+
+        {/* coordinate graticule */}
         <g>
           {GRID_X.map((x) => (
             <line key={`x${x}`} className="grid-line" x1={x} y1="0" x2={x} y2="900" />
@@ -34,6 +35,7 @@ export default function Hero() {
             <line key={`y${y}`} className="grid-line" x1="0" y1={y} x2="1440" y2={y} />
           ))}
         </g>
+
         {/* edge coordinates */}
         <text className="map-label" x="14" y="144">
           57°N
@@ -53,29 +55,7 @@ export default function Hero() {
         <text className="map-label" x="1072" y="890">
           26°E
         </text>
-        {/* topography from real Strava route shapes */}
-        <g>
-          {TOPO.map(({ routeIndex, cx, cy, s }) => {
-            const r = stravaRoutes[routeIndex];
-            return RINGS.map((k) => {
-              const sc = s * k;
-              const tx = cx - (r.box[0] * sc) / 2;
-              const ty = cy - (r.box[1] * sc) / 2;
-              return (
-                <g
-                  key={`${r.id}-${k}`}
-                  transform={`translate(${tx.toFixed(1)} ${ty.toFixed(1)}) scale(${sc.toFixed(3)})`}
-                >
-                  <path
-                    className="contour"
-                    d={r.path}
-                    vectorEffect="non-scaling-stroke"
-                  />
-                </g>
-              );
-            });
-          })}
-        </g>
+
         {/* important places — region precision only */}
         <g>
           {importantPlaces.map((p) => {
@@ -92,37 +72,46 @@ export default function Hero() {
             );
           })}
         </g>
-        {/* routes: one per world */}
+
+        {/* the eight latest real Strava traces, one per territory ink */}
         <g>
-          {territories.map((t, i) => (
-            <path
-              key={t.id}
-              className="route"
-              stroke={t.ink}
-              d={t.heroRoute.d}
-              pathLength={1}
-              style={{ "--i": i } as React.CSSProperties}
-            />
+          {heroTracks.map((tr, i) => (
+            <g key={tr.id}>
+              <path
+                className="route-halo"
+                d={tr.d}
+                pathLength={1}
+                style={{ "--i": i } as React.CSSProperties}
+              />
+              <path
+                className="route"
+                stroke={territoryInk[tr.id]}
+                d={tr.d}
+                pathLength={1}
+                style={{ "--i": i } as React.CSSProperties}
+              />
+            </g>
           ))}
         </g>
-        {/* markers + numbers */}
+
+        {/* start markers + territory numbers */}
         <g>
-          {territories.map((t) => (
-            <g key={t.id}>
+          {heroTracks.map((tr) => (
+            <g key={`m-${tr.id}`}>
               <circle
                 className="route-marker"
-                cx={t.heroRoute.marker[0]}
-                cy={t.heroRoute.marker[1]}
+                cx={tr.marker[0]}
+                cy={tr.marker[1]}
                 r="4.5"
-                fill={t.ink}
+                fill={territoryInk[tr.id]}
               />
               <text
                 className="map-num"
-                fill={t.ink}
-                x={t.heroRoute.label[0]}
-                y={t.heroRoute.label[1]}
+                fill={territoryInk[tr.id]}
+                x={tr.label[0]}
+                y={tr.label[1]}
               >
-                {t.num}
+                {territoryNum[tr.id]}
               </text>
             </g>
           ))}
@@ -130,20 +119,20 @@ export default function Hero() {
       </svg>
 
       <div className="hero-edition">
-        Personīgais Atlants
-        <br />
-        2026. gada izdevums
-        <br />
-        PUGULIS.COM
+        {ui.heroEdition[lang].map((line) => (
+          <span key={line}>
+            {line}
+            <br />
+          </span>
+        ))}
       </div>
       <h1 className="hero-name">
         <span>Jānis</span>
         <span>Pūgulis</span>
       </h1>
-      <p className="hero-sub">
-        Viena dzīve · daudzas teritorijas — one life, many territories
-      </p>
-      <div className="scroll-cue">Saturs ↓</div>
+      <p className="hero-sub">{ui.heroSub[lang]}</p>
+      <p className="hero-legend">{ui.heroLegend[lang]}</p>
+      <div className="scroll-cue">{ui.scrollCue[lang]}</div>
     </header>
   );
 }

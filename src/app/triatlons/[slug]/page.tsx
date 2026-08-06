@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import SheetHead from "@/components/SheetHead";
 import SheetBody from "@/components/sheet/SheetBody";
 import { getSheet, getSlugs } from "@/lib/sheets";
 
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!s) return {};
   const cover = s.cover ? `${s.mediaBase}/${s.cover}` : undefined;
   return {
-    title: `${s.titleLv} — ${s.subtitleEn}`,
+    title: `${s.titleLv} — ${s.subtitleLv}`,
     description: s.description,
     openGraph: {
       title: s.titleLv,
@@ -43,20 +43,14 @@ export default async function SheetPage({ params }: Params) {
     <>
       <Nav sub />
       <article className="art-wrap" style={{ "--w": INK } as React.CSSProperties}>
-        <div className="art-crumb">
-          <span>
-            <Link href="/">Atlants</Link> —{" "}
-            <Link href="/triatlons">02 Triatlons</Link> — {s.sheet}
-          </span>
-          <span className="r">{s.crumbNote}</span>
-        </div>
-
-        <header className="art-head">
-          <div className="art-sheetno">{s.sheet} — Treniņa analīze</div>
-          <h1 className="art-title">{s.titleLv}</h1>
-          {s.subtitleEn && <p className="art-title-en">{s.subtitleEn}</p>}
-          {s.lede && <p className="art-lede">{s.lede}</p>}
-        </header>
+        <SheetHead
+          sheet={s.sheet}
+          crumbNote={s.crumbNote}
+          titleLv={s.titleLv}
+          subtitleLv={s.subtitleLv}
+          subtitleEn={s.subtitleEn}
+          lede={s.lede}
+        />
 
         {s.band.length > 0 && (
           <div className="art-band">

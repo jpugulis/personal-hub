@@ -5,12 +5,15 @@ import Link from "next/link";
 import { territories } from "@/data/territories";
 import type { Territory } from "@/lib/types";
 import TerritoryPanel from "@/components/TerritoryPanel";
+import { useLang } from "@/components/LangProvider";
+import { ui } from "@/lib/i18n";
 
 export default function TerritoryIndex() {
   const listRef = useRef<HTMLElement>(null);
   const [active, setActive] = useState<Territory | null>(null);
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLElement | null>(null);
+  const { lang } = useLang();
 
   /* reveal rows on scroll */
   useEffect(() => {
@@ -60,24 +63,25 @@ export default function TerritoryIndex() {
     <>
       <main className="index" id="saturs" ref={listRef}>
         <div className="section-head">
-          <span>Saturs — Contents</span>
-          <span className="r">08 teritorijas</span>
+          <span>{ui.contentsHead[lang]}</span>
+          <span className="r">{ui.contentsCount[lang]}</span>
         </div>
 
         {territories.map((t) => {
+          const datum = t.datumLines[lang];
           const inner = (
             <>
               <span className="plate" style={{ "--w": t.ink } as React.CSSProperties} />
               <span className="num">{t.num}</span>
               <span>
-                <span className="name">{t.name}</span>
-                <span className="teaser">{t.teaser}</span>
+                <span className="name">{t.name[lang]}</span>
+                <span className="teaser">{t.teaser[lang]}</span>
               </span>
               <span className="datum">
-                {t.datumLines[0]}
+                {datum[0]}
                 {t.sample && t.sampleOnLine === 0 && <sup>*</sup>}
                 <br />
-                {t.datumLines[1]}
+                {datum[1]}
                 {t.sample && t.sampleOnLine === 1 && <sup>*</sup>}
               </span>
               <span className="arrow" aria-hidden="true">

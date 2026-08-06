@@ -72,14 +72,17 @@ Standard markdown, plus GFM tables. Two conventions and five custom blocks.
 
 ### Section headings
 
-`##` takes a Latvian heading and an English subtitle, split on `|`:
+`##` takes an optional section number and the heading, split on `|`:
 
 ```markdown
-## Velo | 02 — The bike
+## 02 | Velo
 ```
 
-Renders the English small and mono above the big Latvian heading. `###` and
-`####` are plain.
+Renders the number small and mono above the big heading. Drop the `|` for an
+unnumbered section. `###` and `####` are plain.
+
+Both halves must be in the same language — a sheet is written in one language
+throughout. Never mix Latvian and English inside a single heading or string.
 
 ### Table row emphasis
 
