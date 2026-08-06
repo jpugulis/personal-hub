@@ -104,9 +104,39 @@
   details.raw>summary::before{content:"▸ ";font-size:11px}
   details.raw[open]>summary::before{content:"▾ "}
   footer{margin-top:30px;font-size:11.5px;color:var(--muted);text-align:center;line-height:1.6}
+
+  /* password gate — both panes start hidden so the ledger never flashes
+     before we know whether this visitor is allowed to see it */
+  #gate{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:24px}
+  #gate form{width:100%;max-width:320px;display:flex;flex-direction:column;gap:14px}
+  #gate .gate-mark{align-self:flex-start;border:1px solid var(--ink);padding:3px 8px;
+    font-family:var(--mono,monospace);font-size:12px;font-weight:500}
+  #gate h1{font-size:38px;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;
+    line-height:.95;margin:0}
+  #gate p{color:var(--muted);font-size:13px;margin:0}
+  #gate input{width:100%;padding:12px;border:1px solid var(--line);border-radius:3px;
+    background:var(--card);color:var(--ink);font-size:16px}
+  #gate button{padding:13px;border:0;border-radius:3px;background:var(--ink);color:var(--bg);
+    font-size:13px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+  #gate button:disabled{opacity:.4;cursor:default}
+  #gate .gate-err{color:var(--neg);min-height:1.2em}
+  [hidden]{display:none !important}
 </style>
 </head>
 <body>
+
+<div id="gate" hidden>
+  <form id="gateForm">
+    <div class="gate-mark">JP</div>
+    <h1>Izdevumi<br>2026</h1>
+    <p>Tour de Kurzeme · kopīgā izdevumu tāme</p>
+    <input id="gatePw" type="password" autocomplete="current-password" placeholder="Parole" required>
+    <p class="gate-err" id="gateErr"></p>
+    <button id="gateBtn" type="submit">Atvērt</button>
+  </form>
+</div>
+
+<div id="app" hidden>
 
 <div class="sync">
   <span class="dot" id="dot"></span>
@@ -161,14 +191,46 @@
 
   <footer><a href="/">← Teritorija 03 · Velo ekspedīcijas</a><br>cycling.pugulis.com · kopīgs, dzīvs · pēdējās izmaiņas <span id="stamp">—</span></footer>
 </div>
+</div><!-- /#app -->
 
 <script>
 /* ── config ───────────────────────────────────────────────
-   TRIP is the storage key. Anyone who opens this page can read
-   and edit that data — it is visible in the page source.
+   TRIP is the storage key, visible in the page source — that is
+   fine, because /api/trip refuses both reads and writes without
+   the gate cookie from /api/gate.
    ───────────────────────────────────────────────────────── */
 const TRIP = "latvia-2026-k7m3xq";
 const ENDPOINT = `/api/trip?key=${TRIP}`;
+
+/* ── gate ─────────────────────────────────────────────────
+   The real lock is on the server. This only decides whether to
+   show the ledger or the password box.
+   ───────────────────────────────────────────────────────── */
+function showGate(msg){
+  document.getElementById("gate").hidden=false;
+  document.getElementById("app").hidden=true;
+  if(msg) document.getElementById("gateErr").textContent=msg;
+  const f=document.getElementById("gatePw"); if(f) f.focus();
+}
+function hideGate(){
+  document.getElementById("gate").hidden=true;
+  document.getElementById("app").hidden=false;
+}
+document.getElementById("gateForm").addEventListener("submit",async e=>{
+  e.preventDefault();
+  const btn=document.getElementById("gateBtn");
+  const pw=document.getElementById("gatePw").value;
+  btn.disabled=true; document.getElementById("gateErr").textContent="";
+  try{
+    const r=await fetch("/api/gate",{method:"POST",
+      headers:{"Content-Type":"application/json"},body:JSON.stringify({password:pw})});
+    if(!r.ok){
+      document.getElementById("gatePw").value="";
+      showGate((await r.json().catch(()=>({}))).error||"Nepareiza parole");
+    }else{ hideGate(); start(); }
+  }catch(_){ showGate("Nav savienojuma"); }
+  finally{ btn.disabled=false; }
+});
 
 const ME="Jānis";
 const ALL=[ME,"Tomāts","Ziemelis","Tomy","Katrīna","Artūrs","Artis"];
@@ -213,6 +275,7 @@ function status(cls,txt){document.getElementById("dot").className="dot "+cls;
 async function pull(force){
   try{
     const r=await fetch(ENDPOINT,{cache:"no-store"});
+    if(r.status===401){ showGate("Sesija beigusies — ievadi paroli vēlreiz"); return; }
     if(!r.ok) throw new Error(await r.text());
     const j=await r.json();
     if(j && j.rev>rev && (force || Date.now()-dirtyAt>4000)){
@@ -231,6 +294,7 @@ async function save(){
   try{
     const r=await fetch(ENDPOINT,{method:"PUT",
       headers:{"Content-Type":"application/json"},body:JSON.stringify({data:S})});
+    if(r.status===401){ showGate("Sesija beigusies — ievadi paroli vēlreiz"); return; }
     if(!r.ok) throw new Error(await r.text());
     const j=await r.json(); rev=j.rev;
     document.getElementById("stamp").textContent=new Date(j.updated).toLocaleString();
@@ -376,11 +440,28 @@ document.getElementById("reset").onclick=()=>{
   S=structuredClone(DEFAULTS); render(); queueSave();
 };
 
-render();
-pull(true);
-// poll only while the tab is visible and recently used — keeps the free tier untouched
-setInterval(()=>{ if(!document.hidden && Date.now()-lastTouch < 10*60*1000) pull(false); },20000);
-document.addEventListener("visibilitychange",()=>{if(!document.hidden){lastTouch=Date.now();pull(false);}});
+/* ── boot ───────────────────────────────────────────────── */
+let started=false;
+function start(){
+  if(started) return;
+  started=true;
+  render();
+  pull(true);
+  // poll only while the tab is visible and recently used — keeps the free tier untouched
+  setInterval(()=>{ if(!document.hidden && Date.now()-lastTouch < 10*60*1000) pull(false); },20000);
+  document.addEventListener("visibilitychange",()=>{if(!document.hidden){lastTouch=Date.now();pull(false);}});
+}
+
+fetch("/api/gate",{cache:"no-store"})
+  .then(r=>r.json())
+  .then(j=>{
+    if(j.configured===false){
+      showGate("TRIP_PASSWORD nav uzstādīts Vercel projektā");
+      document.getElementById("gateForm").hidden=true;
+    } else if(j.authed){ hideGate(); start(); }
+    else showGate();
+  })
+  .catch(()=>showGate("Nav savienojuma"));
 </script>
 </body>
 </html>

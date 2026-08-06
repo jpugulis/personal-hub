@@ -7,7 +7,13 @@
  * Storage: Upstash Redis via its REST API — no npm dependency, plain fetch.
  * Env vars are injected automatically when you connect the database in
  * Vercel → Storage. Both naming conventions are accepted.
+ *
+ * Both reading and writing require the gate cookie from /api/gate. The
+ * ledger is shared state, so without this anyone who knew the URL could
+ * overwrite the whole trip's numbers with one curl.
  */
+
+const { isAuthed } = require("./_auth");
 
 const REDIS_URL   = process.env.KV_REST_API_URL   || process.env.UPSTASH_REDIS_REST_URL;
 const REDIS_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
@@ -27,6 +33,10 @@ async function redis(command) {
 
 module.exports = async (req, res) => {
   res.setHeader("Cache-Control", "no-store");
+
+  if (!isAuthed(req)) {
+    return res.status(401).json({ error: "locked" });
+  }
 
   if (!REDIS_URL || !REDIS_TOKEN) {
     return res.status(500).json({ error: "storage not configured — connect Upstash Redis in Vercel → Storage" });

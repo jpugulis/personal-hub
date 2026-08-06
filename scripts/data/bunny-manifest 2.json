@@ -1,0 +1,1286 @@
+{
+  "zones": [
+    {
+      "name": "cycling-gnp-2024",
+      "region": "DE",
+      "cdn": "cycling-gnp-2024.b-cdn.net",
+      "hostnames": [
+        "cycling-gnp-2024.b-cdn.net"
+      ],
+      "counts": {
+        "photo": 16,
+        "video": 7
+      },
+      "bytes": 313967961,
+      "folders": [],
+      "files": [
+        {
+          "path": "0B031256-8225-4734-AFA1-E74DAF96F343.jpeg",
+          "kind": "photo",
+          "bytes": 4104924,
+          "changed": "2026-08-04T10:46:01",
+          "url": "https://cycling-gnp-2024.b-cdn.net/0B031256-8225-4734-AFA1-E74DAF96F343.jpeg"
+        },
+        {
+          "path": "16ec4196-1ec8-4d03-8c55-bd9087b1a5e0.jpeg",
+          "kind": "photo",
+          "bytes": 4750150,
+          "changed": "2026-08-04T10:46:02",
+          "url": "https://cycling-gnp-2024.b-cdn.net/16ec4196-1ec8-4d03-8c55-bd9087b1a5e0.jpeg"
+        },
+        {
+          "path": "32476617-5953-47B4-AD78-9CFC48AFC897.jpeg",
+          "kind": "photo",
+          "bytes": 828579,
+          "changed": "2026-08-04T10:47:34",
+          "url": "https://cycling-gnp-2024.b-cdn.net/32476617-5953-47B4-AD78-9CFC48AFC897.jpeg"
+        },
+        {
+          "path": "7f28fc24-5fb0-4598-9119-594f1f2bf412.jpeg",
+          "kind": "photo",
+          "bytes": 3084958,
+          "changed": "2026-08-04T10:46:05",
+          "url": "https://cycling-gnp-2024.b-cdn.net/7f28fc24-5fb0-4598-9119-594f1f2bf412.jpeg"
+        },
+        {
+          "path": "IMG_2975.jpeg",
+          "kind": "photo",
+          "bytes": 4912681,
+          "changed": "2026-08-04T10:46:07",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_2975.jpeg"
+        },
+        {
+          "path": "IMG_6559.jpeg",
+          "kind": "photo",
+          "bytes": 238268,
+          "changed": "2026-08-04T10:46:01",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6559.jpeg"
+        },
+        {
+          "path": "IMG_6567.jpeg",
+          "kind": "photo",
+          "bytes": 4835398,
+          "changed": "2026-08-04T10:46:04",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6567.jpeg"
+        },
+        {
+          "path": "IMG_6590.jpeg",
+          "kind": "photo",
+          "bytes": 1617866,
+          "changed": "2026-08-04T10:46:07",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6590.jpeg"
+        },
+        {
+          "path": "IMG_6602.jpeg",
+          "kind": "photo",
+          "bytes": 3449088,
+          "changed": "2026-08-04T10:46:09",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6602.jpeg"
+        },
+        {
+          "path": "IMG_6624.jpeg",
+          "kind": "photo",
+          "bytes": 5315893,
+          "changed": "2026-08-04T10:46:10",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6624.jpeg"
+        },
+        {
+          "path": "IMG_6644.mov",
+          "kind": "video",
+          "bytes": 104288881,
+          "changed": "2026-08-04T10:46:12",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6644.mov"
+        },
+        {
+          "path": "IMG_6650.jpeg",
+          "kind": "photo",
+          "bytes": 4434116,
+          "changed": "2026-08-04T10:46:14",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6650.jpeg"
+        },
+        {
+          "path": "IMG_6656.jpeg",
+          "kind": "photo",
+          "bytes": 2584628,
+          "changed": "2026-08-04T10:46:18",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6656.jpeg"
+        },
+        {
+          "path": "IMG_6661.jpeg",
+          "kind": "photo",
+          "bytes": 2917987,
+          "changed": "2026-08-04T10:46:20",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6661.jpeg"
+        },
+        {
+          "path": "IMG_6662.jpeg",
+          "kind": "photo",
+          "bytes": 3299210,
+          "changed": "2026-08-04T10:46:22",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6662.jpeg"
+        },
+        {
+          "path": "IMG_6668.mov",
+          "kind": "video",
+          "bytes": 27740777,
+          "changed": "2026-08-04T10:46:24",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6668.mov"
+        },
+        {
+          "path": "IMG_6680.mov",
+          "kind": "video",
+          "bytes": 60947007,
+          "changed": "2026-08-04T10:47:05",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6680.mov"
+        },
+        {
+          "path": "IMG_6696.jpeg",
+          "kind": "photo",
+          "bytes": 3008248,
+          "changed": "2026-08-04T10:47:35",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6696.jpeg"
+        },
+        {
+          "path": "IMG_6701.mov",
+          "kind": "video",
+          "bytes": 26953295,
+          "changed": "2026-08-04T10:47:37",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6701.mov"
+        },
+        {
+          "path": "IMG_6723.jpeg",
+          "kind": "photo",
+          "bytes": 4711316,
+          "changed": "2026-08-04T10:47:45",
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6723.jpeg"
+        },
+        {
+          "path": "video_1_1093eae2830042a291e6a71d2e32360b.mp4",
+          "kind": "video",
+          "bytes": 7552404,
+          "changed": "2026-08-04T10:47:40",
+          "url": "https://cycling-gnp-2024.b-cdn.net/video_1_1093eae2830042a291e6a71d2e32360b.mp4"
+        },
+        {
+          "path": "video_1_13f88dd0c711478fb62e9687ceaa2203.mp4",
+          "kind": "video",
+          "bytes": 11289146,
+          "changed": "2026-08-04T10:46:57",
+          "url": "https://cycling-gnp-2024.b-cdn.net/video_1_13f88dd0c711478fb62e9687ceaa2203.mp4"
+        },
+        {
+          "path": "video_1_b615ca2b9e9746e6bf6c7d7eb93ee8eb.mp4",
+          "kind": "video",
+          "bytes": 21103141,
+          "changed": "2026-08-04T10:46:42",
+          "url": "https://cycling-gnp-2024.b-cdn.net/video_1_b615ca2b9e9746e6bf6c7d7eb93ee8eb.mp4"
+        }
+      ]
+    },
+    {
+      "name": "cycling-kurzeme-2026",
+      "region": "DE",
+      "cdn": "cycling-kurzeme-2026.b-cdn.net",
+      "hostnames": [
+        "cycling-kurzeme-2026.b-cdn.net"
+      ],
+      "counts": {
+        "photo": 13
+      },
+      "bytes": 44306116,
+      "folders": [],
+      "files": [
+        {
+          "path": "IMG_0391.jpeg",
+          "kind": "photo",
+          "bytes": 7427669,
+          "changed": "2026-08-04T10:30:02",
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0391.jpeg"
+        },
+        {
+          "path": "IMG_0401.jpeg",
+          "kind": "photo",
+          "bytes": 7789519,
+          "changed": "2026-08-04T10:29:57",
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0401.jpeg"
+        },
+        {
+          "path": "IMG_0408.jpeg",
+          "kind": "photo",
+          "bytes": 9208713,
+          "changed": "2026-08-04T10:29:56",
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0408.jpeg"
+        },
+        {
+          "path": "IMG_0415.jpeg",
+          "kind": "photo",
+          "bytes": 2408542,
+          "changed": "2026-08-04T10:29:55",
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0415.jpeg"
+        },
+        {
+          "path": "IMG_0476.jpeg",
+          "kind": "photo",
+          "bytes": 1185447,
+          "changed": "2026-08-04T10:29:54",
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0476.jpeg"
+        },
+        {
+          "path": "IMG_0477.jpeg",
+          "kind": "photo",
+          "bytes": 1725784,
+          "changed": "2026-08-04T10:29:53",
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0477.jpeg"
+        },
+        {
+          "path": "IMG_0478.jpeg",
+          "kind": "photo",
+          "bytes": 1411551,
+          "changed": "2026-08-04T10:29:52",
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0478.jpeg"
+        },
+        {
+          "path": "IMG_0479.jpeg",
+          "kind": "photo",
+          "bytes": 1385557,
+          "changed": "2026-08-04T10:29:52",
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0479.jpeg"
+        },
+        {
+          "path": "IMG_0480.jpeg",
+          "kind": "photo",
+          "bytes": 1929627,
+          "changed": "2026-08-04T10:29:52",
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0480.jpeg"
+        },
+        {
+          "path": "IMG_0481.jpeg",
+          "kind": "photo",
+          "bytes": 858566,
+          "changed": "2026-08-04T10:29:50",
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0481.jpeg"
+        },
+        {
+          "path": "IMG_0482.jpeg",
+          "kind": "photo",
+          "bytes": 1797400,
+          "changed": "2026-08-04T10:29:50",
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0482.jpeg"
+        },
+        {
+          "path": "IMG_5632.jpeg",
+          "kind": "photo",
+          "bytes": 5869195,
+          "changed": "2026-08-04T10:29:54",
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_5632.jpeg"
+        },
+        {
+          "path": "d027b3bb-f9e8-4871-8ad6-9fe006f01254.jpeg",
+          "kind": "photo",
+          "bytes": 1308546,
+          "changed": "2026-08-04T10:30:02",
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/d027b3bb-f9e8-4871-8ad6-9fe006f01254.jpeg"
+        }
+      ]
+    },
+    {
+      "name": "cycling-latgale-2025",
+      "region": "DE",
+      "cdn": "cycling-latgale-2025.b-cdn.net",
+      "hostnames": [
+        "cycling-latgale-2025.b-cdn.net"
+      ],
+      "counts": {
+        "photo": 9,
+        "video": 2
+      },
+      "bytes": 104703315,
+      "folders": [],
+      "files": [
+        {
+          "path": "91474D19-7508-4057-9213-79510D04AA9F.jpeg",
+          "kind": "photo",
+          "bytes": 1538604,
+          "changed": "2026-08-04T10:36:24",
+          "url": "https://cycling-latgale-2025.b-cdn.net/91474D19-7508-4057-9213-79510D04AA9F.jpeg"
+        },
+        {
+          "path": "C8F5E88E-F4FB-442B-BB38-F92049827E55.jpeg",
+          "kind": "photo",
+          "bytes": 610987,
+          "changed": "2026-08-04T10:36:24",
+          "url": "https://cycling-latgale-2025.b-cdn.net/C8F5E88E-F4FB-442B-BB38-F92049827E55.jpeg"
+        },
+        {
+          "path": "F0A5A302-D650-4F2D-9638-237C8F82AC2D.jpeg",
+          "kind": "photo",
+          "bytes": 1022133,
+          "changed": "2026-08-04T10:36:25",
+          "url": "https://cycling-latgale-2025.b-cdn.net/F0A5A302-D650-4F2D-9638-237C8F82AC2D.jpeg"
+        },
+        {
+          "path": "IMG_3041.jpeg",
+          "kind": "photo",
+          "bytes": 1730799,
+          "changed": "2026-08-04T10:36:25",
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_3041.jpeg"
+        },
+        {
+          "path": "IMG_3088.jpeg",
+          "kind": "photo",
+          "bytes": 3105999,
+          "changed": "2026-08-04T10:36:21",
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_3088.jpeg"
+        },
+        {
+          "path": "IMG_3104.jpeg",
+          "kind": "photo",
+          "bytes": 3231740,
+          "changed": "2026-08-04T10:36:19",
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_3104.jpeg"
+        },
+        {
+          "path": "IMG_3109.jpeg",
+          "kind": "photo",
+          "bytes": 2237002,
+          "changed": "2026-08-04T10:36:26",
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_3109.jpeg"
+        },
+        {
+          "path": "IMG_3115.jpeg",
+          "kind": "photo",
+          "bytes": 4202003,
+          "changed": "2026-08-04T10:36:19",
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_3115.jpeg"
+        },
+        {
+          "path": "IMG_4190.jpeg",
+          "kind": "photo",
+          "bytes": 5121151,
+          "changed": "2026-08-04T10:36:21",
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_4190.jpeg"
+        },
+        {
+          "path": "IMG_7942.mov",
+          "kind": "video",
+          "bytes": 37563071,
+          "changed": "2026-08-04T10:36:26",
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_7942.mov"
+        },
+        {
+          "path": "IMG_7971.mov",
+          "kind": "video",
+          "bytes": 44339826,
+          "changed": "2026-08-04T10:36:27",
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_7971.mov"
+        }
+      ]
+    },
+    {
+      "name": "cycling-valga-2023",
+      "region": "DE",
+      "cdn": "cycling-valga-2023.b-cdn.net",
+      "hostnames": [
+        "cycling-valga-2023.b-cdn.net"
+      ],
+      "counts": {
+        "video": 2,
+        "photo": 4
+      },
+      "bytes": 72208681,
+      "folders": [],
+      "files": [
+        {
+          "path": "IMG_1215.mov",
+          "kind": "video",
+          "bytes": 22602971,
+          "changed": "2026-08-06T10:54:58",
+          "url": "https://cycling-valga-2023.b-cdn.net/IMG_1215.mov"
+        },
+        {
+          "path": "IMG_1222.jpeg",
+          "kind": "photo",
+          "bytes": 5999886,
+          "changed": "2026-08-06T10:54:40",
+          "url": "https://cycling-valga-2023.b-cdn.net/IMG_1222.jpeg"
+        },
+        {
+          "path": "IMG_1242.jpeg",
+          "kind": "photo",
+          "bytes": 3178018,
+          "changed": "2026-08-06T10:54:33",
+          "url": "https://cycling-valga-2023.b-cdn.net/IMG_1242.jpeg"
+        },
+        {
+          "path": "IMG_1243.jpeg",
+          "kind": "photo",
+          "bytes": 6646189,
+          "changed": "2026-08-06T10:54:33",
+          "url": "https://cycling-valga-2023.b-cdn.net/IMG_1243.jpeg"
+        },
+        {
+          "path": "IMG_1247.jpeg",
+          "kind": "photo",
+          "bytes": 2524543,
+          "changed": "2026-08-06T10:54:52",
+          "url": "https://cycling-valga-2023.b-cdn.net/IMG_1247.jpeg"
+        },
+        {
+          "path": "IMG_1254.mov",
+          "kind": "video",
+          "bytes": 31257074,
+          "changed": "2026-08-06T10:54:56",
+          "url": "https://cycling-valga-2023.b-cdn.net/IMG_1254.mov"
+        }
+      ]
+    },
+    {
+      "name": "endurance-data",
+      "region": "DE",
+      "cdn": "endurance-data.b-cdn.net",
+      "hostnames": [
+        "endurance-data.b-cdn.net"
+      ],
+      "counts": {
+        "video": 2
+      },
+      "bytes": 9770324,
+      "folders": [
+        "triatlons/2026-07-25"
+      ],
+      "files": [
+        {
+          "path": "triatlons/2026-07-25/whatsapp-video-2026-07-25-at-11-32-06.mp4",
+          "kind": "video",
+          "bytes": 1430126,
+          "changed": "2026-07-26T12:19:59",
+          "url": "https://endurance-data.b-cdn.net/triatlons/2026-07-25/whatsapp-video-2026-07-25-at-11-32-06.mp4"
+        },
+        {
+          "path": "triatlons/2026-07-25/whatsapp-video-2026-07-25-at-11-32-49.mp4",
+          "kind": "video",
+          "bytes": 8340198,
+          "changed": "2026-07-26T12:20:01",
+          "url": "https://endurance-data.b-cdn.net/triatlons/2026-07-25/whatsapp-video-2026-07-25-at-11-32-49.mp4"
+        }
+      ]
+    },
+    {
+      "name": "skr-hokejs",
+      "region": "DE",
+      "cdn": "SKR-hokejs.b-cdn.net",
+      "hostnames": [
+        "SKR-hokejs.b-cdn.net"
+      ],
+      "counts": {
+        "photo": 20
+      },
+      "bytes": 33648681,
+      "folders": [],
+      "files": [
+        {
+          "path": "1b5980a6-d785-47da-8848-0f33215519cd.jpg",
+          "kind": "photo",
+          "bytes": 365024,
+          "changed": "2026-07-08T14:55:42",
+          "url": "https://SKR-hokejs.b-cdn.net/1b5980a6-d785-47da-8848-0f33215519cd.jpg"
+        },
+        {
+          "path": "3e78b5f6-f7d8-4781-bdf4-23c7e1d82142.jpg",
+          "kind": "photo",
+          "bytes": 160532,
+          "changed": "2026-07-08T14:55:42",
+          "url": "https://SKR-hokejs.b-cdn.net/3e78b5f6-f7d8-4781-bdf4-23c7e1d82142.jpg"
+        },
+        {
+          "path": "5fd1ee46-470d-4d52-ac57-a17dd75e71bd.jpg",
+          "kind": "photo",
+          "bytes": 438518,
+          "changed": "2026-07-08T14:55:42",
+          "url": "https://SKR-hokejs.b-cdn.net/5fd1ee46-470d-4d52-ac57-a17dd75e71bd.jpg"
+        },
+        {
+          "path": "IMG_6355.HEIC",
+          "kind": "photo",
+          "bytes": 2027470,
+          "changed": "2026-07-08T14:56:17",
+          "url": "https://SKR-hokejs.b-cdn.net/IMG_6355.HEIC"
+        },
+        {
+          "path": "IMG_6359.HEIC",
+          "kind": "photo",
+          "bytes": 3503098,
+          "changed": "2026-07-08T14:56:18",
+          "url": "https://SKR-hokejs.b-cdn.net/IMG_6359.HEIC"
+        },
+        {
+          "path": "IMG_6360.HEIC",
+          "kind": "photo",
+          "bytes": 2643949,
+          "changed": "2026-07-08T14:56:18",
+          "url": "https://SKR-hokejs.b-cdn.net/IMG_6360.HEIC"
+        },
+        {
+          "path": "IMG_6361.HEIC",
+          "kind": "photo",
+          "bytes": 2160292,
+          "changed": "2026-07-08T14:56:18",
+          "url": "https://SKR-hokejs.b-cdn.net/IMG_6361.HEIC"
+        },
+        {
+          "path": "IMG_9324.JPG",
+          "kind": "photo",
+          "bytes": 2675499,
+          "changed": "2026-07-08T14:55:05",
+          "url": "https://SKR-hokejs.b-cdn.net/IMG_9324.JPG"
+        },
+        {
+          "path": "IMG_9325.JPG",
+          "kind": "photo",
+          "bytes": 2653519,
+          "changed": "2026-07-08T14:55:05",
+          "url": "https://SKR-hokejs.b-cdn.net/IMG_9325.JPG"
+        },
+        {
+          "path": "IMG_9326.JPG",
+          "kind": "photo",
+          "bytes": 2359572,
+          "changed": "2026-07-08T14:55:05",
+          "url": "https://SKR-hokejs.b-cdn.net/IMG_9326.JPG"
+        },
+        {
+          "path": "IMG_9327.JPG",
+          "kind": "photo",
+          "bytes": 1623267,
+          "changed": "2026-07-08T14:55:05",
+          "url": "https://SKR-hokejs.b-cdn.net/IMG_9327.JPG"
+        },
+        {
+          "path": "IMG_9332.JPG",
+          "kind": "photo",
+          "bytes": 1764152,
+          "changed": "2026-07-08T14:55:06",
+          "url": "https://SKR-hokejs.b-cdn.net/IMG_9332.JPG"
+        },
+        {
+          "path": "IMG_9333.JPG",
+          "kind": "photo",
+          "bytes": 2360028,
+          "changed": "2026-07-08T14:55:06",
+          "url": "https://SKR-hokejs.b-cdn.net/IMG_9333.JPG"
+        },
+        {
+          "path": "IMG_9336.JPG",
+          "kind": "photo",
+          "bytes": 2328013,
+          "changed": "2026-07-08T14:55:06",
+          "url": "https://SKR-hokejs.b-cdn.net/IMG_9336.JPG"
+        },
+        {
+          "path": "IMG_9338.JPG",
+          "kind": "photo",
+          "bytes": 1181834,
+          "changed": "2026-07-08T14:55:06",
+          "url": "https://SKR-hokejs.b-cdn.net/IMG_9338.JPG"
+        },
+        {
+          "path": "IMG_9341.JPG",
+          "kind": "photo",
+          "bytes": 1447593,
+          "changed": "2026-07-08T14:55:07",
+          "url": "https://SKR-hokejs.b-cdn.net/IMG_9341.JPG"
+        },
+        {
+          "path": "IMG_9344.JPG",
+          "kind": "photo",
+          "bytes": 1751563,
+          "changed": "2026-07-08T14:55:07",
+          "url": "https://SKR-hokejs.b-cdn.net/IMG_9344.JPG"
+        },
+        {
+          "path": "IMG_9345.JPG",
+          "kind": "photo",
+          "bytes": 1372090,
+          "changed": "2026-07-08T14:55:07",
+          "url": "https://SKR-hokejs.b-cdn.net/IMG_9345.JPG"
+        },
+        {
+          "path": "a06c37c6-2edf-4eb6-8e33-d8a7cbf4d340.jpg",
+          "kind": "photo",
+          "bytes": 417104,
+          "changed": "2026-07-08T14:55:42",
+          "url": "https://SKR-hokejs.b-cdn.net/a06c37c6-2edf-4eb6-8e33-d8a7cbf4d340.jpg"
+        },
+        {
+          "path": "b2b4a08b-0b68-4433-bd9d-797e011dfd14.jpg",
+          "kind": "photo",
+          "bytes": 415564,
+          "changed": "2026-07-08T14:55:42",
+          "url": "https://SKR-hokejs.b-cdn.net/b2b4a08b-0b68-4433-bd9d-797e011dfd14.jpg"
+        }
+      ]
+    },
+    {
+      "name": "skr-other",
+      "region": "DE",
+      "cdn": "skr-other.b-cdn.net",
+      "hostnames": [
+        "skr-other.b-cdn.net"
+      ],
+      "counts": {
+        "photo": 24
+      },
+      "bytes": 36726056,
+      "folders": [],
+      "files": [
+        {
+          "path": "6241722400_IMG_7931.JPG",
+          "kind": "photo",
+          "bytes": 1013423,
+          "changed": "2026-07-09T08:13:02",
+          "url": "https://skr-other.b-cdn.net/6241722400_IMG_7931.JPG"
+        },
+        {
+          "path": "6241722400_IMG_7933.JPG",
+          "kind": "photo",
+          "bytes": 927568,
+          "changed": "2026-07-09T08:13:02",
+          "url": "https://skr-other.b-cdn.net/6241722400_IMG_7933.JPG"
+        },
+        {
+          "path": "Areta_un_Karlis_2024-223.jpg",
+          "kind": "photo",
+          "bytes": 1587557,
+          "changed": "2026-07-09T08:13:02",
+          "url": "https://skr-other.b-cdn.net/Areta_un_Karlis_2024-223.jpg"
+        },
+        {
+          "path": "Areta_un_Karlis_2024-286.jpg",
+          "kind": "photo",
+          "bytes": 1054007,
+          "changed": "2026-07-09T08:13:02",
+          "url": "https://skr-other.b-cdn.net/Areta_un_Karlis_2024-286.jpg"
+        },
+        {
+          "path": "Areta_un_Karlis_2024-290.jpg",
+          "kind": "photo",
+          "bytes": 1435982,
+          "changed": "2026-07-09T08:13:02",
+          "url": "https://skr-other.b-cdn.net/Areta_un_Karlis_2024-290.jpg"
+        },
+        {
+          "path": "IMG_0794.JPG",
+          "kind": "photo",
+          "bytes": 1358282,
+          "changed": "2026-07-09T08:13:02",
+          "url": "https://skr-other.b-cdn.net/IMG_0794.JPG"
+        },
+        {
+          "path": "IMG_3231.jpg",
+          "kind": "photo",
+          "bytes": 586278,
+          "changed": "2026-07-09T08:13:03",
+          "url": "https://skr-other.b-cdn.net/IMG_3231.jpg"
+        },
+        {
+          "path": "IMG_3926.HEIC",
+          "kind": "photo",
+          "bytes": 2316040,
+          "changed": "2026-07-09T08:13:03",
+          "url": "https://skr-other.b-cdn.net/IMG_3926.HEIC"
+        },
+        {
+          "path": "IMG_3931.HEIC",
+          "kind": "photo",
+          "bytes": 2212160,
+          "changed": "2026-07-09T08:13:03",
+          "url": "https://skr-other.b-cdn.net/IMG_3931.HEIC"
+        },
+        {
+          "path": "IMG_4095.JPG",
+          "kind": "photo",
+          "bytes": 1116090,
+          "changed": "2026-07-09T08:13:03",
+          "url": "https://skr-other.b-cdn.net/IMG_4095.JPG"
+        },
+        {
+          "path": "IMG_4835.jpg",
+          "kind": "photo",
+          "bytes": 2406073,
+          "changed": "2026-07-09T08:13:03",
+          "url": "https://skr-other.b-cdn.net/IMG_4835.jpg"
+        },
+        {
+          "path": "IMG_4838.HEIC",
+          "kind": "photo",
+          "bytes": 889326,
+          "changed": "2026-07-09T08:58:01",
+          "url": "https://skr-other.b-cdn.net/IMG_4838.HEIC"
+        },
+        {
+          "path": "IMG_4843.jpg",
+          "kind": "photo",
+          "bytes": 4290837,
+          "changed": "2026-07-09T08:13:04",
+          "url": "https://skr-other.b-cdn.net/IMG_4843.jpg"
+        },
+        {
+          "path": "IMG_4847.HEIC",
+          "kind": "photo",
+          "bytes": 800578,
+          "changed": "2026-07-09T08:58:01",
+          "url": "https://skr-other.b-cdn.net/IMG_4847.HEIC"
+        },
+        {
+          "path": "IMG_5482.JPG",
+          "kind": "photo",
+          "bytes": 70479,
+          "changed": "2026-07-09T08:13:04",
+          "url": "https://skr-other.b-cdn.net/IMG_5482.JPG"
+        },
+        {
+          "path": "IMG_6637.HEIC",
+          "kind": "photo",
+          "bytes": 1190699,
+          "changed": "2026-07-09T08:13:04",
+          "url": "https://skr-other.b-cdn.net/IMG_6637.HEIC"
+        },
+        {
+          "path": "IMG_6869.jpg",
+          "kind": "photo",
+          "bytes": 3221010,
+          "changed": "2026-07-09T08:13:04",
+          "url": "https://skr-other.b-cdn.net/IMG_6869.jpg"
+        },
+        {
+          "path": "IMG_7940.HEIC",
+          "kind": "photo",
+          "bytes": 1102666,
+          "changed": "2026-07-09T08:13:04",
+          "url": "https://skr-other.b-cdn.net/IMG_7940.HEIC"
+        },
+        {
+          "path": "IMG_8021.HEIC",
+          "kind": "photo",
+          "bytes": 1231839,
+          "changed": "2026-07-09T08:13:05",
+          "url": "https://skr-other.b-cdn.net/IMG_8021.HEIC"
+        },
+        {
+          "path": "IMG_9727.HEIC",
+          "kind": "photo",
+          "bytes": 4990593,
+          "changed": "2026-07-09T08:13:05",
+          "url": "https://skr-other.b-cdn.net/IMG_9727.HEIC"
+        },
+        {
+          "path": "RNT_logo.png",
+          "kind": "photo",
+          "bytes": 2114951,
+          "changed": "2026-07-09T08:28:35",
+          "url": "https://skr-other.b-cdn.net/RNT_logo.png"
+        },
+        {
+          "path": "b1cd1b97-c061-4524-91bf-328afb116a2f.jpg",
+          "kind": "photo",
+          "bytes": 214286,
+          "changed": "2026-07-09T08:13:02",
+          "url": "https://skr-other.b-cdn.net/b1cd1b97-c061-4524-91bf-328afb116a2f.jpg"
+        },
+        {
+          "path": "bd8f5074-cd23-4ba3-b21c-c62251fbc8ca.jpg",
+          "kind": "photo",
+          "bytes": 519743,
+          "changed": "2026-07-09T08:13:02",
+          "url": "https://skr-other.b-cdn.net/bd8f5074-cd23-4ba3-b21c-c62251fbc8ca.jpg"
+        },
+        {
+          "path": "skr-logo-green.png",
+          "kind": "photo",
+          "bytes": 75589,
+          "changed": "2026-07-09T08:28:45",
+          "url": "https://skr-other.b-cdn.net/skr-logo-green.png"
+        }
+      ]
+    },
+    {
+      "name": "skr-sahs",
+      "region": "DE",
+      "cdn": "skr-sahs.b-cdn.net",
+      "hostnames": [
+        "skr-sahs.b-cdn.net"
+      ],
+      "counts": {
+        "photo": 20
+      },
+      "bytes": 31617348,
+      "folders": [],
+      "files": [
+        {
+          "path": "D2730A15-55CD-4A94-BCEC-F86783A30F4C.jpg",
+          "kind": "photo",
+          "bytes": 1190419,
+          "changed": "2026-07-08T15:33:07",
+          "url": "https://skr-sahs.b-cdn.net/D2730A15-55CD-4A94-BCEC-F86783A30F4C.jpg"
+        },
+        {
+          "path": "D999FAEC-DBAC-4C9C-9B2C-E12F3BDDDB43.jpg",
+          "kind": "photo",
+          "bytes": 534133,
+          "changed": "2026-07-08T15:33:07",
+          "url": "https://skr-sahs.b-cdn.net/D999FAEC-DBAC-4C9C-9B2C-E12F3BDDDB43.jpg"
+        },
+        {
+          "path": "DSC03716.jpg",
+          "kind": "photo",
+          "bytes": 3627864,
+          "changed": "2026-07-08T15:33:04",
+          "url": "https://skr-sahs.b-cdn.net/DSC03716.jpg"
+        },
+        {
+          "path": "F6458A7C-B6BF-485A-8CF3-004B9A18A004.jpg",
+          "kind": "photo",
+          "bytes": 1547471,
+          "changed": "2026-07-08T15:33:07",
+          "url": "https://skr-sahs.b-cdn.net/F6458A7C-B6BF-485A-8CF3-004B9A18A004.jpg"
+        },
+        {
+          "path": "IMG_0126.HEIC",
+          "kind": "photo",
+          "bytes": 481906,
+          "changed": "2026-07-08T15:33:07",
+          "url": "https://skr-sahs.b-cdn.net/IMG_0126.HEIC"
+        },
+        {
+          "path": "IMG_0304.HEIC",
+          "kind": "photo",
+          "bytes": 1772969,
+          "changed": "2026-07-08T15:33:06",
+          "url": "https://skr-sahs.b-cdn.net/IMG_0304.HEIC"
+        },
+        {
+          "path": "IMG_0552.HEIC",
+          "kind": "photo",
+          "bytes": 1939763,
+          "changed": "2026-07-08T15:33:06",
+          "url": "https://skr-sahs.b-cdn.net/IMG_0552.HEIC"
+        },
+        {
+          "path": "IMG_0879.HEIC",
+          "kind": "photo",
+          "bytes": 1917697,
+          "changed": "2026-07-08T15:33:04",
+          "url": "https://skr-sahs.b-cdn.net/IMG_0879.HEIC"
+        },
+        {
+          "path": "IMG_2190.HEIC",
+          "kind": "photo",
+          "bytes": 2782514,
+          "changed": "2026-07-08T15:33:06",
+          "url": "https://skr-sahs.b-cdn.net/IMG_2190.HEIC"
+        },
+        {
+          "path": "IMG_3127.HEIC",
+          "kind": "photo",
+          "bytes": 1097222,
+          "changed": "2026-07-08T15:33:05",
+          "url": "https://skr-sahs.b-cdn.net/IMG_3127.HEIC"
+        },
+        {
+          "path": "IMG_3335.HEIC",
+          "kind": "photo",
+          "bytes": 517152,
+          "changed": "2026-07-08T15:33:07",
+          "url": "https://skr-sahs.b-cdn.net/IMG_3335.HEIC"
+        },
+        {
+          "path": "IMG_4199.JPG",
+          "kind": "photo",
+          "bytes": 2308242,
+          "changed": "2026-07-08T15:33:08",
+          "url": "https://skr-sahs.b-cdn.net/IMG_4199.JPG"
+        },
+        {
+          "path": "IMG_4676.HEIC",
+          "kind": "photo",
+          "bytes": 1661053,
+          "changed": "2026-07-08T15:33:06",
+          "url": "https://skr-sahs.b-cdn.net/IMG_4676.HEIC"
+        },
+        {
+          "path": "IMG_5636.HEIC",
+          "kind": "photo",
+          "bytes": 579426,
+          "changed": "2026-07-08T15:33:07",
+          "url": "https://skr-sahs.b-cdn.net/IMG_5636.HEIC"
+        },
+        {
+          "path": "IMG_5758.HEIC",
+          "kind": "photo",
+          "bytes": 1105785,
+          "changed": "2026-07-08T15:33:05",
+          "url": "https://skr-sahs.b-cdn.net/IMG_5758.HEIC"
+        },
+        {
+          "path": "IMG_6742.HEIC",
+          "kind": "photo",
+          "bytes": 2042673,
+          "changed": "2026-07-08T15:33:06",
+          "url": "https://skr-sahs.b-cdn.net/IMG_6742.HEIC"
+        },
+        {
+          "path": "IMG_6966.HEIC",
+          "kind": "photo",
+          "bytes": 2524026,
+          "changed": "2026-07-08T15:33:05",
+          "url": "https://skr-sahs.b-cdn.net/IMG_6966.HEIC"
+        },
+        {
+          "path": "IMG_9330.HEIC",
+          "kind": "photo",
+          "bytes": 579873,
+          "changed": "2026-07-08T15:33:07",
+          "url": "https://skr-sahs.b-cdn.net/IMG_9330.HEIC"
+        },
+        {
+          "path": "IMG_9728.HEIC",
+          "kind": "photo",
+          "bytes": 3330381,
+          "changed": "2026-07-08T15:33:07",
+          "url": "https://skr-sahs.b-cdn.net/IMG_9728.HEIC"
+        },
+        {
+          "path": "f471c3c3-c23a-45e8-81c6-593e239744f4.jpg",
+          "kind": "photo",
+          "bytes": 76779,
+          "changed": "2026-07-08T15:33:08",
+          "url": "https://skr-sahs.b-cdn.net/f471c3c3-c23a-45e8-81c6-593e239744f4.jpg"
+        }
+      ]
+    },
+    {
+      "name": "skr-velo",
+      "region": "DE",
+      "cdn": "skr-velo.b-cdn.net",
+      "hostnames": [
+        "skr-velo.b-cdn.net"
+      ],
+      "counts": {
+        "photo": 20
+      },
+      "bytes": 68193896,
+      "folders": [],
+      "files": [
+        {
+          "path": "IMG_1222.HEIC",
+          "kind": "photo",
+          "bytes": 4157755,
+          "changed": "2026-07-10T09:35:12",
+          "url": "https://skr-velo.b-cdn.net/IMG_1222.HEIC"
+        },
+        {
+          "path": "IMG_1263.HEIC",
+          "kind": "photo",
+          "bytes": 3377709,
+          "changed": "2026-07-10T09:35:17",
+          "url": "https://skr-velo.b-cdn.net/IMG_1263.HEIC"
+        },
+        {
+          "path": "IMG_1297.heic",
+          "kind": "photo",
+          "bytes": 1365293,
+          "changed": "2026-07-10T09:40:10",
+          "url": "https://skr-velo.b-cdn.net/IMG_1297.heic"
+        },
+        {
+          "path": "IMG_20250808_165627.jpg",
+          "kind": "photo",
+          "bytes": 4964704,
+          "changed": "2026-07-10T09:36:36",
+          "url": "https://skr-velo.b-cdn.net/IMG_20250808_165627.jpg"
+        },
+        {
+          "path": "IMG_2151.JPG",
+          "kind": "photo",
+          "bytes": 1083348,
+          "changed": "2026-07-10T09:35:19",
+          "url": "https://skr-velo.b-cdn.net/IMG_2151.JPG"
+        },
+        {
+          "path": "IMG_2179.JPG",
+          "kind": "photo",
+          "bytes": 3333992,
+          "changed": "2026-07-10T09:35:20",
+          "url": "https://skr-velo.b-cdn.net/IMG_2179.JPG"
+        },
+        {
+          "path": "IMG_2969.jpg",
+          "kind": "photo",
+          "bytes": 6760300,
+          "changed": "2026-07-10T09:35:23",
+          "url": "https://skr-velo.b-cdn.net/IMG_2969.jpg"
+        },
+        {
+          "path": "IMG_2976.jpg",
+          "kind": "photo",
+          "bytes": 2860201,
+          "changed": "2026-07-10T09:36:47",
+          "url": "https://skr-velo.b-cdn.net/IMG_2976.jpg"
+        },
+        {
+          "path": "IMG_2981.jpg",
+          "kind": "photo",
+          "bytes": 2322170,
+          "changed": "2026-07-10T09:35:29",
+          "url": "https://skr-velo.b-cdn.net/IMG_2981.jpg"
+        },
+        {
+          "path": "IMG_2998.jpg",
+          "kind": "photo",
+          "bytes": 2522119,
+          "changed": "2026-07-10T09:40:10",
+          "url": "https://skr-velo.b-cdn.net/IMG_2998.jpg"
+        },
+        {
+          "path": "IMG_3099.jpg",
+          "kind": "photo",
+          "bytes": 824208,
+          "changed": "2026-07-10T09:36:29",
+          "url": "https://skr-velo.b-cdn.net/IMG_3099.jpg"
+        },
+        {
+          "path": "IMG_3117.jpg",
+          "kind": "photo",
+          "bytes": 2515466,
+          "changed": "2026-07-10T09:36:29",
+          "url": "https://skr-velo.b-cdn.net/IMG_3117.jpg"
+        },
+        {
+          "path": "IMG_4166.jpg",
+          "kind": "photo",
+          "bytes": 4152031,
+          "changed": "2026-07-10T09:40:17",
+          "url": "https://skr-velo.b-cdn.net/IMG_4166.jpg"
+        },
+        {
+          "path": "IMG_4189.jpg",
+          "kind": "photo",
+          "bytes": 2016695,
+          "changed": "2026-07-10T09:36:30",
+          "url": "https://skr-velo.b-cdn.net/IMG_4189.jpg"
+        },
+        {
+          "path": "IMG_4194.jpg",
+          "kind": "photo",
+          "bytes": 4783638,
+          "changed": "2026-07-10T09:36:32",
+          "url": "https://skr-velo.b-cdn.net/IMG_4194.jpg"
+        },
+        {
+          "path": "IMG_6567.jpg",
+          "kind": "photo",
+          "bytes": 3126310,
+          "changed": "2026-07-10T09:36:43",
+          "url": "https://skr-velo.b-cdn.net/IMG_6567.jpg"
+        },
+        {
+          "path": "IMG_6577.jpg",
+          "kind": "photo",
+          "bytes": 2797533,
+          "changed": "2026-07-10T09:36:40",
+          "url": "https://skr-velo.b-cdn.net/IMG_6577.jpg"
+        },
+        {
+          "path": "IMG_6650.jpg",
+          "kind": "photo",
+          "bytes": 2402771,
+          "changed": "2026-07-10T09:36:34",
+          "url": "https://skr-velo.b-cdn.net/IMG_6650.jpg"
+        },
+        {
+          "path": "IMG_6676.jpg",
+          "kind": "photo",
+          "bytes": 4075322,
+          "changed": "2026-07-10T09:36:50",
+          "url": "https://skr-velo.b-cdn.net/IMG_6676.jpg"
+        },
+        {
+          "path": "PXL_20230819_111853770.MP.jpg",
+          "kind": "photo",
+          "bytes": 8752331,
+          "changed": "2026-07-10T09:35:12",
+          "url": "https://skr-velo.b-cdn.net/PXL_20230819_111853770.MP.jpg"
+        }
+      ]
+    },
+    {
+      "name": "skr-volejbols",
+      "region": "DE",
+      "cdn": "skr-volejbols.b-cdn.net",
+      "hostnames": [
+        "skr-volejbols.b-cdn.net"
+      ],
+      "counts": {
+        "photo": 22
+      },
+      "bytes": 37893573,
+      "folders": [],
+      "files": [
+        {
+          "path": "20190609_165710.jpg",
+          "kind": "photo",
+          "bytes": 3402298,
+          "changed": "2026-07-08T15:39:05",
+          "url": "https://skr-volejbols.b-cdn.net/20190609_165710.jpg"
+        },
+        {
+          "path": "20190609_165800.jpg",
+          "kind": "photo",
+          "bytes": 3328317,
+          "changed": "2026-07-08T15:39:08",
+          "url": "https://skr-volejbols.b-cdn.net/20190609_165800.jpg"
+        },
+        {
+          "path": "20190609_170939_013.jpg",
+          "kind": "photo",
+          "bytes": 3531287,
+          "changed": "2026-07-08T15:39:06",
+          "url": "https://skr-volejbols.b-cdn.net/20190609_170939_013.jpg"
+        },
+        {
+          "path": "20190609_171155.jpg",
+          "kind": "photo",
+          "bytes": 3283888,
+          "changed": "2026-07-08T15:39:08",
+          "url": "https://skr-volejbols.b-cdn.net/20190609_171155.jpg"
+        },
+        {
+          "path": "DSC03261.jpg",
+          "kind": "photo",
+          "bytes": 649116,
+          "changed": "2026-07-08T15:39:08",
+          "url": "https://skr-volejbols.b-cdn.net/DSC03261.jpg"
+        },
+        {
+          "path": "IMG_0505.JPG",
+          "kind": "photo",
+          "bytes": 95417,
+          "changed": "2026-07-08T15:39:06",
+          "url": "https://skr-volejbols.b-cdn.net/IMG_0505.JPG"
+        },
+        {
+          "path": "IMG_0544.HEIC",
+          "kind": "photo",
+          "bytes": 2822136,
+          "changed": "2026-07-08T15:39:08",
+          "url": "https://skr-volejbols.b-cdn.net/IMG_0544.HEIC"
+        },
+        {
+          "path": "IMG_1366.JPG",
+          "kind": "photo",
+          "bytes": 4037777,
+          "changed": "2026-07-08T15:39:05",
+          "url": "https://skr-volejbols.b-cdn.net/IMG_1366.JPG"
+        },
+        {
+          "path": "IMG_1377.JPG",
+          "kind": "photo",
+          "bytes": 3463387,
+          "changed": "2026-07-08T15:39:06",
+          "url": "https://skr-volejbols.b-cdn.net/IMG_1377.JPG"
+        },
+        {
+          "path": "IMG_5019.HEIC",
+          "kind": "photo",
+          "bytes": 2597307,
+          "changed": "2026-07-08T15:39:07",
+          "url": "https://skr-volejbols.b-cdn.net/IMG_5019.HEIC"
+        },
+        {
+          "path": "IMG_5212.HEIC",
+          "kind": "photo",
+          "bytes": 1102899,
+          "changed": "2026-07-08T15:39:08",
+          "url": "https://skr-volejbols.b-cdn.net/IMG_5212.HEIC"
+        },
+        {
+          "path": "IMG_5246.PNG",
+          "kind": "photo",
+          "bytes": 180961,
+          "changed": "2026-07-08T15:39:09",
+          "url": "https://skr-volejbols.b-cdn.net/IMG_5246.PNG"
+        },
+        {
+          "path": "IMG_5814.HEIC",
+          "kind": "photo",
+          "bytes": 3085630,
+          "changed": "2026-07-08T15:39:07",
+          "url": "https://skr-volejbols.b-cdn.net/IMG_5814.HEIC"
+        },
+        {
+          "path": "IMG_6784.PNG",
+          "kind": "photo",
+          "bytes": 158596,
+          "changed": "2026-07-08T15:39:06",
+          "url": "https://skr-volejbols.b-cdn.net/IMG_6784.PNG"
+        },
+        {
+          "path": "IMG_9383.HEIC",
+          "kind": "photo",
+          "bytes": 2358455,
+          "changed": "2026-07-08T15:39:09",
+          "url": "https://skr-volejbols.b-cdn.net/IMG_9383.HEIC"
+        },
+        {
+          "path": "PHOTO-2026-06-26-12-55-53.jpg",
+          "kind": "photo",
+          "bytes": 399291,
+          "changed": "2026-07-08T15:41:34",
+          "url": "https://skr-volejbols.b-cdn.net/PHOTO-2026-06-26-12-55-53.jpg"
+        },
+        {
+          "path": "PHOTO-2026-06-26-12-55-58.jpg",
+          "kind": "photo",
+          "bytes": 539419,
+          "changed": "2026-07-08T15:41:34",
+          "url": "https://skr-volejbols.b-cdn.net/PHOTO-2026-06-26-12-55-58.jpg"
+        },
+        {
+          "path": "PHOTO-2026-06-26-12-55-59.jpg",
+          "kind": "photo",
+          "bytes": 592308,
+          "changed": "2026-07-08T15:41:34",
+          "url": "https://skr-volejbols.b-cdn.net/PHOTO-2026-06-26-12-55-59.jpg"
+        },
+        {
+          "path": "PHOTO-2026-06-26-12-56-00 2.jpg",
+          "kind": "photo",
+          "bytes": 596223,
+          "changed": "2026-07-08T15:41:34",
+          "url": "https://skr-volejbols.b-cdn.net/PHOTO-2026-06-26-12-56-00 2.jpg"
+        },
+        {
+          "path": "PHOTO-2026-06-26-12-56-00.jpg",
+          "kind": "photo",
+          "bytes": 823448,
+          "changed": "2026-07-08T15:41:34",
+          "url": "https://skr-volejbols.b-cdn.net/PHOTO-2026-06-26-12-56-00.jpg"
+        },
+        {
+          "path": "PHOTO-2026-06-26-12-56-01.jpg",
+          "kind": "photo",
+          "bytes": 554032,
+          "changed": "2026-07-08T15:41:34",
+          "url": "https://skr-volejbols.b-cdn.net/PHOTO-2026-06-26-12-56-01.jpg"
+        },
+        {
+          "path": "a7a8fd70-0b07-4a02-8900-32c0e7e51230.jpg",
+          "kind": "photo",
+          "bytes": 291381,
+          "changed": "2026-07-08T15:39:09",
+          "url": "https://skr-volejbols.b-cdn.net/a7a8fd70-0b07-4a02-8900-32c0e7e51230.jpg"
+        }
+      ]
+    }
+  ]
+}
