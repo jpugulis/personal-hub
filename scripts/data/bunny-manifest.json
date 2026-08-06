@@ -3,8 +3,10 @@
     {
       "name": "cycling-gnp-2024",
       "region": "DE",
-      "cdn": null,
-      "hostnames": [],
+      "cdn": "cycling-gnp-2024.b-cdn.net",
+      "hostnames": [
+        "cycling-gnp-2024.b-cdn.net"
+      ],
       "counts": {
         "photo": 16,
         "video": 7
@@ -17,169 +19,171 @@
           "kind": "photo",
           "bytes": 4104924,
           "changed": "2026-08-04T10:46:01",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/0B031256-8225-4734-AFA1-E74DAF96F343.jpeg"
         },
         {
           "path": "16ec4196-1ec8-4d03-8c55-bd9087b1a5e0.jpeg",
           "kind": "photo",
           "bytes": 4750150,
           "changed": "2026-08-04T10:46:02",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/16ec4196-1ec8-4d03-8c55-bd9087b1a5e0.jpeg"
         },
         {
           "path": "32476617-5953-47B4-AD78-9CFC48AFC897.jpeg",
           "kind": "photo",
           "bytes": 828579,
           "changed": "2026-08-04T10:47:34",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/32476617-5953-47B4-AD78-9CFC48AFC897.jpeg"
         },
         {
           "path": "7f28fc24-5fb0-4598-9119-594f1f2bf412.jpeg",
           "kind": "photo",
           "bytes": 3084958,
           "changed": "2026-08-04T10:46:05",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/7f28fc24-5fb0-4598-9119-594f1f2bf412.jpeg"
         },
         {
           "path": "IMG_2975.jpeg",
           "kind": "photo",
           "bytes": 4912681,
           "changed": "2026-08-04T10:46:07",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_2975.jpeg"
         },
         {
           "path": "IMG_6559.jpeg",
           "kind": "photo",
           "bytes": 238268,
           "changed": "2026-08-04T10:46:01",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6559.jpeg"
         },
         {
           "path": "IMG_6567.jpeg",
           "kind": "photo",
           "bytes": 4835398,
           "changed": "2026-08-04T10:46:04",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6567.jpeg"
         },
         {
           "path": "IMG_6590.jpeg",
           "kind": "photo",
           "bytes": 1617866,
           "changed": "2026-08-04T10:46:07",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6590.jpeg"
         },
         {
           "path": "IMG_6602.jpeg",
           "kind": "photo",
           "bytes": 3449088,
           "changed": "2026-08-04T10:46:09",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6602.jpeg"
         },
         {
           "path": "IMG_6624.jpeg",
           "kind": "photo",
           "bytes": 5315893,
           "changed": "2026-08-04T10:46:10",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6624.jpeg"
         },
         {
           "path": "IMG_6644.mov",
           "kind": "video",
           "bytes": 104288881,
           "changed": "2026-08-04T10:46:12",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6644.mov"
         },
         {
           "path": "IMG_6650.jpeg",
           "kind": "photo",
           "bytes": 4434116,
           "changed": "2026-08-04T10:46:14",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6650.jpeg"
         },
         {
           "path": "IMG_6656.jpeg",
           "kind": "photo",
           "bytes": 2584628,
           "changed": "2026-08-04T10:46:18",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6656.jpeg"
         },
         {
           "path": "IMG_6661.jpeg",
           "kind": "photo",
           "bytes": 2917987,
           "changed": "2026-08-04T10:46:20",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6661.jpeg"
         },
         {
           "path": "IMG_6662.jpeg",
           "kind": "photo",
           "bytes": 3299210,
           "changed": "2026-08-04T10:46:22",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6662.jpeg"
         },
         {
           "path": "IMG_6668.mov",
           "kind": "video",
           "bytes": 27740777,
           "changed": "2026-08-04T10:46:24",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6668.mov"
         },
         {
           "path": "IMG_6680.mov",
           "kind": "video",
           "bytes": 60947007,
           "changed": "2026-08-04T10:47:05",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6680.mov"
         },
         {
           "path": "IMG_6696.jpeg",
           "kind": "photo",
           "bytes": 3008248,
           "changed": "2026-08-04T10:47:35",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6696.jpeg"
         },
         {
           "path": "IMG_6701.mov",
           "kind": "video",
           "bytes": 26953295,
           "changed": "2026-08-04T10:47:37",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6701.mov"
         },
         {
           "path": "IMG_6723.jpeg",
           "kind": "photo",
           "bytes": 4711316,
           "changed": "2026-08-04T10:47:45",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/IMG_6723.jpeg"
         },
         {
           "path": "video_1_1093eae2830042a291e6a71d2e32360b.mp4",
           "kind": "video",
           "bytes": 7552404,
           "changed": "2026-08-04T10:47:40",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/video_1_1093eae2830042a291e6a71d2e32360b.mp4"
         },
         {
           "path": "video_1_13f88dd0c711478fb62e9687ceaa2203.mp4",
           "kind": "video",
           "bytes": 11289146,
           "changed": "2026-08-04T10:46:57",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/video_1_13f88dd0c711478fb62e9687ceaa2203.mp4"
         },
         {
           "path": "video_1_b615ca2b9e9746e6bf6c7d7eb93ee8eb.mp4",
           "kind": "video",
           "bytes": 21103141,
           "changed": "2026-08-04T10:46:42",
-          "url": null
+          "url": "https://cycling-gnp-2024.b-cdn.net/video_1_b615ca2b9e9746e6bf6c7d7eb93ee8eb.mp4"
         }
       ]
     },
     {
       "name": "cycling-kurzeme-2026",
       "region": "DE",
-      "cdn": null,
-      "hostnames": [],
+      "cdn": "cycling-kurzeme-2026.b-cdn.net",
+      "hostnames": [
+        "cycling-kurzeme-2026.b-cdn.net"
+      ],
       "counts": {
         "photo": 13
       },
@@ -191,99 +195,101 @@
           "kind": "photo",
           "bytes": 7427669,
           "changed": "2026-08-04T10:30:02",
-          "url": null
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0391.jpeg"
         },
         {
           "path": "IMG_0401.jpeg",
           "kind": "photo",
           "bytes": 7789519,
           "changed": "2026-08-04T10:29:57",
-          "url": null
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0401.jpeg"
         },
         {
           "path": "IMG_0408.jpeg",
           "kind": "photo",
           "bytes": 9208713,
           "changed": "2026-08-04T10:29:56",
-          "url": null
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0408.jpeg"
         },
         {
           "path": "IMG_0415.jpeg",
           "kind": "photo",
           "bytes": 2408542,
           "changed": "2026-08-04T10:29:55",
-          "url": null
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0415.jpeg"
         },
         {
           "path": "IMG_0476.jpeg",
           "kind": "photo",
           "bytes": 1185447,
           "changed": "2026-08-04T10:29:54",
-          "url": null
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0476.jpeg"
         },
         {
           "path": "IMG_0477.jpeg",
           "kind": "photo",
           "bytes": 1725784,
           "changed": "2026-08-04T10:29:53",
-          "url": null
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0477.jpeg"
         },
         {
           "path": "IMG_0478.jpeg",
           "kind": "photo",
           "bytes": 1411551,
           "changed": "2026-08-04T10:29:52",
-          "url": null
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0478.jpeg"
         },
         {
           "path": "IMG_0479.jpeg",
           "kind": "photo",
           "bytes": 1385557,
           "changed": "2026-08-04T10:29:52",
-          "url": null
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0479.jpeg"
         },
         {
           "path": "IMG_0480.jpeg",
           "kind": "photo",
           "bytes": 1929627,
           "changed": "2026-08-04T10:29:52",
-          "url": null
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0480.jpeg"
         },
         {
           "path": "IMG_0481.jpeg",
           "kind": "photo",
           "bytes": 858566,
           "changed": "2026-08-04T10:29:50",
-          "url": null
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0481.jpeg"
         },
         {
           "path": "IMG_0482.jpeg",
           "kind": "photo",
           "bytes": 1797400,
           "changed": "2026-08-04T10:29:50",
-          "url": null
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_0482.jpeg"
         },
         {
           "path": "IMG_5632.jpeg",
           "kind": "photo",
           "bytes": 5869195,
           "changed": "2026-08-04T10:29:54",
-          "url": null
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/IMG_5632.jpeg"
         },
         {
           "path": "d027b3bb-f9e8-4871-8ad6-9fe006f01254.jpeg",
           "kind": "photo",
           "bytes": 1308546,
           "changed": "2026-08-04T10:30:02",
-          "url": null
+          "url": "https://cycling-kurzeme-2026.b-cdn.net/d027b3bb-f9e8-4871-8ad6-9fe006f01254.jpeg"
         }
       ]
     },
     {
       "name": "cycling-latgale-2025",
       "region": "DE",
-      "cdn": null,
-      "hostnames": [],
+      "cdn": "cycling-latgale-2025.b-cdn.net",
+      "hostnames": [
+        "cycling-latgale-2025.b-cdn.net"
+      ],
       "counts": {
         "photo": 9,
         "video": 2
@@ -296,85 +302,87 @@
           "kind": "photo",
           "bytes": 1538604,
           "changed": "2026-08-04T10:36:24",
-          "url": null
+          "url": "https://cycling-latgale-2025.b-cdn.net/91474D19-7508-4057-9213-79510D04AA9F.jpeg"
         },
         {
           "path": "C8F5E88E-F4FB-442B-BB38-F92049827E55.jpeg",
           "kind": "photo",
           "bytes": 610987,
           "changed": "2026-08-04T10:36:24",
-          "url": null
+          "url": "https://cycling-latgale-2025.b-cdn.net/C8F5E88E-F4FB-442B-BB38-F92049827E55.jpeg"
         },
         {
           "path": "F0A5A302-D650-4F2D-9638-237C8F82AC2D.jpeg",
           "kind": "photo",
           "bytes": 1022133,
           "changed": "2026-08-04T10:36:25",
-          "url": null
+          "url": "https://cycling-latgale-2025.b-cdn.net/F0A5A302-D650-4F2D-9638-237C8F82AC2D.jpeg"
         },
         {
           "path": "IMG_3041.jpeg",
           "kind": "photo",
           "bytes": 1730799,
           "changed": "2026-08-04T10:36:25",
-          "url": null
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_3041.jpeg"
         },
         {
           "path": "IMG_3088.jpeg",
           "kind": "photo",
           "bytes": 3105999,
           "changed": "2026-08-04T10:36:21",
-          "url": null
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_3088.jpeg"
         },
         {
           "path": "IMG_3104.jpeg",
           "kind": "photo",
           "bytes": 3231740,
           "changed": "2026-08-04T10:36:19",
-          "url": null
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_3104.jpeg"
         },
         {
           "path": "IMG_3109.jpeg",
           "kind": "photo",
           "bytes": 2237002,
           "changed": "2026-08-04T10:36:26",
-          "url": null
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_3109.jpeg"
         },
         {
           "path": "IMG_3115.jpeg",
           "kind": "photo",
           "bytes": 4202003,
           "changed": "2026-08-04T10:36:19",
-          "url": null
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_3115.jpeg"
         },
         {
           "path": "IMG_4190.jpeg",
           "kind": "photo",
           "bytes": 5121151,
           "changed": "2026-08-04T10:36:21",
-          "url": null
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_4190.jpeg"
         },
         {
           "path": "IMG_7942.mov",
           "kind": "video",
           "bytes": 37563071,
           "changed": "2026-08-04T10:36:26",
-          "url": null
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_7942.mov"
         },
         {
           "path": "IMG_7971.mov",
           "kind": "video",
           "bytes": 44339826,
           "changed": "2026-08-04T10:36:27",
-          "url": null
+          "url": "https://cycling-latgale-2025.b-cdn.net/IMG_7971.mov"
         }
       ]
     },
     {
       "name": "cycling-valga-2023",
       "region": "DE",
-      "cdn": null,
-      "hostnames": [],
+      "cdn": "cycling-valga-2023.b-cdn.net",
+      "hostnames": [
+        "cycling-valga-2023.b-cdn.net"
+      ],
       "counts": {
         "video": 2,
         "photo": 4
@@ -387,42 +395,42 @@
           "kind": "video",
           "bytes": 22602971,
           "changed": "2026-08-06T10:54:58",
-          "url": null
+          "url": "https://cycling-valga-2023.b-cdn.net/IMG_1215.mov"
         },
         {
           "path": "IMG_1222.jpeg",
           "kind": "photo",
           "bytes": 5999886,
           "changed": "2026-08-06T10:54:40",
-          "url": null
+          "url": "https://cycling-valga-2023.b-cdn.net/IMG_1222.jpeg"
         },
         {
           "path": "IMG_1242.jpeg",
           "kind": "photo",
           "bytes": 3178018,
           "changed": "2026-08-06T10:54:33",
-          "url": null
+          "url": "https://cycling-valga-2023.b-cdn.net/IMG_1242.jpeg"
         },
         {
           "path": "IMG_1243.jpeg",
           "kind": "photo",
           "bytes": 6646189,
           "changed": "2026-08-06T10:54:33",
-          "url": null
+          "url": "https://cycling-valga-2023.b-cdn.net/IMG_1243.jpeg"
         },
         {
           "path": "IMG_1247.jpeg",
           "kind": "photo",
           "bytes": 2524543,
           "changed": "2026-08-06T10:54:52",
-          "url": null
+          "url": "https://cycling-valga-2023.b-cdn.net/IMG_1247.jpeg"
         },
         {
           "path": "IMG_1254.mov",
           "kind": "video",
           "bytes": 31257074,
           "changed": "2026-08-06T10:54:56",
-          "url": null
+          "url": "https://cycling-valga-2023.b-cdn.net/IMG_1254.mov"
         }
       ]
     },
