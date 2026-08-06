@@ -57,3 +57,7 @@ media-inbox/
 
 # local visual-review build (not deployed)
 .preview/
+
+# python bytecode
+__pycache__/
+*.pyc
