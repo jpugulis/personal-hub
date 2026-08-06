@@ -8,6 +8,7 @@ Guard against the two things that went wrong in v1.2:
 
 Run from the repo root:  python3 scripts/check_lang.py
 """
+import json
 import pathlib
 import re
 import sys
@@ -40,11 +41,12 @@ ALLOW = {
 
 FILES = [
     "src/lib/i18n.ts",
-    "src/data/territories.ts",
     "src/data/stravaRoutes.ts",
     "src/components/TriatlonsIndex.tsx",
     "src/components/SheetHead.tsx",
 ]
+
+TERRITORIES = "content/site/territories.json"
 
 
 def words_of(s: str) -> set[str]:
@@ -74,14 +76,32 @@ def main() -> int:
             if side == "en" and has_lv_marks(text):
                 problems.append(f"{rel}: English string carries Latvian — {text!r}")
 
-    terr = (root / "src/data/territories.ts").read_text(encoding="utf-8")
-    for field in ("name", "teaser", "teaserPanel"):
-        found = len(re.findall(rf"{field}: \{{[^}}]*lv:[^}}]*en:", terr, re.S))
-        if found != 8:
-            problems.append(f"territories.ts: {field} localized on {found}/8 entries")
+    # The territory copy is JSON so it can be edited from /edit; check the
+    # data rather than the loader.
+    raw = (root / TERRITORIES).read_text(encoding="utf-8")
+    data = json.loads(raw)["territories"]
 
-    if re.search(r"ziem", terr, re.I):
-        problems.append("territories.ts: winter framing still present — check Baltais Kalns")
+    if len(data) != 8:
+        problems.append(f"{TERRITORIES}: {len(data)} territories, expected 8")
+
+    for t in data:
+        who = t.get("id", "?")
+        for field in ("name", "teaser", "teaserPanel"):
+            v = t.get(field) or {}
+            if not v.get("lv") or not v.get("en"):
+                problems.append(f"{TERRITORIES}: {who}.{field} missing a language")
+                continue
+            if words_of(v["lv"]) & EN_WORDS:
+                problems.append(f"{TERRITORIES}: {who}.{field}.lv carries English — {v['lv']!r}")
+            if has_lv_marks(v["en"]):
+                problems.append(f"{TERRITORIES}: {who}.{field}.en carries Latvian — {v['en']!r}")
+        lines = t.get("datumLines") or {}
+        for lang in ("lv", "en"):
+            if len(lines.get(lang) or []) != 2:
+                problems.append(f"{TERRITORIES}: {who}.datumLines.{lang} must have 2 lines")
+
+    if re.search(r"ziem", raw, re.I):
+        problems.append(f"{TERRITORIES}: winter framing still present — check Baltais Kalns")
 
     if problems:
         print("\n".join(problems))

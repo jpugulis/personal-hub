@@ -288,25 +288,6 @@ body::after {
   font-weight: 500;
   letter-spacing: 0.05em;
 }
-.place-mark line {
-  stroke: var(--ink);
-  stroke-width: 0.9;
-  opacity: 0.4;
-}
-.place-mark circle {
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 0.9;
-  opacity: 0.22;
-}
-.place-label {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.16em;
-  fill: var(--ink);
-  opacity: 0.45;
-  text-transform: uppercase;
-}
 
 /* hero routes draw themselves (pathLength=1 technique, no JS) */
 @keyframes draw {
@@ -795,13 +776,6 @@ body::after {
     padding: 14px 18px;
     font-size: 11px;
     letter-spacing: 0.06em;
-  }
-  .place-label {
-    display: none;
-  }
-  .place-mark line,
-  .place-mark circle {
-    opacity: 0.3;
   }
   .section-head {
     flex-direction: column;

@@ -65,11 +65,3 @@ export interface StravaRoute {
   end: [number, number];
 }
 
-/** A personally important place, published at region precision only. */
-export interface PlaceMark {
-  name: string;
-  /** Region-level latitude (2 decimals ≈ 1 km). */
-  lat: number;
-  /** Region-level longitude (2 decimals ≈ 1 km). */
-  lng: number;
-}

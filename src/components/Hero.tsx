@@ -2,7 +2,6 @@
 
 import { heroTracks, topoContours } from "@/data/heroTracks";
 import { territoryInk, territoryNum } from "@/data/territories";
-import { importantPlaces, projectToHero } from "@/data/places";
 import { useLang } from "@/components/LangProvider";
 import { ui } from "@/lib/i18n";
 
@@ -55,23 +54,6 @@ export default function Hero() {
         <text className="map-label" x="1072" y="890">
           26°E
         </text>
-
-        {/* important places — region precision only */}
-        <g>
-          {importantPlaces.map((p) => {
-            const { x, y } = projectToHero(p);
-            return (
-              <g key={p.name} className="place-mark">
-                <line x1={x - 5} y1={y} x2={x + 5} y2={y} />
-                <line x1={x} y1={y - 5} x2={x} y2={y + 5} />
-                <circle cx={x} cy={y} r="8" />
-                <text className="place-label" x={x + 14} y={y + 3}>
-                  {p.name}
-                </text>
-              </g>
-            );
-          })}
-        </g>
 
         {/* the eight latest real Strava traces, one per territory ink */}
         <g>
