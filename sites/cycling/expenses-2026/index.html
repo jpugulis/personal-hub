@@ -108,7 +108,8 @@
   /* password gate — both panes start hidden so the ledger never flashes
      before we know whether this visitor is allowed to see it */
   #gate{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:24px}
-  #gate form{width:100%;max-width:320px;display:flex;flex-direction:column;gap:14px}
+  #gate .gate-in{width:100%;max-width:320px;display:flex;flex-direction:column;gap:14px}
+  #gate form{display:flex;flex-direction:column;gap:14px}
   #gate .gate-mark{align-self:flex-start;border:1px solid var(--ink);padding:3px 8px;
     font-family:var(--mono,monospace);font-size:12px;font-weight:500}
   #gate h1{font-size:38px;font-weight:900;text-transform:uppercase;letter-spacing:-.02em;
@@ -126,14 +127,16 @@
 <body>
 
 <div id="gate" hidden>
-  <form id="gateForm">
+  <div class="gate-in">
     <div class="gate-mark">JP</div>
     <h1>Izdevumi<br>2026</h1>
     <p>Tour de Kurzeme · kopīgā izdevumu tāme</p>
-    <input id="gatePw" type="password" autocomplete="current-password" placeholder="Parole" required>
+    <form id="gateForm">
+      <input id="gatePw" type="password" autocomplete="current-password" placeholder="Parole" required>
+      <button id="gateBtn" type="submit">Atvērt</button>
+    </form>
     <p class="gate-err" id="gateErr"></p>
-    <button id="gateBtn" type="submit">Atvērt</button>
-  </form>
+  </div>
 </div>
 
 <div id="app" hidden>
