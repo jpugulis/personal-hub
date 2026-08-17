@@ -133,14 +133,14 @@ for line in open(SRC, encoding="utf-8"):
 #
 # slot: territory id -> (activity id, centre x, centre y, long side)
 SLOTS = [
-    ("velo", "19560195030", 700, 252, 660),  # 106 km — the sheet's spine
-    ("tri", "19598689671", 205, 208, 252),
-    ("tech", "19616953309", 1252, 300, 282),
-    ("snow", "19564462039", 302, 470, 234),
-    ("serviss", "19573629323", 560, 452, 286),
-    ("travel", "19551174540", 778, 496, 346),
-    ("baltais", "19551174309", 1012, 520, 284),
-    ("rajons", "19571532196", 1010, 762, 480),
+    ("velo", "19769738937", 700, 252, 660),  # 141 km TT — the sheet's spine
+    ("tri", "19650846664", 205, 208, 252),
+    ("tech", "19628386449", 1252, 300, 282),
+    ("snow", "19668810053", 302, 470, 234),
+    ("serviss", "19698578258", 560, 452, 286),
+    ("travel", "19752284924", 778, 496, 346),
+    ("baltais", "19632423209", 1012, 520, 284),
+    ("rajons", "19729810698", 1010, 762, 480),
 ]
 
 hero = []
@@ -232,21 +232,21 @@ for cx, cy, r, rings in HILLS:
         )
 
 # ---------- route cards (3 latest) ----------
-CARDS = ["19616953309", "19598689671", "19571532196"]
+CARDS = ["19770330716", "19769738937", "19752284924"]
 LV_SPORT = {"Ride": "Velo", "Run": "Skrējiens", "TrailRun": "Taku skrējiens"}
 EN_SPORT = {"Ride": "Ride", "Run": "Run", "TrailRun": "Trail run"}
-INK = {"19616953309": "#5C7A2E", "19598689671": "#C8401F", "19571532196": "#B0742A"}
+INK = {"19770330716": "#C8401F", "19769738937": "#B0742A", "19752284924": "#5C7A2E"}
 # Strava's auto-generated titles are English; give each a Latvian counterpart
 # so neither language version of the site carries the other one's words.
 NAME_LV = {
-    "19616953309": "Vakara brauciens",
-    "19598689671": "Pēcpusdienas skrējiens",
-    "19571532196": "Tour De Kurzeme [3. diena]",
+    "19770330716": "Brika skrējiens",
+    "19769738937": "Garais TT brauciens",
+    "19752284924": "Pusdienlaika brauciens",
 }
 NAME_EN = {
-    "19616953309": "Evening Ride",
-    "19598689671": "Afternoon Run",
-    "19571532196": "Tour De Kurzeme [Day 3]",
+    "19770330716": "Brick Run",
+    "19769738937": "Long TT Ride",
+    "19752284924": "Lunch Ride",
 }
 
 cards = []
@@ -327,8 +327,8 @@ with open(OUT / "heroTracks.ts", "w", encoding="utf-8") as f:
         f.write(f'  "{c}",\n')
     f.write("];\n")
 
-SYNCED_LV = "06.08.2026"
-SYNCED_EN = "6 Aug 2026"
+SYNCED_LV = "17.08.2026"
+SYNCED_EN = "17 Aug 2026"
 
 with open(OUT / "stravaRoutes.ts", "w", encoding="utf-8") as f:
     f.write(
