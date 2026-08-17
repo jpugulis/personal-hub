@@ -29,6 +29,20 @@ label: Paša piezīmes no Strava
 "Sākums ātrāks nekā plānots, beigas lēnākas [par plānoto]. Neliela problēma, ka pēdējā nedēļā apslimu, tāpēc piesardzīgāk. [..] Pie Brīvības pieminekļa biju tieši uz *Saule, Pērkons, Daugava* dziedājumu, fantastisks mirklis! Labs carboloading dažas dienas iepriekš izdevās, kā arī lieliski izdevās realizēt saplānoto ūdens/ogļhidrātu uzņemšanas stratēģiju. Ūdens dzeršanas punktos gan pārgāju soļos, pa cik negāju uz PB — to var redzēt arī splitos. [..] Kopumā esmu apmierināts!"
 ```
 
+## Nakts pirms
+
+| Rādītājs | Nakts 16.→17.05. |
+| --- | --- |
+| Gulta / celšanās | 22:01 → 05:34 |
+| **Laiks gultā** | **6:39** |
+| Vid. nakts HR | 54 sitieni/min |
+| Miera HR | 48 sitieni/min |
+| Nakts HRV | 67 ms |
+| Nemierīgi mirkļi | 60 |
+| Body Battery pieaugums | +63 |
+
+Garmin miega vērtējums — 68/100 ("Fair"), ar ierīces piezīmi: *"iepriekšējā diena bija ļoti stresaina, kas varēja pasliktināt miegu."* Tas sader kopā ar paša Strava piezīmi par saslimšanu nedēļu iepriekš — maratons sākās no jau kompromitētas bāzes, ne no svaigas, kas padara negatīvo sadalījumu vēl nozīmīgāku.
+
 ## 01 | Temps un sirdsdarbība
 
 42,59 km · 3:38:55 kustībā · vid. HR 161, maks. 185 · vid. kadence 83 apgr./min · 218 m kāpuma · 19 → 26 °C.

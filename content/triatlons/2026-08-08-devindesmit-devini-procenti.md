@@ -24,6 +24,25 @@ band: Sirdsdarbība | vid. 178, maks. 188 | 99% laika Z4
 - **Pirmie 5 km bija visātrākie (4:15/km)** — tieši PR temps — **tad temps nostabilizējās ap 4:30–4:38/km** līdz finišam. Agresīvs starts, kas neturējās.
 - **Decoupling −2,5%**, cieši zem 5% robežas — laba aerobā stabilitāte augstas intensitātes pusmaratonā, pat ja PR temps neturējās.
 
+## Nakts pirms
+
+| Rādītājs | Nakts 07.→08.08. |
+| --- | --- |
+| Gulta / celšanās | 23:50 → 06:51 |
+| **Laiks gultā** | **6:58** |
+| Vid. nakts HR | 50 sitieni/min |
+| Miera HR | 45 sitieni/min |
+| Nakts HRV | 90 ms |
+| Nemierīgi mirkļi | 70 |
+| Body Battery pieaugums | +78 |
+
+Garmin miega vērtējums — 77/100 ("Fair"), ar ierīces piezīmi: *"īsāks nekā ideāls, bet nepārtraukts — iepriekšējās dienas aktivitāte palīdzēja miega kvalitātei."* WHOOP tajā pašā naktī: HRV 106 ms, miera HR 50 (sakrīt ar Garmin vidējo nakts rādītāju), atgūšanās 80%, miega snieguma rādītājs 77% (6:59 no 8:56 vajadzīgā).
+
+```note
+label: Divu ierīču nesaskaņa
+Garmin un WHOOP HRV atšķiras par 16 ms tajā pašā naktī (90 pret 106) — atkārtojas tas, kas jau konstatēts 25. jūlija loksnē: metodes atšķiras, absolūtie skaitļi nav salīdzināmi starp ierīcēm. Abas tomēr rāda vienu un to pašu virzienu — laba, sabalansēta nakts pirms sacensībām. Ne miega trūkums izskaidro agresīvo, neturēto sākumu.
+```
+
 ## 01 | Temps un sirdsdarbība
 
 21,20 km · 1:35:07 kustībā · vid. HR 178, maks. 188 · vid. kadence 85 apgr./min · 148 m kāpuma · 23 → 29 °C.
