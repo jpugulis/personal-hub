@@ -1608,3 +1608,277 @@ body::after {
     margin-top: 46px;
   }
 }
+
+/* ---- territory 02: the season, week by week ---- */
+.ty {
+  border-top: 1px solid var(--hair);
+}
+.ty-lede {
+  padding: 26px 28px 0;
+  font-size: clamp(15px, 1.5vw, 17px);
+  line-height: 1.62;
+  color: var(--ink-soft);
+  max-width: 62ch;
+}
+
+/* The readout sits above the plot, so nothing moves under the pointer. */
+.ty-readout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 18px;
+  padding: 26px 28px 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.ty-readout-h {
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--ink);
+}
+.ty-readout-split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}
+.ty-readout-split i,
+.ty-legend i {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 7px;
+  vertical-align: 0;
+}
+
+.ty-plot {
+  position: relative;
+  height: 210px;
+  margin: 0 28px;
+  border-bottom: 1px solid var(--ink);
+}
+.ty-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.ty-gridline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px dashed var(--hair);
+}
+.ty-gridline span {
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+  padding-right: 6px;
+  background: var(--paper);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ink-soft);
+}
+.ty-cols {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ty-cols > li {
+  flex: 1 1 0;
+  height: 100%;
+}
+.ty-col {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+/*
+ * The selected week is marked on the axis, not behind the bar. A tinted
+ * full-height backdrop reads as another bar and competes with the data.
+ */
+.ty-col::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 3px;
+  background: transparent;
+  transition: background 0.2s var(--ease);
+}
+.ty-col.on::after {
+  background: var(--ink);
+}
+.ty-stack {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.ty-seg {
+  display: block;
+  width: 100%;
+  transition: opacity 0.25s var(--ease);
+}
+.ty-col:not(.on) .ty-seg {
+  opacity: 0.82;
+}
+.ty-mark {
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  margin-left: -2.5px;
+  background: var(--ink);
+  border-radius: 50%;
+}
+
+.ty-months {
+  position: relative;
+  height: 26px;
+  margin: 0 28px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.ty-months span {
+  position: absolute;
+  top: 7px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.ty-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 26px;
+  list-style: none;
+  margin: 0;
+  padding: 8px 28px 34px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.ty-legend b {
+  margin-left: 8px;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.ty-keys {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid var(--hair);
+}
+.ty-keys > li {
+  border-bottom: 1px solid var(--hair);
+}
+.ty-keys > li:last-child {
+  border-bottom: 0;
+}
+.ty-key {
+  display: grid;
+  grid-template-columns: 78px 1fr 130px;
+  align-items: baseline;
+  gap: 20px;
+  padding: 18px 28px;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  transition: background 0.3s var(--ease);
+}
+a.ty-key:hover {
+  background: var(--paper-dim);
+}
+.ty-key .t {
+  font-family: var(--sans);
+  font-size: 15px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+}
+a.ty-key .t {
+  font-weight: 600;
+}
+.ty-key .d,
+.ty-key .a {
+  color: var(--ink-soft);
+}
+.ty-key .a {
+  text-align: right;
+}
+a.ty-key .a {
+  color: var(--w, var(--ink));
+}
+.ty-key .a.muted {
+  opacity: 0.7;
+}
+.ty-note {
+  padding: 22px 28px 56px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  line-height: 1.9;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 760px) {
+  .ty-lede,
+  .ty-readout,
+  .ty-legend,
+  .ty-note {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .ty-plot {
+    height: 160px;
+    margin: 0 20px;
+  }
+  .ty-months {
+    margin: 0 20px;
+  }
+  .ty-cols {
+    gap: 1px;
+  }
+  /* Eight month ticks will not fit on a phone — keep every second one. */
+  .ty-months span:nth-child(even) {
+    display: none;
+  }
+  .ty-key {
+    grid-template-columns: 62px 1fr;
+    gap: 4px 14px;
+    padding: 16px 20px;
+  }
+  .ty-key .a {
+    grid-column: 2;
+    text-align: left;
+  }
+}

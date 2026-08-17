@@ -3,6 +3,7 @@
 import { useSyncExternalStore } from "react";
 import Link from "next/link";
 import { useLang } from "@/components/LangProvider";
+import TrainingYear from "@/components/TrainingYear";
 import { daysToRace } from "@/lib/race";
 
 interface Card {
@@ -119,6 +120,8 @@ export default function TriatlonsIndex({
           <div className="s">{T.sSheets[lang]}</div>
         </div>
       </div>
+
+      <TrainingYear />
 
       <div className="section-head">
         <span>{T.headSheets[lang]}</span>

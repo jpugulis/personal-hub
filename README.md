@@ -35,12 +35,14 @@ src/
   data/
     heroTracks.ts               GENERATED — hero GPX geometry + contours
     stravaRoutes.ts             GENERATED — latest routes from the Strava archive
+    trainingYear.ts             GENERATED — weekly hours by sport, milestones
   lib/
     i18n.ts                     every string of site chrome, in both languages
     types.ts                    shared types
     edit/                       auth, GitHub client, content sources
 scripts/
   gen_hero.py                   regenerate the hero map from Strava polylines
+  gen_training_year.py          regenerate the season chart on /triatlons
   check_lang.py                 fail on mixed-language strings
   test_edit_roundtrip.mjs       prove /edit cannot corrupt a page
 ```
@@ -60,6 +62,16 @@ the environment variables and the GitHub token setup.
 To refresh after new activities: export the latest polylines into
 `scripts/data/strava-polylines.txt`, update the `SLOTS` and `CARDS` lists in
 `scripts/gen_hero.py`, then run it.
+
+- `trainingYear.ts` is the season chart on `/triatlons` — every week of the
+  year, hours of moving time split into swim, bike, run, winter and everything
+  else. Volume is measured in **hours, not kilometres**: the moment more than
+  one sport is on one chart, distance stops comparing anything.
+
+To refresh: append the new activities to `scripts/data/strava-year.txt`
+(`date|sport|moving_s|dist_m|id|name`, one per line), add any new milestone to
+the `MILESTONES` list in `scripts/gen_training_year.py` — a milestone with a
+sheet slug becomes a link into that analysis — then run it.
 
 ## Develop
 
