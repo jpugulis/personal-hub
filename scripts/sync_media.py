@@ -1,15 +1,20 @@
 #!/usr/bin/env python3
 """
-Take raw photos and videos off your phone and turn them into publishable media.
+Take raw photos, videos, and .FIT/.GPX files off your phone/watch and turn
+them into publishable media (or private archive, for the raw files).
 
-    media-inbox/2026-07-25/*.jpg  *.mp4   ->   photos into the repo,
-                                               videos onto Bunny,
-                                               markdown printed to paste.
+    media-inbox/2026-07-25/*.jpg *.mp4 *.fit   ->   photos into the repo,
+                                                     videos onto Bunny (public),
+                                                     FIT/GPX onto Bunny (private),
+                                                     markdown printed to paste.
 
 Photos go in the repo because they are small, they version alongside the
 analysis, and next/image handles the rest. Videos go to Bunny because git keeps
 every version of every binary forever and /public video gets no adaptive
-bitrate. Nothing here uploads a photo or commits a video.
+bitrate. .FIT/.GPX files go to a SEPARATE, private Bunny zone with no pull
+zone attached — unlike everything else here, they carry exact GPS coordinates
+(home location included), so they must never end up behind a public CDN URL.
+Nothing here uploads a photo or commits a video.
 
 Setup (once)
 ------------
@@ -24,6 +29,14 @@ Setup (once)
        BUNNY_STORAGE_KEY=xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx
        BUNNY_CDN_HOST=endurance-data.b-cdn.net
        # BUNNY_STORAGE_REGION=      # blank = Falkenstein; "de", "ny", "la"...
+
+4. For raw FIT/GPX: a second, private storage zone with NO pull zone —
+   deliberately not web-reachable. Bunny dashboard -> Storage -> new zone
+   (do not connect a pull zone to it) -> "FTP & API Access" -> password:
+
+       BUNNY_RAW_ZONE=triatlons-raw
+       BUNNY_RAW_KEY=xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx
+       # BUNNY_RAW_REGION=          # blank = Falkenstein; "de", "ny", "la"...
 
 Usage
 -----
@@ -47,6 +60,7 @@ from pathlib import Path
 
 PHOTO_EXT = {".jpg", ".jpeg", ".png", ".webp", ".heic"}
 VIDEO_EXT = {".mp4", ".mov", ".webm", ".m4v"}
+RAW_EXT = {".fit", ".gpx"}
 
 MAX_PHOTO_PX = 2400   # plenty for full-bleed at 2x; Vercel's own cap is 8192
 JPEG_QUALITY = 82
@@ -70,7 +84,8 @@ def load_env(root: Path) -> dict[str, str]:
             k, v = line.split("=", 1)
             env[k.strip()] = v.strip().strip("\"'")
     for k in ("BUNNY_STORAGE_ZONE", "BUNNY_STORAGE_KEY", "BUNNY_CDN_HOST",
-              "BUNNY_STORAGE_REGION"):
+              "BUNNY_STORAGE_REGION", "BUNNY_RAW_ZONE", "BUNNY_RAW_KEY",
+              "BUNNY_RAW_REGION"):
         if os.environ.get(k):
             env[k] = os.environ[k]
     return env
@@ -113,14 +128,16 @@ def shrink_photo(src: Path, dst: Path, dry: bool) -> str:
         return f"{before}px -> {max(im.size)}px"
 
 
-def bunny_upload(path: Path, remote: str, env: dict[str, str], dry: bool) -> str:
-    zone = env.get("BUNNY_STORAGE_ZONE")
-    key = env.get("BUNNY_STORAGE_KEY")
+def bunny_upload(path: Path, remote: str, zone: str | None, key: str | None,
+                  region: str, dry: bool) -> str:
     if not zone or not key:
-        return "SKIPPED — BUNNY_STORAGE_ZONE / BUNNY_STORAGE_KEY not set"
+        return "SKIPPED — zone/key not set"
 
-    region = env.get("BUNNY_STORAGE_REGION", "").strip()
-    host = f"{region}.storage.bunnycdn.com" if region else "storage.bunnycdn.com"
+    # Bunny's primary region (DE / Falkenstein) has no host prefix; every
+    # other region does. Matches scripts/bunny_ls.py's PRIMARY_REGIONS.
+    region = (region or "").strip().lower()
+    host = "storage.bunnycdn.com" if region in ("", "de", "falkenstein") \
+        else f"{region}.storage.bunnycdn.com"
     url = f"https://{host}/{zone}/{remote}"
 
     if dry:
@@ -170,6 +187,7 @@ def main() -> None:
 
     photos: list[str] = []
     videos: list[tuple[str, str, bool]] = []   # (url_or_path, caption, is_local)
+    raw_files: list[str] = []
 
     print(f"\n{'DRY RUN — ' if args.dry_run else ''}{len(files)} file(s) "
           f"in media-inbox/{args.date}\n{'-' * 64}")
@@ -197,10 +215,22 @@ def main() -> None:
                 videos.append((f"photos/{name}", "", True))
             else:
                 remote = f"triatlons/{args.date}/{name}"
-                status = bunny_upload(f, remote, env, args.dry_run)
+                status = bunny_upload(f, remote, env.get("BUNNY_STORAGE_ZONE"),
+                                       env.get("BUNNY_STORAGE_KEY"),
+                                       env.get("BUNNY_STORAGE_REGION", ""),
+                                       args.dry_run)
                 print(f"  {f.name}\n    video {size_mb:.2f} MB -> Bunny  [{status}]")
                 url = f"https://{cdn}/{remote}" if cdn else f"BUNNY_CDN_HOST-not-set/{remote}"
                 videos.append((url, "", False))
+
+        elif ext in RAW_EXT:
+            remote = f"triatlons/{args.date}/{f.name}"
+            status = bunny_upload(f, remote, env.get("BUNNY_RAW_ZONE"),
+                                   env.get("BUNNY_RAW_KEY"),
+                                   env.get("BUNNY_RAW_REGION", ""),
+                                   args.dry_run)
+            print(f"  {f.name}\n    raw {size_mb:.2f} MB -> Bunny (private)  [{status}]")
+            raw_files.append(remote)
         else:
             print(f"  {f.name}\n    ignored (unknown type)")
 
@@ -229,6 +259,14 @@ def main() -> None:
     if videos and not cdn and any(not lo for _, _, lo in videos):
         print("!! BUNNY_CDN_HOST is not set, so the URLs above are placeholders.")
         print("   Bunny -> Storage -> your zone -> Connected pull zones -> hostname\n")
+
+    if raw_files:
+        print(f"Archived {len(raw_files)} raw file(s) to the private triatlons-raw "
+              f"zone (no public URL, by design):")
+        for r in raw_files:
+            print(f"  {r}")
+        print("Fetch with scripts/analyze_fit.py locally — these never appear in "
+              "a sheet or a URL.\n")
 
     print("Captions are blank on purpose — write them, they carry the story.\n")
 
