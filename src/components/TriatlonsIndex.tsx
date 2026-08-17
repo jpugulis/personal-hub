@@ -1,7 +1,9 @@
 "use client";
 
+import { useSyncExternalStore } from "react";
 import Link from "next/link";
 import { useLang } from "@/components/LangProvider";
+import { daysToRace } from "@/lib/race";
 
 interface Card {
   slug: string;
@@ -48,15 +50,32 @@ const T = {
   },
 } as const;
 
+/** The clock needs no subscription — a day is longer than any page view. */
+const subscribeToNothing = () => () => {};
+
 export default function TriatlonsIndex({
   sheets,
-  left,
+  left: serverLeft,
 }: {
   sheets: Card[];
+  /** Days remaining as of the last render. Correct in the HTML, not for ever. */
   left: number;
 }) {
   const { lang } = useLang();
   const count = String(sheets.length).padStart(2, "0");
+
+  /**
+   * The page is prerendered, so the number baked into the HTML is only as
+   * fresh as the last regeneration — and on a quiet site ISR hands the first
+   * visitor after the window the stale copy and rebuilds behind them. Hydrate
+   * with the server value so the first paint matches the HTML, then read the
+   * reader's own clock. A countdown that is wrong is worse than no countdown.
+   */
+  const left = useSyncExternalStore(
+    subscribeToNothing,
+    () => daysToRace(),
+    () => serverLeft,
+  );
 
   return (
     <>
