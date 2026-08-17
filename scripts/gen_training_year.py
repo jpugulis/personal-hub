@@ -56,7 +56,7 @@ MILESTONES = [
         "2026-07-25-tour-de-viduszeme",
     ),
     ("2026-08-08", "Kuldīgas pusmaratons — 1:35:06", "Kuldīga half marathon — 1:35:06", None),
-    ("2026-08-16", "141 km TT + brick", "141 km TT + brick", None),
+    ("2026-08-16", "141 km TT + brick", "141 km TT + brick", "2026-08-16-pedejais-lielais-tests"),
 ]
 
 

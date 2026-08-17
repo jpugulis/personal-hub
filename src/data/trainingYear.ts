@@ -68,7 +68,7 @@ export const milestones: Milestone[] = [
   { date: "2026-07-19", i: 28, lv: "TriKan 70.3", en: "TriKan 70.3", sheet: null },
   { date: "2026-07-25", i: 29, lv: "Tour de VidusZeme — 154 km + brick", en: "Tour de VidusZeme — 154 km + brick", sheet: "2026-07-25-tour-de-viduszeme" },
   { date: "2026-08-08", i: 31, lv: "Kuldīgas pusmaratons — 1:35:06", en: "Kuldīga half marathon — 1:35:06", sheet: null },
-  { date: "2026-08-16", i: 32, lv: "141 km TT + brick", en: "141 km TT + brick", sheet: null },
+  { date: "2026-08-16", i: 32, lv: "141 km TT + brick", en: "141 km TT + brick", sheet: "2026-08-16-pedejais-lielais-tests" },
 ];
 
 /** Hours per group across the whole season. */

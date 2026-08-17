@@ -146,14 +146,14 @@ def chart_power_hr(recs, outdir, ftp):
         return np.convolve(a, np.ones(w) / w, "same")
 
     fig, ax = plt.subplots(figsize=(12, 6))
-    ax.plot(d, smooth(p), color=PALETTE["power"], lw=0.9, label="Power (30 s)")
+    ax.plot(d, smooth(p), color=PALETTE["power"], lw=0.9, label="Jauda (30 s)")
     ax.axhline(ftp, color=PALETTE["accent"], ls="--", lw=1, label=f"FTP {ftp} W")
     ax2 = ax.twinx()
-    ax2.plot(d, smooth(hr), color=PALETTE["hr"], lw=0.9, alpha=0.8, label="HR")
-    ax2.set_ylabel("HR (bpm)", color=PALETTE["hr"])
+    ax2.plot(d, smooth(hr), color=PALETTE["hr"], lw=0.9, alpha=0.8, label="SF")
+    ax2.set_ylabel("SF (sitieni/min)", color=PALETTE["hr"])
     ax2.grid(False)
-    ax.set_xlabel("Distance (km)")
-    ax.set_ylabel("Power (W)")
+    ax.set_xlabel("Attālums (km)")
+    ax.set_ylabel("Jauda (W)")
     h1, l1 = ax.get_legend_handles_labels()
     h2, l2 = ax2.get_legend_handles_labels()
     ax.legend(h1 + h2, l1 + l2, loc="upper right", fontsize=8)
@@ -172,16 +172,108 @@ def chart_power_curve(recs, outdir, ftp):
     ax.axhline(ftp, color=PALETTE["accent"], ls="--", lw=1.2, label=f"FTP {ftp} W")
     ax.set_xticks([5, 15, 30, 60, 300, 1200, 3600, 10800])
     ax.set_xticklabels(["5s", "15s", "30s", "1min", "5min", "20min", "1h", "3h"])
-    ax.set_ylabel("Power (W)")
+    ax.set_ylabel("Jauda (W)")
     ax.legend(fontsize=9)
     fig.tight_layout()
     fig.savefig(os.path.join(outdir, "02_power_curve.png"), bbox_inches="tight")
     plt.close(fig)
 
 
+# HR zones shared across sheets for this athlete — keep in sync with the
+# "Atsauces vērtības" block written into each sheet's Method section.
+HR_ZONES = [
+    ("Z1", 0, 120), ("Z2", 121, 142), ("Z3", 143, 166),
+    ("Z4", 167, 189), ("Z5", 190, 999),
+]
+ZONE_COLOR = [PALETTE["grey"], PALETTE["good"], PALETTE["power"],
+              PALETTE["warn"], PALETTE["hr"]]
+
+
+def chart_zones(sessions: dict, outdir, filename="03_zones.png"):
+    """sessions: {label -> heart_rate ndarray}. One grouped bar per label."""
+    labels = list(sessions.keys())
+    fig, ax = plt.subplots(figsize=(9, 4.5))
+    x = np.arange(len(HR_ZONES))
+    width = 0.8 / len(labels)
+    for i, label in enumerate(labels):
+        hr = np.nan_to_num(sessions[label])
+        total = max(len(hr), 1)
+        pct = [100 * np.sum((hr >= lo) & (hr <= hi)) / total for _, lo, hi in HR_ZONES]
+        ax.bar(x + i * width, pct, width, label=label,
+               color=[ZONE_COLOR[j] for j in range(len(HR_ZONES))],
+               alpha=1.0 if len(labels) == 1 else 0.55 + 0.45 * i / max(1, len(labels) - 1))
+    ax.set_xticks(x + width * (len(labels) - 1) / 2)
+    ax.set_xticklabels([f"{z} ({lo}-{hi if hi < 999 else '+'})" for z, lo, hi in HR_ZONES])
+    ax.set_ylabel("% no laika")
+    if len(labels) > 1:
+        ax.legend(fontsize=9)
+    fig.tight_layout()
+    fig.savefig(os.path.join(outdir, filename), bbox_inches="tight")
+    plt.close(fig)
+
+
+def chart_decoupling(recs, outdir, window_s=600, filename="04_decoupling.png"):
+    """Rolling power:HR efficiency over the ride, first half vs second half."""
+    d = series(recs, "distance") / 1000
+    p, hr = np.nan_to_num(series(recs, "power")), np.nan_to_num(series(recs, "heart_rate"))
+    if len(p) < window_s * 2:
+        return None
+
+    kernel = np.ones(window_s) / window_s
+    p_roll = np.convolve(p, kernel, "same")
+    hr_roll = np.convolve(hr, kernel, "same")
+    ef = np.divide(p_roll, hr_roll, out=np.zeros_like(p_roll), where=hr_roll > 0)
+
+    half = len(ef) // 2
+    ef1, ef2 = float(np.mean(ef[window_s:half])), float(np.mean(ef[half:-window_s or None]))
+    drift = (ef2 - ef1) / ef1 * 100 if ef1 else float("nan")
+
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.plot(d, ef, color=PALETTE["power"], lw=1.2)
+    ax.axhline(ef1, color=PALETTE["good"], ls="--", lw=1, label=f"1. puse {ef1:.3f}")
+    ax.axhline(ef2, color=PALETTE["warn"], ls="--", lw=1, label=f"2. puse {ef2:.3f}")
+    ax.axvline(d[half] if half < len(d) else d[-1], color=PALETTE["grey"], ls=":", lw=1)
+    ax.set_xlabel("Attālums (km)")
+    ax.set_ylabel("Jaudas/SF attiecība (EF)")
+    ax.set_title(f"Atsaiste: {drift:+.1f}%", fontsize=10, loc="left")
+    ax.legend(fontsize=9)
+    fig.tight_layout()
+    fig.savefig(os.path.join(outdir, filename), bbox_inches="tight")
+    plt.close(fig)
+    return {"first": ef1, "second": ef2, "drift_pct": drift}
+
+
+def chart_run_laps(laps: list[dict], outdir, filename="05_run_laps.png"):
+    """Per-km pace + HR, mirroring sheet 02-01's run-mechanics figure. A tight
+    y-range on pace matters here — these splits are usually a few seconds
+    apart, and a zero-baselined bar chart would flatten that into noise."""
+    rows = [lap for lap in laps if (lap.get("total_distance") or 0) > 500]
+    if not rows:
+        return
+    kms = list(range(1, len(rows) + 1))
+    pace_s = [(lap.get("total_timer_time") or 0) / max((lap.get("total_distance") or 1) / 1000, 0.01)
+              for lap in rows]
+    hr = [lap.get("avg_heart_rate") or 0 for lap in rows]
+
+    fig, ax = plt.subplots(figsize=(9, 4.5))
+    ax.plot(kms, pace_s, "o-", color=PALETTE["power"], lw=1.8, ms=6, label="Temps")
+    pad = max(4.0, (max(pace_s) - min(pace_s)) * 0.4)
+    ax.set_ylim(max(pace_s) + pad, min(pace_s) - pad)  # inverted: faster reads higher
+    ax.set_ylabel("Temps (s/km)", color=PALETTE["power"])
+    ax.set_xlabel("km")
+    ax.set_xticks(kms)
+    ax2 = ax.twinx()
+    ax2.plot(kms, hr, "o-", color=PALETTE["hr"], lw=1.8, ms=6, label="SF")
+    ax2.set_ylabel("SF (sitieni/min)", color=PALETTE["hr"])
+    ax2.grid(False)
+    fig.tight_layout()
+    fig.savefig(os.path.join(outdir, filename), bbox_inches="tight")
+    plt.close(fig)
+
+
 # --- report ------------------------------------------------------------------
 
-def report(path: str, ftp: int, outdir: str) -> None:
+def report(path: str, ftp: int, outdir: str) -> dict:
     data = read_fit(path)
     recs, sess = data["records"], (data["sessions"] or [{}])[0]
     sport = sess.get("sport", "unknown")
@@ -242,7 +334,18 @@ def report(path: str, ftp: int, outdir: str) -> None:
         os.makedirs(outdir, exist_ok=True)
         chart_power_hr(recs, outdir, ftp)
         chart_power_curve(recs, outdir, ftp)
+        dec_full = chart_decoupling(recs, outdir)
+        if dec_full:
+            flag = "  <-- above 5%" if abs(dec_full["drift_pct"]) > 5 else ""
+            print(f"\n  decoupling (10 min rolling)  {dec_full['first']:.3f} -> "
+                  f"{dec_full['second']:.3f}  = {dec_full['drift_pct']:+.1f}%{flag}")
         print(f"\n  charts -> {outdir}")
+    elif sport == "running" and len(laps) > 2:
+        os.makedirs(outdir, exist_ok=True)
+        chart_run_laps(laps, outdir)
+        print(f"\n  charts -> {outdir}")
+
+    return {"sport": sport, "hr": hr, "laps": laps}
 
 
 def main() -> None:
@@ -255,8 +358,18 @@ def main() -> None:
     args = ap.parse_args()
 
     outdir = args.outdir or os.path.join("public", "triatlons", args.date, "charts")
+    by_sport: dict[str, np.ndarray] = {}
     for f in args.files:
-        report(f, args.ftp, outdir)
+        result = report(f, args.ftp, outdir)
+        if not np.all(np.isnan(result["hr"])):
+            by_sport[result["sport"]] = result["hr"]
+
+    if by_sport:
+        os.makedirs(outdir, exist_ok=True)
+        label = {"cycling": "Velo", "running": "Skrējiens"}
+        chart_zones({label.get(k, k): v for k, v in by_sport.items()}, outdir)
+        print(f"\n  zones chart -> {outdir}/03_zones.png")
+
     print(f"\nNext: write content/triatlons/{args.date}-<slug>.md "
           f"(see content/README.md)\n")
 
