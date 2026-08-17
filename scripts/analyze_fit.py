@@ -307,6 +307,126 @@ def chart_pace_hr(recs, outdir, filename="01_pace_hr.png"):
     plt.close(fig)
 
 
+def chart_speed_hr(recs, outdir, filename="01_bike_speed_hr.png"):
+    """Distance-based speed + HR trace — the no-power-meter counterpart to
+    chart_power_hr, for a bike leg recorded without a power meter."""
+    d = series(recs, "distance") / 1000
+    speed_kmh = series(recs, "enhanced_speed") * 3.6
+    hr = series(recs, "heart_rate")
+
+    def smooth(a, w=30):
+        a = np.nan_to_num(a, nan=float(np.nanmean(a[~np.isnan(a)])) if np.any(~np.isnan(a)) else 0)
+        return np.convolve(a, np.ones(w) / w, "same")
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.plot(d, smooth(speed_kmh), color=PALETTE["power"], lw=0.9, label="Ātrums (30 s)")
+    ax2 = ax.twinx()
+    ax2.plot(d, smooth(hr), color=PALETTE["hr"], lw=0.9, alpha=0.8, label="HR")
+    ax2.set_ylabel("HR (sitieni/min)", color=PALETTE["hr"])
+    ax2.grid(False)
+    ax.set_xlabel("Attālums (km)")
+    ax.set_ylabel("Ātrums (km/h)")
+    h1, l1 = ax.get_legend_handles_labels()
+    h2, l2 = ax2.get_legend_handles_labels()
+    ax.legend(h1 + h2, l1 + l2, loc="upper right", fontsize=8)
+    fig.tight_layout()
+    fig.savefig(os.path.join(outdir, filename), bbox_inches="tight")
+    plt.close(fig)
+
+
+# --- multisport ----------------------------------------------------------
+
+def slice_by_session(records: list[dict], laps: list[dict], sess: dict):
+    """A multisport file (triathlon, brick) has one FIT with several `session`
+    messages back to back. Split the shared record/lap stream into the window
+    for just this leg, by wall-clock timestamp — the only thing that reliably
+    separates them."""
+    start = sess.get("start_time")
+    elapsed = sess.get("total_elapsed_time") or 0
+    if start is None:
+        return records, laps
+    import datetime as dt
+    end = start + dt.timedelta(seconds=elapsed)
+    recs = [r for r in records if start <= (r.get("timestamp") or start) < end]
+    # lap.timestamp is unreliable in this file (constant, equal to the whole
+    # activity's start) — lap.start_time is the one that actually varies.
+    laps_out = [l for l in laps if start <= (l.get("start_time") or start) < end]
+
+    # record.distance is cumulative from the very start of the multisport
+    # file, not this leg — a bike leg starting after a swim+T1 would chart
+    # as "2 km to 92 km" instead of "0 to 90". Rebase to leg-relative.
+    first_dist = next((r.get("distance") for r in recs if r.get("distance") is not None), None)
+    if first_dist:
+        recs = [{**r, "distance": (r["distance"] - first_dist) if r.get("distance") is not None else None}
+                for r in recs]
+    return recs, laps_out
+
+
+SPORT_LABEL_LV = {
+    "swimming": "Peldējums", "cycling": "Velo", "running": "Skrējiens",
+    "transition": "Maiņa",
+}
+
+
+def report_multisport(path: str, ftp: int, outdir: str) -> dict:
+    """A single .FIT holding several legs back to back (triathlon, brick) —
+    Podersdorf in September will produce exactly this shape of file, so this
+    is the general case, not a one-off."""
+    data = read_fit(path)
+    all_sessions = data["sessions"]
+    print(f"\n{'=' * 68}\n{os.path.basename(path)}  —  multisport, {len(all_sessions)} legs\n{'=' * 68}")
+
+    by_sport_hr: dict[str, np.ndarray] = {}
+    legs = []
+    for i, sess in enumerate(all_sessions):
+        sport = sess.get("sport", "unknown")
+        recs, laps = slice_by_session(data["records"], data["laps"], sess)
+        hr = series(recs, "heart_rate")
+        elapsed = sess.get("total_elapsed_time", 0) or 0
+        moving = sess.get("total_timer_time", 0) or 0
+        dist_km = (sess.get("total_distance") or 0) / 1000
+
+        label = SPORT_LABEL_LV.get(sport, sport)
+        print(f"\n--- {i + 1}. {label} ({sport}) ---")
+        print(f"  start         {sess.get('start_time')}")
+        print(f"  distance      {dist_km:.3f} km")
+        print(f"  moving        {moving / 60:.2f} min   elapsed {elapsed / 60:.2f} min")
+        print(f"  avg / max HR  {sess.get('avg_heart_rate')} / {sess.get('max_heart_rate')}")
+        if sess.get("avg_cadence") is not None:
+            print(f"  avg cadence   {sess.get('avg_cadence')}")
+        if sess.get("total_ascent") is not None:
+            print(f"  ascent        {sess.get('total_ascent')} m")
+        power = series(recs, "power")
+        if not np.all(np.isnan(power)):
+            npw = normalised_power(power)
+            print(f"  avg / NP power {np.nanmean(power):.0f} / {npw:.0f} W")
+
+        if not np.all(np.isnan(hr)):
+            by_sport_hr[label] = hr
+
+        legs.append({"sport": sport, "label": label, "sess": sess, "recs": recs,
+                     "laps": laps, "hr": hr, "moving": moving, "elapsed": elapsed,
+                     "dist_km": dist_km})
+
+    # charts: one per endurance leg, plus a combined zones chart
+    os.makedirs(outdir, exist_ok=True)
+    for leg in legs:
+        if leg["sport"] == "cycling":
+            chart_speed_hr(leg["recs"], outdir)
+            print(f"\n  chart -> 01_bike_speed_hr.png")
+        elif leg["sport"] == "running":
+            chart_pace_hr(leg["recs"], outdir, filename="02_run_pace_hr.png")
+            if len(leg["laps"]) > 2:
+                chart_run_laps(leg["laps"], outdir, filename="04_run_laps.png")
+            print(f"\n  chart -> 02_run_pace_hr.png")
+
+    if by_sport_hr:
+        chart_zones(by_sport_hr, outdir, filename="03_zones.png")
+        print(f"\n  chart -> 03_zones.png")
+
+    return {"legs": legs}
+
+
 # --- report ------------------------------------------------------------------
 
 def report(path: str, ftp: int, outdir: str) -> dict:
@@ -397,6 +517,10 @@ def main() -> None:
     outdir = args.outdir or os.path.join("public", "triatlons", args.date, "charts")
     by_sport: dict[str, np.ndarray] = {}
     for f in args.files:
+        n_sessions = len(read_fit(f)["sessions"])
+        if n_sessions > 1:
+            report_multisport(f, args.ftp, outdir)
+            continue
         result = report(f, args.ftp, outdir)
         if not np.all(np.isnan(result["hr"])):
             by_sport[result["sport"]] = result["hr"]

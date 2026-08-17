@@ -47,7 +47,7 @@ MILESTONES = [
     ("2026-03-21", "Sezonas atklāšana — 100 km", "Season opening — 100 km", None),
     ("2026-04-24", "Nometne Katalonijā", "Training camp in Catalonia", None),
     ("2026-05-17", "Rīgas maratons — 42,6 km", "Riga Marathon — 42.6 km", "2026-05-17-otra-puse-atraka"),
-    ("2026-06-07", "Ironman 70.3 Warsaw", "Ironman 70.3 Warsaw", None),
+    ("2026-06-07", "Ironman 70.3 Warsaw", "Ironman 70.3 Warsaw", "2026-06-07-pirmais-70-3"),
     ("2026-07-19", "TriKan 70.3", "TriKan 70.3", None),
     (
         "2026-07-25",

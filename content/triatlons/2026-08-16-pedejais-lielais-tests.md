@@ -3,13 +3,13 @@ sheet: Nr. 02-02
 date: 2026-08-16
 titleLv: Pēdējais lielais tests
 subtitleEn: 140.8 km, then an 8 km brick — the cramps from 25 July stayed away
-subtitleLv: 140,8 km velo un 8 km brika skrējiens bez krampjiem — 21 dienas pirms Podersdorf
-crumbNote: 16.08.2026 · 21 dienas pirms Podersdorf
+subtitleLv: 140,8 km velo un 8 km brika skrējiens bez krampjiem — 21 diena pirms Podersdorf
+crumbNote: 16.08.2026 · 21 diena pirms Podersdorf
 metaLine: 140,8 km + 8,0 km
 mediaBase: /triatlons/2026-08-16
 cover: charts/05_run_laps.png
 lede: "Pēdējais atlikušais piecarpus stundu logs pirms sacensībām. Vienīgais jautājums: vai kājas iztur brika skrējienu pēc gara brauciena. 25. jūlijā tas beidzās ar abpusējiem krampjiem 5. un 9. kilometrā. Naktī pirms šī brauciena mainījās laikapstākļi, plāns un pat brauciena garums — un tomēr tas ir vienīgais dati, kas jebkad atbildējis šo jautājumu pozitīvi."
-description: 140,8 km velo un 8 km brika skrējiens bez krampjiem, 21 dienas pirms Ironman Podersdorf — neapstrādātu Garmin FIT datu analīze.
+description: 140,8 km velo un 8 km brika skrējiens bez krampjiem, 21 diena pirms Ironman Podersdorf — neapstrādātu Garmin FIT datu analīze.
 ogDescription: "Astoņi kilometri pēc 140 km, bez krampja. Bet jaudas mērītājs, sviedru bilance un galvassāpe 3. stundā atstāj trīs jautājumus atvērtus."
 band: Velo | 140,8 km | 4:24:07 kustībā
 band: Normalizētā jauda | 173 W | IF 0,67 · 2593 kJ

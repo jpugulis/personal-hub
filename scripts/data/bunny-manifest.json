@@ -1287,10 +1287,45 @@
       "region": "DE",
       "cdn": null,
       "hostnames": [],
-      "counts": {},
-      "bytes": 0,
-      "folders": [],
-      "files": []
+      "counts": {
+        "other": 4
+      },
+      "bytes": 3299155,
+      "folders": [
+        "triatlons/2026-05-17",
+        "triatlons/2026-08-08",
+        "triatlons/2026-08-16"
+      ],
+      "files": [
+        {
+          "path": "triatlons/2026-05-17/2026-05-17-run-riga-maratons.fit",
+          "kind": "other",
+          "bytes": 1250100,
+          "changed": "2026-08-17T15:22:28",
+          "url": null
+        },
+        {
+          "path": "triatlons/2026-08-08/2026-08-08-run-kuldigas-pusmaratons.fit",
+          "kind": "other",
+          "bytes": 592957,
+          "changed": "2026-08-17T15:22:30",
+          "url": null
+        },
+        {
+          "path": "triatlons/2026-08-16/2026-08-16-ride-tt-long-ride.fit",
+          "kind": "other",
+          "bytes": 1215076,
+          "changed": "2026-08-17T14:08:02",
+          "url": null
+        },
+        {
+          "path": "triatlons/2026-08-16/2026-08-16-run-brick.fit",
+          "kind": "other",
+          "bytes": 241022,
+          "changed": "2026-08-17T14:08:02",
+          "url": null
+        }
+      ]
     }
   ]
 }
