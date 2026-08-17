@@ -51,8 +51,16 @@ const T = {
   },
 } as const;
 
-/** The clock needs no subscription — a day is longer than any page view. */
-const subscribeToNothing = () => () => {};
+/**
+ * Re-checks the clock every minute so the count decrements on its own if a
+ * reader leaves the tab open across local midnight, rather than only ever
+ * being fixed once at mount. Cheap: daysToRace() only ever changes once a
+ * day, this just notices within a minute of when it does.
+ */
+const subscribeToClock = (callback: () => void) => {
+  const id = setInterval(callback, 60_000);
+  return () => clearInterval(id);
+};
 
 export default function TriatlonsIndex({
   sheets,
@@ -70,10 +78,11 @@ export default function TriatlonsIndex({
    * fresh as the last regeneration — and on a quiet site ISR hands the first
    * visitor after the window the stale copy and rebuilds behind them. Hydrate
    * with the server value so the first paint matches the HTML, then read the
-   * reader's own clock. A countdown that is wrong is worse than no countdown.
+   * reader's own clock, and keep reading it — see subscribeToClock. A
+   * countdown that is wrong is worse than no countdown.
    */
   const left = useSyncExternalStore(
-    subscribeToNothing,
+    subscribeToClock,
     () => daysToRace(),
     () => serverLeft,
   );

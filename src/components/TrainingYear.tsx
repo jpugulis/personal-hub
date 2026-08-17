@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLang } from "@/components/LangProvider";
 import {
   GROUPS,
+  highlights,
   milestones,
   totalHours,
   totals,
@@ -37,6 +38,7 @@ const T = {
     en: "A sheet is written where the data was worth the analysis.",
   },
   sheet: { lv: "Analīze", en: "Analysis" },
+  min: { lv: "min", en: "min" },
 } as const;
 
 const LABEL: Record<Group, { lv: string; en: string }> = {
@@ -145,6 +147,20 @@ export default function TrainingYear() {
         </span>
       </div>
 
+      {w.activities.length > 0 && (
+        <ul className="ty-activities">
+          {w.activities.map((a) => (
+            <li key={a.date + a.name}>
+              <i style={{ background: INK[a.sport as Group] ?? INK.other }} aria-hidden="true" />
+              <span className="n">{a.name}</span>
+              <span className="m">
+                {a.min} {T.min[lang]}
+              </span>
+            </li>
+          ))}
+        </ul>
+      )}
+
       <div className="ty-plot">
         <div className="ty-grid" aria-hidden="true">
           {[CEIL, CEIL / 2].map((v) => (
@@ -204,6 +220,24 @@ export default function TrainingYear() {
           </span>
         ))}
       </div>
+
+      {highlights.length > 0 && (
+        <div className="ty-highlights">
+          {highlights.map((h) => (
+            <span
+              key={h.lv}
+              className="ty-highlight"
+              style={{
+                left: `${(h.from / weeks.length) * 100}%`,
+                width: `${((h.to - h.from + 1) / weeks.length) * 100}%`,
+              }}
+              onMouseEnter={() => setActive(h.from)}
+            >
+              {h[lang]}
+            </span>
+          ))}
+        </div>
+      )}
 
       <ul className="ty-legend">
         {GROUPS.map((g) => (

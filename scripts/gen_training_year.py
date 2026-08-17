@@ -59,6 +59,14 @@ MILESTONES = [
     ("2026-08-16", "141 km TT + brick", "141 km TT + brick", "2026-08-16-pedejais-lielais-tests"),
 ]
 
+# Multi-day spans worth marking on the chart as a range, not a single point —
+# a trip or a camp reads as a run of weeks, not one day. Each is (label_lv,
+# label_en, start, end) in ISO dates; resolved to a week-index span below.
+HIGHLIGHTS = [
+    ("Gruzija — snovošana", "Georgia — snowboarding", "2026-02-27", "2026-03-11"),
+    ("Nometne Katalonijā", "Catalonia training camp", "2026-04-18", "2026-04-26"),
+]
+
 
 def monday(d: dt.date) -> dt.date:
     return d - dt.timedelta(days=d.weekday())
@@ -70,26 +78,37 @@ def main() -> None:
         if not line.strip() or line.lstrip().startswith("#"):
             continue
         date, sport, moving_s, dist_m, act_id, name = line.split("|", 5)
-        rows.append((dt.date.fromisoformat(date), sport, int(moving_s), int(dist_m)))
+        rows.append((dt.date.fromisoformat(date), sport, int(moving_s), int(dist_m), name))
     if not rows:
         raise SystemExit("no activities parsed")
     rows.sort()
 
     # ---- weekly buckets, including the empty weeks ----
     by_week: dict[dt.date, dict[str, float]] = defaultdict(lambda: defaultdict(float))
-    for date, sport, moving_s, _dist in rows:
+    by_week_acts: dict[dt.date, list[dict]] = defaultdict(list)
+    for date, sport, moving_s, _dist, name in rows:
         by_week[monday(date)][SPORT_GROUP.get(sport, "other")] += moving_s / 3600
+        by_week_acts[monday(date)].append(
+            {
+                "date": date.isoformat(),
+                "sport": SPORT_GROUP.get(sport, "other"),
+                "name": name,
+                "min": round(moving_s / 60),
+            }
+        )
 
     first, last = monday(rows[0][0]), monday(rows[-1][0])
     weeks = []
     cur = first
     while cur <= last:
         bucket = by_week.get(cur, {})
+        acts = sorted(by_week_acts.get(cur, []), key=lambda a: a["date"])
         weeks.append(
             {
                 "start": cur.isoformat(),
                 "w": f"{cur.isocalendar().week:02d}",
                 "h": [round(bucket.get(g, 0.0), 2) for g in GROUPS],
+                "activities": acts,
             }
         )
         cur += dt.timedelta(days=7)
@@ -106,6 +125,14 @@ def main() -> None:
         if idx is None:
             raise SystemExit(f"milestone {date} falls outside the exported range")
         milestones.append({"date": date, "i": idx, "lv": lv, "en": en, "sheet": slug})
+
+    highlights = []
+    for lv, en, start, end in HIGHLIGHTS:
+        i_from = week_of.get(monday(dt.date.fromisoformat(start)).isoformat())
+        i_to = week_of.get(monday(dt.date.fromisoformat(end)).isoformat())
+        if i_from is None or i_to is None:
+            raise SystemExit(f"highlight {lv} falls outside the exported range")
+        highlights.append({"lv": lv, "en": en, "from": i_from, "to": i_to})
 
     def ts(v) -> str:
         if isinstance(v, str):
@@ -124,6 +151,14 @@ def main() -> None:
         'export const GROUPS = ["swim", "bike", "run", "winter", "other"] as const;',
         "export type Group = (typeof GROUPS)[number];",
         "",
+        "export interface WeekActivity {",
+        "  date: string;",
+        "  sport: Group | string;",
+        "  name: string;",
+        "  /** Moving time, minutes. */",
+        "  min: number;",
+        "}",
+        "",
         "export interface TrainingWeek {",
         "  /** Monday of the week, ISO date. */",
         "  start: string;",
@@ -131,6 +166,8 @@ def main() -> None:
         "  w: string;",
         "  /** Hours per group, in GROUPS order. */",
         "  h: number[];",
+        "  /** Every activity that week, earliest first. */",
+        "  activities: WeekActivity[];",
         "}",
         "",
         "export interface Milestone {",
@@ -143,11 +180,25 @@ def main() -> None:
         "  sheet: string | null;",
         "}",
         "",
+        "export interface Highlight {",
+        "  lv: string;",
+        "  en: string;",
+        "  /** Index into `weeks`, inclusive span. */",
+        "  from: number;",
+        "  to: number;",
+        "}",
+        "",
         "export const weeks: TrainingWeek[] = [",
     ]
     for w in weeks:
+        acts = ", ".join(
+            f'{{ date: {ts(a["date"])}, sport: {ts(a["sport"])}, '
+            f'name: {ts(a["name"])}, min: {ts(a["min"])} }}'
+            for a in w["activities"]
+        )
         lines.append(
-            f'  {{ start: {ts(w["start"])}, w: {ts(w["w"])}, h: {ts(w["h"])} }},'
+            f'  {{ start: {ts(w["start"])}, w: {ts(w["w"])}, h: {ts(w["h"])}, '
+            f'activities: [{acts}] }},'
         )
     lines += [
         "];",
@@ -158,6 +209,15 @@ def main() -> None:
         lines.append(
             f'  {{ date: {ts(m["date"])}, i: {m["i"]}, lv: {ts(m["lv"])}, '
             f'en: {ts(m["en"])}, sheet: {ts(m["sheet"])} }},'
+        )
+    lines += [
+        "];",
+        "",
+        "export const highlights: Highlight[] = [",
+    ]
+    for h in highlights:
+        lines.append(
+            f'  {{ lv: {ts(h["lv"])}, en: {ts(h["en"])}, from: {ts(h["from"])}, to: {ts(h["to"])} }},'
         )
     lines += [
         "];",
