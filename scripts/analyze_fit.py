@@ -256,16 +256,52 @@ def chart_run_laps(laps: list[dict], outdir, filename="05_run_laps.png"):
     hr = [lap.get("avg_heart_rate") or 0 for lap in rows]
 
     fig, ax = plt.subplots(figsize=(9, 4.5))
-    ax.plot(kms, pace_s, "o-", color=PALETTE["power"], lw=1.8, ms=6, label="Temps")
+    ms = 6 if len(kms) <= 25 else 3.5
+    lw = 1.8 if len(kms) <= 25 else 1.3
+    ax.plot(kms, pace_s, "o-", color=PALETTE["power"], lw=lw, ms=ms, label="Temps")
     pad = max(4.0, (max(pace_s) - min(pace_s)) * 0.4)
     ax.set_ylim(max(pace_s) + pad, min(pace_s) - pad)  # inverted: faster reads higher
     ax.set_ylabel("Temps (s/km)", color=PALETTE["power"])
     ax.set_xlabel("km")
-    ax.set_xticks(kms)
+    # thin ticks on long races — 43 labels crammed into 9" is unreadable
+    step = 1 if len(kms) <= 25 else 5
+    ax.set_xticks([k for k in kms if k % step == 0 or k == kms[-1]])
     ax2 = ax.twinx()
-    ax2.plot(kms, hr, "o-", color=PALETTE["hr"], lw=1.8, ms=6, label="SF")
+    ax2.plot(kms, hr, "o-", color=PALETTE["hr"], lw=lw, ms=ms, label="SF")
     ax2.set_ylabel("SF (sitieni/min)", color=PALETTE["hr"])
     ax2.grid(False)
+    fig.tight_layout()
+    fig.savefig(os.path.join(outdir, filename), bbox_inches="tight")
+    plt.close(fig)
+
+
+def chart_pace_hr(recs, outdir, filename="01_pace_hr.png"):
+    """Distance-based pace + HR trace — the running counterpart to
+    chart_power_hr, for sheets with no bike leg to anchor a power axis to."""
+    d = series(recs, "distance") / 1000
+    speed = series(recs, "enhanced_speed")
+    hr = series(recs, "heart_rate")
+    pace_s = np.where(speed > 0.3, 1000 / np.where(speed > 0.3, speed, np.nan), np.nan)
+
+    def smooth(a, w=30):
+        a = np.nan_to_num(a, nan=float(np.nanmean(a[~np.isnan(a)])) if np.any(~np.isnan(a)) else 0)
+        return np.convolve(a, np.ones(w) / w, "same")
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+    p = smooth(pace_s)
+    ax.plot(d, p, color=PALETTE["power"], lw=0.9, label="Temps (30 s)")
+    lo, hi = np.percentile(p, [1, 99])
+    pad = (hi - lo) * 0.15
+    ax.set_ylim(hi + pad, lo - pad)  # inverted: faster reads higher
+    ax2 = ax.twinx()
+    ax2.plot(d, smooth(hr), color=PALETTE["hr"], lw=0.9, alpha=0.8, label="SF")
+    ax2.set_ylabel("SF (sitieni/min)", color=PALETTE["hr"])
+    ax2.grid(False)
+    ax.set_xlabel("Attālums (km)")
+    ax.set_ylabel("Temps (s/km)", color=PALETTE["power"])
+    h1, l1 = ax.get_legend_handles_labels()
+    h2, l2 = ax2.get_legend_handles_labels()
+    ax.legend(h1 + h2, l1 + l2, loc="upper right", fontsize=8)
     fig.tight_layout()
     fig.savefig(os.path.join(outdir, filename), bbox_inches="tight")
     plt.close(fig)
@@ -342,6 +378,7 @@ def report(path: str, ftp: int, outdir: str) -> dict:
         print(f"\n  charts -> {outdir}")
     elif sport == "running" and len(laps) > 2:
         os.makedirs(outdir, exist_ok=True)
+        chart_pace_hr(recs, outdir)
         chart_run_laps(laps, outdir)
         print(f"\n  charts -> {outdir}")
 

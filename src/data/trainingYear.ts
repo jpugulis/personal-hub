@@ -63,11 +63,11 @@ export const weeks: TrainingWeek[] = [
 export const milestones: Milestone[] = [
   { date: "2026-03-21", i: 11, lv: "Sezonas atklāšana — 100 km", en: "Season opening — 100 km", sheet: null },
   { date: "2026-04-24", i: 16, lv: "Nometne Katalonijā", en: "Training camp in Catalonia", sheet: null },
-  { date: "2026-05-17", i: 19, lv: "Rīgas maratons — 42,6 km", en: "Riga Marathon — 42.6 km", sheet: null },
+  { date: "2026-05-17", i: 19, lv: "Rīgas maratons — 42,6 km", en: "Riga Marathon — 42.6 km", sheet: "2026-05-17-otra-puse-atraka" },
   { date: "2026-06-07", i: 22, lv: "Ironman 70.3 Warsaw", en: "Ironman 70.3 Warsaw", sheet: null },
   { date: "2026-07-19", i: 28, lv: "TriKan 70.3", en: "TriKan 70.3", sheet: null },
   { date: "2026-07-25", i: 29, lv: "Tour de VidusZeme — 154 km + brick", en: "Tour de VidusZeme — 154 km + brick", sheet: "2026-07-25-tour-de-viduszeme" },
-  { date: "2026-08-08", i: 31, lv: "Kuldīgas pusmaratons — 1:35:06", en: "Kuldīga half marathon — 1:35:06", sheet: null },
+  { date: "2026-08-08", i: 31, lv: "Kuldīgas pusmaratons — 1:35:06", en: "Kuldīga half marathon — 1:35:06", sheet: "2026-08-08-devindesmit-devini-procenti" },
   { date: "2026-08-16", i: 32, lv: "141 km TT + brick", en: "141 km TT + brick", sheet: "2026-08-16-pedejais-lielais-tests" },
 ];
 

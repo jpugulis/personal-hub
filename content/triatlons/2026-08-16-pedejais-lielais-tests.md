@@ -155,7 +155,7 @@ caption: Att. 05 — Kilometru temps un sirdsdarbība
 | 7 | 4:54 | 158 | 163 |
 | 8 | 5:04 | 153 | 161 |
 
-**Temps atšķiras par 10 sekundēm astoņu kilometru garumā** — visvienmērīgākais skrējiens visā ciklā. Kadence turas 166 → 161 bez sabrukuma. Skrējiena atsaiste −6,1%, virs 5% robežas, bet no augsta absolūtā līmeņa: **SF 151 pret patieso LTHR 183–186 ir ~82% no LTHR** — patiesi aerobi. Puse maratona rekords ir 4:29/km; 4:59/km vidējais temps pēc 140 km nebija smags temps absolūtā izteiksmē, un 150 SF griesti izrādījās uzstādīti pārāk piesardzīgi.
+**Temps atšķiras par 10 sekundēm astoņu kilometru garumā** — visvienmērīgākais skrējiens visā ciklā. Kadence turas 166 → 161 bez sabrukuma. Skrējiena atsaiste −6,1%, virs 5% robežas, bet no augsta absolūtā līmeņa: **SF 151 pret patieso LTHR 183–186 ir ~82% no LTHR** — patiesi aerobi. [Puse maratona rekords](/triatlons/2026-08-08-devindesmit-devini-procenti) ir 4:29/km; 4:59/km vidējais temps pēc 140 km nebija smags temps absolūtā izteiksmē, un 150 SF griesti izrādījās uzstādīti pārāk piesardzīgi.
 
 ```note
 label: Godīgs iebildums
