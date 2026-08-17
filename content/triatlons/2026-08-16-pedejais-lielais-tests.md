@@ -3,13 +3,13 @@ sheet: Nr. 02-02
 date: 2026-08-16
 titleLv: Pēdējais lielais tests
 subtitleEn: 140.8 km, then an 8 km brick — the cramps from 25 July stayed away
-subtitleLv: 140,8 km velo un 8 km brika skrējiens bez krampjiem — 20 dienas pirms Podersdorf
-crumbNote: 16.08.2026 · 20 dienas pirms Podersdorf
+subtitleLv: 140,8 km velo un 8 km brika skrējiens bez krampjiem — 21 dienas pirms Podersdorf
+crumbNote: 16.08.2026 · 21 dienas pirms Podersdorf
 metaLine: 140,8 km + 8,0 km
 mediaBase: /triatlons/2026-08-16
 cover: charts/05_run_laps.png
 lede: "Pēdējais atlikušais piecarpus stundu logs pirms sacensībām. Vienīgais jautājums: vai kājas iztur brika skrējienu pēc gara brauciena. 25. jūlijā tas beidzās ar abpusējiem krampjiem 5. un 9. kilometrā. Naktī pirms šī brauciena mainījās laikapstākļi, plāns un pat brauciena garums — un tomēr tas ir vienīgais dati, kas jebkad atbildējis šo jautājumu pozitīvi."
-description: 140,8 km velo un 8 km brika skrējiens bez krampjiem, 20 dienas pirms Ironman Podersdorf — neapstrādātu Garmin FIT datu analīze.
+description: 140,8 km velo un 8 km brika skrējiens bez krampjiem, 21 dienas pirms Ironman Podersdorf — neapstrādātu Garmin FIT datu analīze.
 ogDescription: "Astoņi kilometri pēc 140 km, bez krampja. Bet jaudas mērītājs, sviedru bilance un galvassāpe 3. stundā atstāj trīs jautājumus atvērtus."
 band: Velo | 140,8 km | 4:24:07 kustībā
 band: Normalizētā jauda | 173 W | IF 0,67 · 2593 kJ
@@ -30,7 +30,7 @@ band: Atsaiste | −4,0% | 10 min logi, 1. pret 2. pusi
 
 **Šis bija pēdējais piecarpus stundu logs pirms sacensībām.** 20.–23. augusta nedēļas nogale aizņemta ar nākamo sacensību bloku, 24.–29. augusts iet uzsūkšanai, un 30. augusta brauciens ir tikai 4 stundas, nevis 5:30. Ja šī sesija nenotiek svētdien, garākais IM-specifiskais brauciens visā sagatavošanās ciklā paliek 25. jūlija — tas, kas beidzās ar krampjiem.
 
-Nedēļas nogale bija plānota rūpīgi: piektdien — nekas cits kā sporta spēles, sestdien — kluba peldējums un brauciens ar 150 W griestiem un SF zem 135, lai taupītu kājas svētdienai. Sestdiena šos griestus turēja braucienā, bet klubam pievienojās 2:45 3v3 volejbola — aerobi triviāls (vid. SF 133), bet mehāniski dārgs: simtiem lēcienu uz ceļgaliem un ikriem 17 stundas pirms starta.
+Nedēļas nogale bija plānota rūpīgi: piektdien — nekas cits kā sporta spēles, sestdien — TriKan grupas (Ādažu un Carnikavas triatlonisti, ar kuriem laiku pa laikam kopā brauc un peld) peldējums un brauciens ar 150 W griestiem un SF zem 135, lai taupītu kājas svētdienai. Sestdiena šos griestus turēja braucienā, bet vakarā sekoja 2:45 3v3 volejbols ar rajona draugiem pie dīķa — divas spēles, otrajā tika pierunāts pēc pirmās. Aerobi triviāls (vid. SF 133), bet mehāniski dārgs: simtiem lēcienu uz ceļgaliem un ikriem 17 stundas pirms starta.
 
 **Naktī mainījās arī laikapstākļi.** Prognozētie 30 °C mākoņainā laikā izrādījās 23 °C ar vieglu lietu. Karstuma rehabilitācija — kas bija viens no četriem šīs sesijas jautājumiem — vairs nenotika. Elektrolītu produkts, ko vajadzēja nopirkt piektdien, palika nenopirkts.
 
@@ -155,7 +155,7 @@ caption: Att. 05 — Kilometru temps un sirdsdarbība
 | 7 | 4:54 | 158 | 163 |
 | 8 | 5:04 | 153 | 161 |
 
-**Temps atšķiras par 10 sekundēm astoņu kilometru garumā** — visvienmērīgākais skrējiens visā ciklā. Kadence turas 166 → 161 bez sabrukuma. Skrējiena atsaiste −6,1%, virs 5% robežas, bet no augsta absolūtā līmeņa: **SF 151 pret patieso LTHR 183–186 ir ~82% no LTHR** — patiesi aerobi. [Puse maratona rekords](/triatlons/2026-08-08-devindesmit-devini-procenti) ir 4:29/km; 4:59/km vidējais temps pēc 140 km nebija smags temps absolūtā izteiksmē, un 150 SF griesti izrādījās uzstādīti pārāk piesardzīgi.
+**Temps atšķiras par 10 sekundēm astoņu kilometru garumā** — visvienmērīgākais skrējiens visā ciklā. Kadence turas 166 → 161 bez sabrukuma. Skrējiena atsaiste −6,1%, virs 5% robežas, bet no augsta absolūtā līmeņa: **SF 151 pret patieso LTHR 183–186 ir ~82% no LTHR** — patiesi aerobi. Pusmaratona rekords (1:30:00, 4:15/km, Jelgavas Nakts pusmaratons, 2025) ir krietni ātrāks; pat [8. augusta PR mēģinājuma temps](/triatlons/2026-08-08-devindesmit-devini-procenti) (4:29/km) bija ātrāks par šīsdienas 4:59/km. Tātad 4:59/km pēc 140 km nebija smags temps absolūtā izteiksmē, un 150 SF griesti izrādījās uzstādīti pārāk piesardzīgi.
 
 ```note
 label: Godīgs iebildums
@@ -164,7 +164,7 @@ label: Godīgs iebildums
 
 ### Ko dara krampja reflekss, ne tikai sajūta
 
-25. jūlija analīze parādīja, kā noguris muskulis zaudē Golgi cīpslas orgāna bremzi — [skat. pilno mehānismu](/triatlons/2026-07-25-tour-de-viduszeme). Kluba brauciena partnerim Reinim tā paša nedēļas piemērs bija cits, bet radniecīgs: skrējienā pēc velo viņa 8. kilometrs bija 54 sekundes ātrāks par vidējo, un maksa nāca uzreiz — nākamie divi kilometri bija viņa lēnākie. **Viens ātrs kilometrs izmaksāja vairāk, nekā tas iedeva.** Pār 42,2 km Podersdorfā šī aritmētika kļūst krietni sliktāka — tāpēc šīsdienas noteikums "neviens kilometrs nedrīkst būt ātrāks par iepriekšējo" tika ievērots strikti.
+25. jūlija analīze parādīja, kā noguris muskulis zaudē Golgi cīpslas orgāna bremzi — [skat. pilno mehānismu](/triatlons/2026-07-25-tour-de-viduszeme). Draugam Reinim — ar TriKan grupu reizēm kopā brauc un peld — tā paša nedēļas piemērs bija cits, bet radniecīgs: skrējienā pēc velo viņa 8. kilometrs bija 54 sekundes ātrāks par vidējo, un maksa nāca uzreiz — nākamie divi kilometri bija viņa lēnākie. **Viens ātrs kilometrs izmaksāja vairāk, nekā tas iedeva.** Pār 42,2 km Podersdorfā šī aritmētika kļūst krietni sliktāka — tāpēc šīsdienas noteikums "neviens kilometrs nedrīkst būt ātrāks par iepriekšējo" tika ievērots strikti.
 
 ## 04 | Uzturs un hidratācija — pieņēmums, kas apgriezās otrādi
 

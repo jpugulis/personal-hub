@@ -104,7 +104,11 @@ export default function TriatlonsIndex({
         </div>
         <div>
           <div className="k">{T.kRace[lang]}</div>
-          <div className="v">{T.vRace[lang]}</div>
+          <div className="v">
+            <a href="https://www.austria-triathlon.at" target="_blank" rel="noopener">
+              {T.vRace[lang]} ↗
+            </a>
+          </div>
           <div className="s">{T.sRace[lang]}</div>
         </div>
         <div>

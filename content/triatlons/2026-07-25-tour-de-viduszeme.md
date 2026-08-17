@@ -1,7 +1,7 @@
 ---
 sheet: Nr. 02-01
 date: 2026-07-25
-titleLv: Viena treniņa anatomija
+titleLv: Iztrakošanās uz velo + brika skrējiens
 subtitleEn: 154 km, a brick run and two cramps — anatomy of a key session
 subtitleLv: 154 km · brick skrējiens · divi krampji — 43 dienas pirms Podersdorf
 crumbNote: 25.07.2026 · 43 dienas pirms Podersdorf
@@ -19,7 +19,7 @@ band: Pauzes | 1:28 | 13 apstāšanās
 
 ## Īsumā
 
-- **Tas nebija garais brauciens, tas bija sacensības.** NP 220 W pie IF 0,85 četrarpus stundas, tostarp 30 minūtes pie 94–102% no FTP. 30 minūšu jauda (243 W) iznāca *lielāka* nekā 20 minūšu jauda (237 W) — tempu noteica grupa, nevis manas kājas.
+- **Tas nebija garais brauciens, tas bija sacensības.** Grupas brauciens trijatā, NP 220 W pie IF 0,85 četrarpus stundas, tostarp 30 minūtes pie 94–102% no FTP. 30 minūšu jauda (243 W) iznāca *lielāka* nekā 20 minūšu jauda (237 W) — tempu noteica grupa, nevis manas kājas.
 - **Motors ir apsteidzis grafiku.** 228 W pilnu stundu dziļi 4,5 stundu braucienā. Pēc tam 5:07–5:16/km no velo, sirds ritmam nemaz neizejot no 3. zonas.
 - **Kājas atpaliek no motora.** Abpusēji *vastus medialis* krampji 5. un 9. kilometrā. Nulle sekunžu 4. sirdsdarbības zonā — nekas sirds pusē neierobežoja. Tas bija tikai un vienīgi muskulārs.
 - **Sākotnēji krampi tika skaidroti galvenokārt ar neiromuskulāru nogurumu. Ar reāliem uztura skaitļiem rokā šis svars bija nepareizs.** Šķidruma atjaunošana bija ~45% no zudumiem, nātrija ~27%. Hidratācija pārceļas no līdzfaktora uz līdzcēloni.
