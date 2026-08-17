@@ -3,13 +3,13 @@ sheet: Nr. 02-04
 date: 2026-08-08
 titleLv: Pusmaratona PR mēģinājums
 subtitleEn: 21.2 km at the Kuldīga half marathon — a PR attempt that fell short, 99% of it in one HR zone
-subtitleLv: 21,2 km Kuldīgas pusmaratonā — PR mēģinājums, kas neizdevās, 99% laika vienā SF zonā
+subtitleLv: 21,2 km Kuldīgas pusmaratonā — PR mēģinājums, kas neizdevās, 99% laika vienā HR zonā
 crumbNote: 08.08.2026 · 29 dienas pirms Podersdorf
 metaLine: 21,2 km
 mediaBase: /triatlons/2026-08-08
 cover: charts/02_zones.png
 lede: "1:35:07, 4:29/km vidēji — mēģinājums uzlabot pusmaratona rekordu (1:30:00, 4:15/km, Jelgavas Nakts pusmaratons, 2025), kas neizdevās. Bet skaitlis, kas izceļas, nav temps. Tas ir 99% no skrējiena laika, kas pavadīts vienā vienīgā sirdsdarbības zonā — no pirmā līdz pēdējam kilometram, gandrīz bez pārtraukuma."
-description: Kuldīgas pusmaratons, 21,2 km, 1:35:07 — PR mēģinājums ar 99% laika vienā SF zonā. Neapstrādātu Garmin FIT datu analīze.
+description: Kuldīgas pusmaratons, 21,2 km, 1:35:07 — PR mēģinājums ar 99% laika vienā HR zonā. Neapstrādātu Garmin FIT datu analīze.
 ogDescription: "PR mēģinājums, kas palika 5 minūtes no mērķa, bet 99% laika vienā sirdsdarbības zonā — un temps, kas vēlāk kļūst par atsauci Podersdorf sagatavošanās analīzēs."
 band: Distance | 21,20 km | 1:35:07 kopā
 band: Temps | 4:29/km vidēji | PR mēģinājums (PR 4:15/km)
@@ -19,14 +19,14 @@ band: Sirdsdarbība | vid. 178, maks. 188 | 99% laika Z4
 ## Īsumā
 
 - **PR mēģinājums, kas palika īsāks.** 1:35:07, 4:29/km vidēji — pret pusmaratona rekordu 1:30:00 (4:15/km), kas noskriets 2025. gada augusta beigās Jelgavas Nakts pusmaratonā. Šoreiz pietrūka ~5 minūšu.
-- **99% no skrējiena laika pavadīts SF zonā Z4 (167–189).** Ne Z3 iesildīšanās, ne Z5 sprints — praktiski viss skrējiens vienā, augstā, ilgtspējīgā slieksnim tuvā zonā.
-- **Vid. SF 178** ir ~96% no patiesā LTHR (183–186 pēc vēlākajām sesijām) — pusmaratons, kas noskrietas gandrīz tieši uz sliekšņa, nevis zem tā.
+- **99% no skrējiena laika pavadīts HR zonā Z4 (167–189).** Ne Z3 iesildīšanās, ne Z5 sprints — praktiski viss skrējiens vienā, augstā, ilgtspējīgā slieksnim tuvā zonā.
+- **Vid. HR 178** ir ~96% no patiesā LTHR (183–186 pēc vēlākajām sesijām) — pusmaratons, kas noskrietas gandrīz tieši uz sliekšņa, nevis zem tā.
 - **Pirmie 5 km bija visātrākie (4:15/km)** — tieši PR temps — **tad temps nostabilizējās ap 4:30–4:38/km** līdz finišam. Agresīvs starts, kas neturējās.
-- **Atsaiste −2,5%**, cieši zem 5% robežas — laba aerobā stabilitāte augstas intensitātes pusmaratonā, pat ja PR temps neturējās.
+- **Decoupling −2,5%**, cieši zem 5% robežas — laba aerobā stabilitāte augstas intensitātes pusmaratonā, pat ja PR temps neturējās.
 
 ## 01 | Temps un sirdsdarbība
 
-21,20 km · 1:35:07 kustībā · vid. SF 178, maks. 188 · vid. kadence 85 apgr./min · 148 m kāpuma · 23 → 29 °C.
+21,20 km · 1:35:07 kustībā · vid. HR 178, maks. 188 · vid. kadence 85 apgr./min · 148 m kāpuma · 23 → 29 °C.
 
 ```figure
 src: charts/01_pace_hr.png
@@ -64,11 +64,11 @@ note: Katrs punkts — viens kilometrs
 | 15–20 km | 4:32/km | ⬆ nedaudz |
 | **20–21,2 km** | **4:38/km** | ⬇ |
 
-Pirmie pieci kilometri bija tieši PR temps — 4:15/km. No 5. kilometra tempa nostabilizējas 4:27–4:38/km joslā un tur paliek — ~15–20 s/km lēnāk par PR temps, bet neatslābst, nesabrūk. Kadence krīt no ~184 apgr./min sākumā līdz ~174–176 beigās, kas atbilst SF platō: ķermenis maksā par agresīvo sākumu ar mazāku, ne straujāku soli, nevis ar sirdsdarbības eksploziju.
+Pirmie pieci kilometri bija tieši PR temps — 4:15/km. No 5. kilometra tempa nostabilizējas 4:27–4:38/km joslā un tur paliek — ~15–20 s/km lēnāk par PR temps, bet neatslābst, nesabrūk. Kadence krīt no ~184 apgr./min sākumā līdz ~174–176 beigās, kas atbilst HR platō: ķermenis maksā par agresīvo sākumu ar mazāku, ne straujāku soli, nevis ar sirdsdarbības eksploziju.
 
 ```verdict
 label: Ko šis rezultāts nozīmē
-PR temps bija sasniedzams uz pieciem kilometriem, ne uz divdesmit vienu. Skrējiens, kas noskriets gandrīz pilnībā vienā, augstā SF zonā, ir tīrs slieksnja izturības rādītājs — un tas, ka temps nostabilizējās, nevis sabruka, nozīmē, ka robeža nebija aerobā. Nākamais PR mēģinājums prasa lēnāku sākumu, nevis stiprāku vidusdaļu.
+PR temps bija sasniedzams uz pieciem kilometriem, ne uz divdesmit vienu. Skrējiens, kas noskriets gandrīz pilnībā vienā, augstā HR zonā, ir tīrs slieksnja izturības rādītājs — un tas, ka temps nostabilizējās, nevis sabruka, nozīmē, ka robeža nebija aerobā. Nākamais PR mēģinājums prasa lēnāku sākumu, nevis stiprāku vidusdaļu.
 ```
 
 ## Konteksts
@@ -77,9 +77,9 @@ PR temps bija sasniedzams uz pieciem kilometriem, ne uz divdesmit vienu. Skrēji
 
 ## Metode un avoti
 
-**Metode.** Viss iegūts no neapstrādātā Garmin `.FIT` faila, parsēts ar Python (`fitdecode`). Kilometru sadalījumi nāk no ierīces automātiskajām 1 km aplēm. Atsaiste — jaudas un sirdsdarbības attiecība, pirmā puse pret otro.
+**Metode.** Viss iegūts no neapstrādātā Garmin `.FIT` faila, parsēts ar Python (`fitdecode`). Kilometru sadalījumi nāk no ierīces automātiskajām 1 km aplēm. Decoupling — jaudas un sirdsdarbības attiecība, pirmā puse pret otro.
 
-**Atsauces vērtības.** SF zonas Z1 ≤120, Z2 121–142, Z3 143–166, Z4 167–189, Z5 190+ · patiesā LTHR 183–186 (skat. 16. augusta loksni) · pusmaratona PR 1:30:00 / 4:15/km, Jelgavas Nakts pusmaratons, 2025.
+**Atsauces vērtības.** HR zonas Z1 ≤120, Z2 121–142, Z3 143–166, Z4 167–189, Z5 190+ · patiesā LTHR 183–186 (skat. 16. augusta loksni) · pusmaratona PR 1:30:00 / 4:15/km, Jelgavas Nakts pusmaratons, 2025.
 
 **Avoti.** [Strava — Kuldīgas pusmaratons](https://www.strava.com/activities/19650846664) · Garmin Connect.
 

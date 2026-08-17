@@ -1,0 +1,5 @@
+# Vercel's uploader stats every file regardless of .gitignore, and a stale
+# file here (WhatsApp media with an odd ACL) once made deploys fail outright.
+# Nothing in this folder is needed at build time — sync_media.py reads it
+# locally and writes results into public/ and Bunny, not here.
+media-inbox/

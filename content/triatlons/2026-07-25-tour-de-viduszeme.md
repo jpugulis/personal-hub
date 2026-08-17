@@ -13,7 +13,7 @@ description: 154 km ar IF 0.85, 4:50 km no velo un divi krampji — neapstrādā
 ogDescription: "Neapstrādātu FIT datu analīze: kāpēc abas kvadricepsa muskuļa galvas sarāva krampī, un ko tas nozīmē Podersdorf."
 band: Velo | 154,4 km | 4:32:06 kustībā
 band: Normalizētā jauda | 220 W | IF 0,85 · 3 095 kJ
-band: Brick skrējiens | 9,57 km | 51:16 · vid. SF 153
+band: Brick skrējiens | 9,57 km | 51:16 · vid. HR 153
 band: Pauzes | 1:28 | 13 apstāšanās
 ---
 
@@ -40,8 +40,8 @@ Atklātā ūdens peldējums 3,34 km, 74:33 — "pilnais aplis". Vakarā vēla un
 | --- | --- |
 | Gulta / celšanās | 01:09 → 08:00 |
 | **Laiks gultā** | **6:13** |
-| Vid. nakts SF | 54 sitieni/min |
-| Miera SF | 48 sitieni/min |
+| Vid. nakts HR | 54 sitieni/min |
+| Miera HR | 48 sitieni/min |
 | Nakts HRV | 70 ms |
 | Nemierīgi mirkļi | 48 |
 | Body Battery pieaugums | +46 |
@@ -61,7 +61,7 @@ note: Aplēstais TSS
 
 ## 02 | Velo
 
-154,4 km · 4:32:06 kustībā · 6:01:05 kopā · NP 220 W · vid. 190 W · IF 0,85 · 3 095 kJ · vid. SF 151 / maks. 188 · 543 m kāpuma · 17 → 33 °C · treniņa efekts 4,7 aerobais / 2,9 anaerobais.
+154,4 km · 4:32:06 kustībā · 6:01:05 kopā · NP 220 W · vid. 190 W · IF 0,85 · 3 095 kJ · vid. HR 151 / maks. 188 · 543 m kāpuma · 17 → 33 °C · treniņa efekts 4,7 aerobais / 2,9 anaerobais.
 
 ```figure
 src: charts/01_bike_power_hr.png
@@ -72,7 +72,7 @@ note: 30 s slīdošais vidējais
 
 ### Posmu sadalījums
 
-| Posms | min | km | km/h | vid. W | NP | IF | SF | kad. |
+| Posms | min | km | km/h | vid. W | NP | IF | HR | kad. |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Iesildīšanās Carnikava → Berģi | 40,6 | 18,4 | 27,1 | 160 | 190 | 0,73 | 131 | 77 |
 | Grupa, svaigi + pavējš | 23,4 | 13,4 | 34,2 | 182 | 240 | 0,93 | 137 | 83 |
@@ -133,9 +133,9 @@ Trīs lasījumi:
 
 **2. Murjāņi bija sacensības sliekšņa režīmā gara brauciena vidū.** Trīsdesmit minūtes pie IF 1,02, ar 619 W 30 sekundes un 941 W 5 sekundes, 24.–50. kilometrā — ar vēl 100 km un skrējienu priekšā. Aerobi viss kārtībā. Muskulāri — tur tika iesēts krampis.
 
-**3. Pretvēja stunda bija sacensībām nozīmīgākais fragments visā failā.** 66,8 minūtes, 205 W, SF 163, bez lielas aizsegu palīdzības, ar četrām stundām noguruma apakšā. Tas ir tas fizioloģiskais stāvoklis, kas Podersdorf būs 130. kilometrā. Un tas noturējās.
+**3. Pretvēja stunda bija sacensībām nozīmīgākais fragments visā failā.** 66,8 minūtes, 205 W, HR 163, bez lielas aizsegu palīdzības, ar četrām stundām noguruma apakšā. Tas ir tas fizioloģiskais stāvoklis, kas Podersdorf būs 130. kilometrā. Un tas noturējās.
 
-### Zonas un atsaiste
+### Zonas un decoupling
 
 ```figure
 src: charts/03_zones.png
@@ -145,12 +145,12 @@ caption: Att. 03 — Zonu sadalījums, velo un skrējiens
 
 ```figure
 src: charts/04_decoupling.png
-alt: Jaudas un sirdsdarbības atsaiste brauciena laikā
-caption: Att. 04 — Aerobā atsaiste (Pw:HR)
+alt: Jaudas un sirdsdarbības decoupling brauciena laikā
+caption: Att. 04 — Aerobā decoupling (Pw:HR)
 note: −8,6% pirmā pret otro pusi
 ```
 
-Jaudas un sirdsdarbības efektivitāte nokrita no 1,312 uz 1,199 — **−8,6% atsaiste**, virs 5% "labi adaptēts" robežas. Kadence tajā pašā laikā aizslīdēja no 81 uz 78 apgr./min.
+Jaudas un sirdsdarbības efektivitāte nokrita no 1,312 uz 1,199 — **−8,6% decoupling**, virs 5% "labi adaptēts" robežas. Kadence tajā pašā laikā aizslīdēja no 81 uz 78 apgr./min.
 
 ```note
 label: Godīgs iebildums
@@ -161,7 +161,7 @@ label: Godīgs iebildums
 
 ## 03 | Brick skrējiens
 
-9,57 km · 51:16 kustībā · 1:06:43 kopā · vid. SF 153 · maks. SF 166 · skriešanas jauda 374 W (NP 408).
+9,57 km · 51:16 kustībā · 1:06:43 kopā · vid. HR 153 · maks. HR 166 · skriešanas jauda 374 W (NP 408).
 
 ```figure
 src: charts/05_run_laps.png
@@ -170,7 +170,7 @@ caption: Att. 05 — Kilometri, mehānika un krampju momenti
 note: Sarkanie = krampja ietekmētie km
 ```
 
-| km | temps | SF | kadence | kontakts | soļa garums |
+| km | temps | HR | kadence | kontakts | soļa garums |
 | --- | --- | --- | --- | --- | --- |
 | 1 | 5:14 | 145 | 166 | 270 ms | 1138 mm |
 | 2 | 5:07 | 156 | 166 | 265 | 1169 |
@@ -199,7 +199,7 @@ caption: No skrējiena — 15:17
 note: Starp pirmo un otro krampi
 ```
 
-**87,7% no skrējiena bija 3. sirdsdarbības zonā. Nulle sekunžu 4. zonā.** Maksimālā SF bija 166 — divdesmit divi sitieni zem velo maksimuma. Sirds un asinsvadu sistēmai šis skrējiens bija viegls. Katrs ierobežojums bija muskulārs.
+**87,7% no skrējiena bija 3. sirdsdarbības zonā. Nulle sekunžu 4. zonā.** Maksimālā HR bija 166 — divdesmit divi sitieni zem velo maksimuma. Sirds un asinsvadu sistēmai šis skrējiens bija viegls. Katrs ierobežojums bija muskulārs.
 
 Un mehānika stāsta šo stāstu ar neparastu precizitāti. 8. aplī — tajā 4:50 kilometrā — kontakta laiks bija 255 ms un soļa garums 1238 mm: **labākā mehānika visā dienā**. 9. aplī kontakta laiks uzsprāga līdz 298 ms un soļa garums sabruka līdz 1062 mm. Muskulis padevās tieši tajā mirklī, kad skrējiens bija vislabākais. Tā nav sagadīšanās — tas ir mehānisma paraksts.
 
@@ -415,7 +415,7 @@ Vienmērīgais kāpums no 40 uz 100 ms ir šī uzkrājuma nokārtošana. Normas 
 
 | | Garmin | WHOOP |
 | --- | --- | --- |
-| Miera SF, nakts pēc | 46 (no 48) | 53 (normas augšmala) |
+| Miera HR, nakts pēc | 46 (no 48) | 53 (normas augšmala) |
 
 Garmin ziņo zemāko noturīgo nakts vērtību; WHOOP mēra tieši lēnā viļņa miega laikā. Metodes atšķiras, tāpēc absolūtie skaitļi nav salīdzināmi. Sajūta, ka "miera pulss bija mazliet augstāks", ir WHOOP atbalstīta un Garmin noliegta.
 
@@ -441,9 +441,9 @@ Nekad virs 260 W ilgāk par 30 sekundēm. Nekad virs 300 W vispār. Līdzenā tr
 
 Šajā dienā vidēji 82, otrajā pusē aizslīdot uz 78, un līdz 58 sliktajā segumā. Zema kadences malšana ir vienīgā vērtīgākā maiņa, jo tā tieši slogo to muskuli, kas padevās. Augstāka kadence pie tās pašas jaudas nozīmē mazāku maksimālo spēku uz katru apgriezienu, kas nozīmē mazāku nogurumu spēku ražojošajās šķiedrās, kas nozīmē, ka Golgi bremze paliek funkcionāla ilgāk.
 
-### Skrējiens: 5:15–5:30/km sākumā, SF 140–150 līdz pusei
+### Skrējiens: 5:15–5:30/km sākumā, HR 140–150 līdz pusei
 
-5:07–5:16/km pie SF 153 iznāca no krietni grūtāka brauciena, nekā Austrijā būs. Tas atbalsta 3:40–3:50 Ironman maratonu, *ja* velo daļa ir disciplinēta. Bet krampis pienāca 9,5. kilometrā — **izturība tālāk par šo distanci nav pierādīta, un tas tagad ir lielākais atklātais jautājums visā sagatavošanās ciklā.**
+5:07–5:16/km pie HR 153 iznāca no krietni grūtāka brauciena, nekā Austrijā būs. Tas atbalsta 3:40–3:50 Ironman maratonu, *ja* velo daļa ir disciplinēta. Bet krampis pienāca 9,5. kilometrā — **izturība tālāk par šo distanci nav pierādīta, un tas tagad ir lielākais atklātais jautājums visā sagatavošanās ciklā.**
 
 ### Uztura un hidratācijas protokols — jāizmēģina, nevis improvizē
 
@@ -485,7 +485,7 @@ No tā trīs nedēļu taperēšana līdz 6. septembrim.
 
 ```verdict
 label: Traumu risks: mērens, nevis augsts
-Nekas strukturāls. Bet spēcīgs abpusējs kvadricepsa krampis, −8,6% atsaiste, 43 dienas līdz startam un šķidruma deficīts 4–5% robežās kopā nozīmē, ka nākamajām septiņām dienām jābūt patiesi vieglām. Risks nav sestdienas sesija. Risks ir tas, kas tiks izdarīts, atbildot uz to, cik labi sestdiena sajutās.
+Nekas strukturāls. Bet spēcīgs abpusējs kvadricepsa krampis, −8,6% decoupling, 43 dienas līdz startam un šķidruma deficīts 4–5% robežās kopā nozīmē, ka nākamajām septiņām dienām jābūt patiesi vieglām. Risks nav sestdienas sesija. Risks ir tas, kas tiks izdarīts, atbildot uz to, cik labi sestdiena sajutās.
 ```
 
 ## Kopumā
@@ -500,9 +500,9 @@ Kadence, ekscentriskais spēks, apzināts nātrijs un divi disciplinēti gari br
 
 ## Metode un avoti
 
-**Metode.** Viss iegūts no neapstrādātiem Garmin `.FIT` failiem, parsētiem ar Python (`fitdecode`), nevis no platformu kopsavilkumiem. Pauzes rekonstruētas no `timer` notikumu pāriem. Vidēji maksimālā jauda — slīdošā konvolūcija pār pilnu sekunžu jaudas rindu. Normalizētā jauda — 30 s slīdošais vidējais ceturtajā pakāpē, tad ceturtā sakne. Atsaiste — jaudas un sirdsdarbības attiecība 10 minūšu logos. Ogļhidrātu oksidācija modelēta no mehāniskā darba pie 23% pieņemtas bruto efektivitātes. Kreisās/labās puses balanss dekodēts no `left_right_balance` lauka. Sviedru zudumi aplēsti, nevis izmērīti.
+**Metode.** Viss iegūts no neapstrādātiem Garmin `.FIT` failiem, parsētiem ar Python (`fitdecode`), nevis no platformu kopsavilkumiem. Pauzes rekonstruētas no `timer` notikumu pāriem. Vidēji maksimālā jauda — slīdošā konvolūcija pār pilnu sekunžu jaudas rindu. Normalizētā jauda — 30 s slīdošais vidējais ceturtajā pakāpē, tad ceturtā sakne. Decoupling — jaudas un sirdsdarbības attiecība 10 minūšu logos. Ogļhidrātu oksidācija modelēta no mehāniskā darba pie 23% pieņemtas bruto efektivitātes. Kreisās/labās puses balanss dekodēts no `left_right_balance` lauka. Sviedru zudumi aplēsti, nevis izmērīti.
 
-**Atsauces vērtības.** FTP 259 W (iestatīts manuāli) · SF zonas Z1 ≤120, Z2 121–142, Z3 143–166, Z4 167–189, Z5 190+ · skriešanas tempa zonas no maratona 3:18 · 30 dienu HRV josla 74–102 ms.
+**Atsauces vērtības.** FTP 259 W (iestatīts manuāli) · HR zonas Z1 ≤120, Z2 121–142, Z3 143–166, Z4 167–189, Z5 190+ · skriešanas tempa zonas no maratona 3:18 · 30 dienu HRV josla 74–102 ms.
 
 **Avoti.** [Strava — TDVz Tour De VidusZeme](https://www.strava.com/activities/19457560099) · [Strava — BRICK Run](https://www.strava.com/activities/19458666369) · [Strava — peldējums 24.07.](https://www.strava.com/activities/19448932165) · Garmin Connect · WHOOP
 

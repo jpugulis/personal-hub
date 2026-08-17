@@ -13,15 +13,15 @@ description: 140,8 km velo un 8 km brika skrējiens bez krampjiem, 21 dienas pir
 ogDescription: "Astoņi kilometri pēc 140 km, bez krampja. Bet jaudas mērītājs, sviedru bilance un galvassāpe 3. stundā atstāj trīs jautājumus atvērtus."
 band: Velo | 140,8 km | 4:24:07 kustībā
 band: Normalizētā jauda | 173 W | IF 0,67 · 2593 kJ
-band: Brika skrējiens | 8,03 km | 39:58 · vid. SF 151
-band: Atsaiste | −4,0% | 10 min logi, 1. pret 2. pusi
+band: Brika skrējiens | 8,03 km | 39:58 · vid. HR 151
+band: Decoupling | −4,0% | 10 min logi, 1. pret 2. pusi
 ---
 
 ## Īsumā
 
-- **Galvenais jautājums ir atbildēts, un atbilde ir jā.** 8,03 km brika skrējiens pēc 140,8 km velo, vid. SF 151, bez krampja. 25. jūlijā tas pats tests beidzās ar abpusējiem *vastus medialis* krampjiem 5. un 9. kilometrā. Šoreiz — nekā.
+- **Galvenais jautājums ir atbildēts, un atbilde ir jā.** 8,03 km brika skrējiens pēc 140,8 km velo, vid. HR 151, bez krampja. 25. jūlijā tas pats tests beidzās ar abpusējiem *vastus medialis* krampjiem 5. un 9. kilometrā. Šoreiz — nekā.
 - **Plāns mainījās naktī pirms starta.** Prognozētie 30 °C karstuma treniņa vietā iznāca 23 °C ar lietu, un sestdienas 2:45 volejbols atstāja kājas ar triecienslodzes bojājumu, ko velobraukšana neaizskar, bet skrējiens gan. Brauciens saīsināts uz 4:30, skrējiens uz 25–30 minūtēm — un tomēr sanāca garāks par abiem.
-- **Atsaiste −4,0%**, labāk par 25. jūliju (−8,6%), joprojām virs 5% mērķa. Lielākā daļa no tā izskaidrojas ar vienu konkrētu maršruta posmu, nevis vispārēju nogurumu.
+- **Decoupling −4,0%**, labāk par 25. jūliju (−8,6%), joprojām virs 5% mērķa. Lielākā daļa no tā izskaidrojas ar vienu konkrētu maršruta posmu, nevis vispārēju nogurumu.
 - **Sviedru bilance apgriež pieņēmumu otrādi.** Iepriekš pieņemts, ka nepietiekama dzeršana ir galvenais risks. Svēršanās pirms un pēc rāda pretējo: dzerts vairāk, nekā zaudēts sviedros.
 - **Jaudas mērītājs, visticamāk, rāda par zemu.** Trīs neatkarīgas metodes sakrīt uz ~13–18% par zemu rādījumu TT velo pedāļiem — kas nozīmē, ka šodienas "IF 0,67" var patiesībā būt tuvāk "IF 0,79".
 - **Galvassāpe 3. stundā paliek neizšķirta starp diviem izskaidrojumiem** — atšķaidīta hiponatriēmija vai aero pozīcijas kakla sasprindzinājums. Abi tiek laboti neatkarīgi no tā, kurš ir īstais.
@@ -30,7 +30,7 @@ band: Atsaiste | −4,0% | 10 min logi, 1. pret 2. pusi
 
 **Šis bija pēdējais piecarpus stundu logs pirms sacensībām.** 20.–23. augusta nedēļas nogale aizņemta ar nākamo sacensību bloku, 24.–29. augusts iet uzsūkšanai, un 30. augusta brauciens ir tikai 4 stundas, nevis 5:30. Ja šī sesija nenotiek svētdien, garākais IM-specifiskais brauciens visā sagatavošanās ciklā paliek 25. jūlija — tas, kas beidzās ar krampjiem.
 
-Nedēļas nogale bija plānota rūpīgi: piektdien — nekas cits kā sporta spēles, sestdien — TriKan grupas (Ādažu un Carnikavas triatlonisti, ar kuriem laiku pa laikam kopā brauc un peld) peldējums un brauciens ar 150 W griestiem un SF zem 135, lai taupītu kājas svētdienai. Sestdiena šos griestus turēja braucienā, bet vakarā sekoja 2:45 3v3 volejbols ar rajona draugiem pie dīķa — divas spēles, otrajā tika pierunāts pēc pirmās. Aerobi triviāls (vid. SF 133), bet mehāniski dārgs: simtiem lēcienu uz ceļgaliem un ikriem 17 stundas pirms starta.
+Nedēļas nogale bija plānota rūpīgi: piektdien — nekas cits kā sporta spēles, sestdien — TriKan grupas (Ādažu un Carnikavas triatlonisti, ar kuriem laiku pa laikam kopā brauc un peld) peldējums un brauciens ar 150 W griestiem un HR zem 135, lai taupītu kājas svētdienai. Sestdiena šos griestus turēja braucienā, bet vakarā sekoja 2:45 3v3 volejbols ar rajona draugiem pie dīķa — divas spēles, otrajā tika pierunāts pēc pirmās. Aerobi triviāls (vid. HR 133), bet mehāniski dārgs: simtiem lēcienu uz ceļgaliem un ikriem 17 stundas pirms starta.
 
 **Naktī mainījās arī laikapstākļi.** Prognozētie 30 °C mākoņainā laikā izrādījās 23 °C ar vieglu lietu. Karstuma rehabilitācija — kas bija viens no četriem šīs sesijas jautājumiem — vairs nenotika. Elektrolītu produkts, ko vajadzēja nopirkt piektdien, palika nenopirkts.
 
@@ -39,22 +39,22 @@ Pusdienlaikā tapa jauna karte, kas apgrieza sesijas oriģinālo noteikumu otrā
 | | Oriģinālais plāns | Kas notika |
 | --- | --- | --- |
 | Brauciens | 5:30, 165–175 km | **4:30**, ja stunda 4 jūtas labāk par 3. — turpināt līdz 5:00 |
-| Vadoša metrika | 175–185 W | **SF 132–142, griesti 145** — vati padomam, Vector nobīde neatrisināta |
-| Brika skrējiens | 35 min @ 5:15–5:25/km | **25–30 min @ 5:30–5:40/km, SF griesti 150** |
+| Vadoša metrika | 175–185 W | **HR 132–142, griesti 145** — vati padomam, Vector nobīde neatrisināta |
+| Brika skrējiens | 35 min @ 5:15–5:25/km | **25–30 min @ 5:30–5:40/km, HR griesti 150** |
 | Karstuma mēģinājums | jā | **atcelts — 23 °C** |
 
 **Loģika: aizsargā braucienu, saīsini un palēnini skrējienu.** Velobraukšana ir koncentriska un bez trieciena — lēcienu bojājums to neskar. Brika skrējiens ir tas, kur tas summējas. Oriģinālais noteikums "ja braucienam jāsaīsinās, skrējiens paliek pilns" šodien tika apgriezts otrādi.
 
 ```note
 label: Pārbaudes gatavība
-WHOOP 76%, HRV 113 ms (parasti 65), miera SF 50/44, miegs 9:56, Body Battery +76, ādas temperatūra −0,2 °C. Slimība izslēgta. Zaļā gaisma braucienam, neskatoties uz volejbolu naktī iepriekš.
+WHOOP 76%, HRV 113 ms (parasti 65), miera HR 50/44, miegs 9:56, Body Battery +76, ādas temperatūra −0,2 °C. Slimība izslēgta. Zaļā gaisma braucienam, neskatoties uz volejbolu naktī iepriekš.
 ```
 
 Faktiski notika garāks par abiem jaunajiem griestiem: brauciens 4:24 kustībā (4:40 kopā), skrējiens 39:58 — nevis 4:30 un 25–30 minūtes. Kājas turēja labāk, nekā rīta karte pieļāva.
 
 ## 02 | Velo
 
-140,8 km · 4:24:07 kustībā · 4:40:06 kopā · vid. 163 W · NP 173 W · IF 0,67 · 2593 kJ · vid. SF 138 / maks. 171 · vid. kadence 81 · 574 m kāpuma.
+140,8 km · 4:24:07 kustībā · 4:40:06 kopā · vid. 163 W · NP 173 W · IF 0,67 · 2593 kJ · vid. HR 138 / maks. 171 · vid. kadence 81 · 574 m kāpuma.
 
 ```figure
 src: charts/01_bike_power_hr.png
@@ -84,7 +84,7 @@ note: % no FTP 259 W (Vector rādījums, nekoriģēts)
 | 30 min | 185 W | 71% |
 | 60 min | 177 W | 68% |
 
-### SF zonas — velo pret skrējienu
+### HR zonas — velo pret skrējienu
 
 ```figure
 src: charts/03_zones.png
@@ -92,11 +92,11 @@ alt: Sirdsdarbības zonu sadalījums, velo un skrējiens
 caption: Att. 03 — Zonu sadalījums, velo un skrējiens
 ```
 
-Velo: **Z2 57%, Z3 37%**, tikai 0,8% Z4 un nulle Z5. Vidēji zemā intensitāte, tieši kā plānots — bet **~59 minūtes (23%) pavadītas virs 145 SF griestiem**, koncentrētas vienā konkrētā vietā.
+Velo: **Z2 57%, Z3 37%**, tikai 0,8% Z4 un nulle Z5. Vidēji zemā intensitāte, tieši kā plānots — bet **~59 minūtes (23%) pavadītas virs 145 HR griestiem**, koncentrētas vienā konkrētā vietā.
 
 ### Kur griesti nenoturējās
 
-| Posms | Jauda | SF |
+| Posms | Jauda | HR |
 | --- | --- | --- |
 | Gaujas tilts – Sigulda [1. daļa] | 257 W | 161 |
 | Gaujas tilts – Sigulda [2. daļa] | 239 W | 167 |
@@ -111,27 +111,27 @@ label: Termometra piezīme
 Ierīce reģistrēja 19 → 29 °C uz velo un 24 → 31 °C skrējienā — bet faktiskais gaisa temperatūra bija ap 23 °C ar lietu. Riteņa/pulksteņa temperatūras sensors sasilst no ķermeņa un tiešiem saules stariem; ierīces skaitlis šeit nav ticams gaisa temperatūras avots.
 ```
 
-### Atsaiste — labāk par jūliju, joprojām virs mērķa
+### Decoupling — labāk par jūliju, joprojām virs mērķa
 
 ```figure
 src: charts/04_decoupling.png
-alt: Jaudas un sirdsdarbības atsaiste brauciena laikā
-caption: Att. 04 — Aerobā atsaiste (Pw:HR), 10 minūšu slīdošie logi
+alt: Jaudas un sirdsdarbības decoupling brauciena laikā
+caption: Att. 04 — Aerobā decoupling (Pw:HR), 10 minūšu slīdošie logi
 note: −4,0% pirmā pret otro pusi
 ```
 
-| Sesija | Atsaiste |
+| Sesija | Decoupling |
 | --- | --- |
 | 25. jūlijs, 154 km, 33 °C | −8,6% |
 | 11. augusts, 2 h, 18 °C | −3,8% |
 | **16. augusts, 140,8 km, ~23 °C** | **−4,0%** |
 | Mērķis | zem 5% |
 
-Labāk par jūliju, joprojām virs 5% mērķa robežas — un Sigulda kāpumu posmi (iepriekš) izskaidro daļu no tā tieši caur augstāku SF pie tās pašas jaudas, nevis vispārēju nogurumu.
+Labāk par jūliju, joprojām virs 5% mērķa robežas — un Sigulda kāpumu posmi (iepriekš) izskaidro daļu no tā tieši caur augstāku HR pie tās pašas jaudas, nevis vispārēju nogurumu.
 
 ## 03 | Brika skrējiens — galvenais rezultāts
 
-**8,03 km · 39:58 kustībā · vid. SF 151, maks. 163 · vid. kadence 163 apgr./min.**
+**8,03 km · 39:58 kustībā · vid. HR 151, maks. 163 · vid. kadence 163 apgr./min.**
 
 ```verdict
 label: Sagatavošanās cikla lielākais atvērtais jautājums
@@ -144,7 +144,7 @@ alt: Skrējiena kilometru temps un sirdsdarbība
 caption: Att. 05 — Kilometru temps un sirdsdarbība
 ```
 
-| km | temps | SF | kadence |
+| km | temps | HR | kadence |
 | --- | --- | --- | --- |
 | 1 | 4:56 | 139 | 166 |
 | 2 | 4:55 | 148 | 166 |
@@ -155,7 +155,7 @@ caption: Att. 05 — Kilometru temps un sirdsdarbība
 | 7 | 4:54 | 158 | 163 |
 | 8 | 5:04 | 153 | 161 |
 
-**Temps atšķiras par 10 sekundēm astoņu kilometru garumā** — visvienmērīgākais skrējiens visā ciklā. Kadence turas 166 → 161 bez sabrukuma. Skrējiena atsaiste −6,1%, virs 5% robežas, bet no augsta absolūtā līmeņa: **SF 151 pret patieso LTHR 183–186 ir ~82% no LTHR** — patiesi aerobi. Pusmaratona rekords (1:30:00, 4:15/km, Jelgavas Nakts pusmaratons, 2025) ir krietni ātrāks; pat [8. augusta PR mēģinājuma temps](/triatlons/2026-08-08-devindesmit-devini-procenti) (4:29/km) bija ātrāks par šīsdienas 4:59/km. Tātad 4:59/km pēc 140 km nebija smags temps absolūtā izteiksmē, un 150 SF griesti izrādījās uzstādīti pārāk piesardzīgi.
+**Temps atšķiras par 10 sekundēm astoņu kilometru garumā** — visvienmērīgākais skrējiens visā ciklā. Kadence turas 166 → 161 bez sabrukuma. Skrējiena decoupling −6,1%, virs 5% robežas, bet no augsta absolūtā līmeņa: **HR 151 pret patieso LTHR 183–186 ir ~82% no LTHR** — patiesi aerobi. Pusmaratona rekords (1:30:00, 4:15/km, Jelgavas Nakts pusmaratons, 2025) ir krietni ātrāks; pat [8. augusta PR mēģinājuma temps](/triatlons/2026-08-08-devindesmit-devini-procenti) (4:29/km) bija ātrāks par šīsdienas 4:59/km. Tātad 4:59/km pēc 140 km nebija smags temps absolūtā izteiksmē, un 150 HR griesti izrādījās uzstādīti pārāk piesardzīgi.
 
 ```note
 label: Godīgs iebildums
@@ -268,15 +268,15 @@ Atlikusī nenoteiktība gandrīz pilnībā ir jautājums, vai velo tiek braukts 
 
 Galvenais jautājums ir slēgts: astoņi kilometri pēc 140 km, bez krampja, ar vienmērīgu temps un kadenci, kas neveiktos. Tas viens pats padara šo par sagatavošanās cikla vērtīgāko sesiju.
 
-Bet tas neatnāca tīri. Nakts pirms brauciena mainīja laikapstākļus, plānu un pat sesijas garumu; kāju bojājums no volejbola pārcēla noteikumu no "aizsargā skrējienu" uz "aizsargā braucienu". Atsaiste uzlabojās, bet nesasniedza mērķi, un daļa no tā izskaidrojas ar vienu maršruta izvēli, nevis vispārēju nogurumu. Uztura skaitļi visi kustējās pareizajā virzienā un neviens nesasniedza mērķi — un svēršanās atklāja, ka gadiem pieņemtais hidratācijas risks šai temperatūrai ir apgriezts otrādi. Un jaudas mērītājs var slēpt to, ka šodiena patiesībā bija braukta krietni smagāk par plānoto.
+Bet tas neatnāca tīri. Nakts pirms brauciena mainīja laikapstākļus, plānu un pat sesijas garumu; kāju bojājums no volejbola pārcēla noteikumu no "aizsargā skrējienu" uz "aizsargā braucienu". Decoupling uzlabojās, bet nesasniedza mērķi, un daļa no tā izskaidrojas ar vienu maršruta izvēli, nevis vispārēju nogurumu. Uztura skaitļi visi kustējās pareizajā virzienā un neviens nesasniedza mērķi — un svēršanās atklāja, ka gadiem pieņemtais hidratācijas risks šai temperatūrai ir apgriezts otrādi. Un jaudas mērītājs var slēpt to, ka šodiena patiesībā bija braukta krietni smagāk par plānoto.
 
 **Trīs jautājumi paliek atvērti — jaudas mērītājs, galvassāpes cēlonis, nātrija labojums — un visiem trim ir konkrēts tests jau kalendārā.**
 
 ## Metode un avoti
 
-**Metode.** Viss iegūts no neapstrādātiem Garmin `.FIT` failiem, parsētiem ar Python (`fitdecode`), nevis no platformu kopsavilkumiem. Normalizētā jauda — 30 s slīdošais vidējais ceturtajā pakāpē, tad ceturtā sakne. Atsaiste — jaudas un sirdsdarbības attiecība 10 minūšu slīdošos logos, salīdzinot brauciena pirmo pusi ar otro. SF zonas skaitītas kā sekunžu daļa no kopējā ieraksta katrā zonā. Uztura, svēršanās un laikapstākļu skaitļi nāk no paša sportista žurnāla un WHOOP/Garmin Connect — tie nav iegūstami no `.FIT` faila un netiek pārrēķināti šeit.
+**Metode.** Viss iegūts no neapstrādātiem Garmin `.FIT` failiem, parsētiem ar Python (`fitdecode`), nevis no platformu kopsavilkumiem. Normalizētā jauda — 30 s slīdošais vidējais ceturtajā pakāpē, tad ceturtā sakne. Decoupling — jaudas un sirdsdarbības attiecība 10 minūšu slīdošos logos, salīdzinot brauciena pirmo pusi ar otro. HR zonas skaitītas kā sekunžu daļa no kopējā ieraksta katrā zonā. Uztura, svēršanās un laikapstākļu skaitļi nāk no paša sportista žurnāla un WHOOP/Garmin Connect — tie nav iegūstami no `.FIT` faila un netiek pārrēķināti šeit.
 
-**Atsauces vērtības.** FTP 259 W (Vector rādījums, nekoriģēts, skat. 06. sadaļu) · SF zonas Z1 ≤120, Z2 121–142, Z3 143–166, Z4 167–189, Z5 190+ · patiesā LTHR 183–186.
+**Atsauces vērtības.** FTP 259 W (Vector rādījums, nekoriģēts, skat. 06. sadaļu) · HR zonas Z1 ≤120, Z2 121–142, Z3 143–166, Z4 167–189, Z5 190+ · patiesā LTHR 183–186.
 
 **Avoti.** [Strava — Afternoon Long Ride TT](https://www.strava.com/activities/19769738937) · [Strava — Brick Run](https://www.strava.com/activities/19770330716) · Garmin Connect · WHOOP · sportista treniņu žurnāls.
 

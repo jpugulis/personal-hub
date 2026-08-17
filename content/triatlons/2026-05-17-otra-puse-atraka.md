@@ -22,7 +22,7 @@ band: Sirdsdarbība | vid. 161, maks. 185 | 40% laika Z4
 - **Un tomēr — otrā puse bija 35 sekundes uz kilometru ātrāka par pirmo.** 21 km pie 5:26/km, tad 21,6 km pie 4:51/km. Astoņi no deviņiem 5 km posmiem kļuva ātrāki vai turēja tempu.
 - **Astotajā kilometrā jau apdzina 4 stundu tempa karodziņus** — pašnovērtējums apstiprinās datos: pirmie desmit kilometri bija krietni ātrāki par 4h maratona tempu (5:41/km).
 - **Galvenais limitieris nebija aerobs.** Paša piezīme: skriešana treniņos veido nelielu daļu, par maz ātrumdarba — saites, cīpslas un locītavas jutās kā vājais posms, nevis elpošana vai kājas.
-- **Atsaiste tikai −2,4%**, lai gan temps visu laiku kāpa un temperatūra pieauga no 19 līdz 26 °C.
+- **Decoupling tikai −2,4%**, lai gan temps visu laiku kāpa un temperatūra pieauga no 19 līdz 26 °C.
 
 ```note
 label: Paša piezīmes no Strava
@@ -31,7 +31,7 @@ label: Paša piezīmes no Strava
 
 ## 01 | Temps un sirdsdarbība
 
-42,59 km · 3:38:55 kustībā · vid. SF 161, maks. 185 · vid. kadence 83 apgr./min · 218 m kāpuma · 19 → 26 °C.
+42,59 km · 3:38:55 kustībā · vid. HR 161, maks. 185 · vid. kadence 83 apgr./min · 218 m kāpuma · 19 → 26 °C.
 
 ```figure
 src: charts/01_pace_hr.png
@@ -73,11 +73,11 @@ note: Katrs punkts — viens kilometrs
 | 35–40 km | 4:53/km | ⬇ nedaudz lēnāk |
 | **40–42,6 km** | **4:32/km** | **⬆** |
 
-Astoņi no deviņiem 5 km posmiem kļuva ātrāki vai turēja iepriekšējo tempu — vienīgais izņēmums ir 5.–10. kilometrs, kur temps nedaudz nokrita, ticamāk starta zonas pūļa un ceļa sablīvējuma, nevis piepūles dēļ. No 10. kilometra tālāk sadalījums ir gandrīz monotoni ātrāks katrā nākamajā posmā, ar pēdējo pilno kilometru (4:20/km, SF 182) kā ātrāko no visiem 43.
+Astoņi no deviņiem 5 km posmiem kļuva ātrāki vai turēja iepriekšējo tempu — vienīgais izņēmums ir 5.–10. kilometrs, kur temps nedaudz nokrita, ticamāk starta zonas pūļa un ceļa sablīvējuma, nevis piepūles dēļ. No 10. kilometra tālāk sadalījums ir gandrīz monotoni ātrāks katrā nākamajā posmā, ar pēdējo pilno kilometru (4:20/km, HR 182) kā ātrāko no visiem 43.
 
 ```verdict
 label: Ko šis sadalījums nozīmē
-Negatīvais sadalījums nenotika par spīti piesardzīgai pieejai — tas notika TĀPĒC, ka pieeja bija piesardzīga. Neuzsākot uz PB, ar rezervi soļošanas pauzēs, ķermenim palika kur augt otrajā pusē. Aerobā puse (atsaiste −2,4%) bija gatava vairāk, nekā prasīts; pēc paša vārdiem — ierobežojums bija cīpslās un locītavās, nevis elpošanā.
+Negatīvais sadalījums nenotika par spīti piesardzīgai pieejai — tas notika TĀPĒC, ka pieeja bija piesardzīga. Neuzsākot uz PB, ar rezervi soļošanas pauzēs, ķermenim palika kur augt otrajā pusē. Aerobā puse (decoupling −2,4%) bija gatava vairāk, nekā prasīts; pēc paša vārdiem — ierobežojums bija cīpslās un locītavās, nevis elpošanā.
 ```
 
 ## Konteksts
@@ -86,9 +86,9 @@ Negatīvais sadalījums nenotika par spīti piesardzīgai pieejai — tas notika
 
 ## Metode un avoti
 
-**Metode.** Viss iegūts no neapstrādātā Garmin `.FIT` faila, parsēts ar Python (`fitdecode`). Kilometru sadalījumi nāk no ierīces automātiskajām 1 km aplēm. Atsaiste — jaudas un sirdsdarbības attiecība, pirmā puse pret otro. Paša komentāri citēti no Strava aktivitātes apraksta.
+**Metode.** Viss iegūts no neapstrādātā Garmin `.FIT` faila, parsēts ar Python (`fitdecode`). Kilometru sadalījumi nāk no ierīces automātiskajām 1 km aplēm. Decoupling — jaudas un sirdsdarbības attiecība, pirmā puse pret otro. Paša komentāri citēti no Strava aktivitātes apraksta.
 
-**Atsauces vērtības.** SF zonas Z1 ≤120, Z2 121–142, Z3 143–166, Z4 167–189, Z5 190+.
+**Atsauces vērtības.** HR zonas Z1 ≤120, Z2 121–142, Z3 143–166, Z4 167–189, Z5 190+.
 
 **Avoti.** [Strava — Rīgas Maratons 2026](https://www.strava.com/activities/18538615998) · Garmin Connect.
 
