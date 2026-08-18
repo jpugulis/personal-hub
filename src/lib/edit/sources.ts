@@ -50,8 +50,11 @@ const CYCLING_REPORTS = [
   "sites/cycling/reports/2026-kurzeme-lv/index.html",
   "sites/cycling/reports/2026-kurzeme/index.html",
   "sites/cycling/reports/2025-melnsils/index.html",
+  "sites/cycling/reports/2025-latgale-lv/index.html",
   "sites/cycling/reports/2025-latgale/index.html",
+  "sites/cycling/reports/2024-gauja-lv/index.html",
   "sites/cycling/reports/2024-gauja/index.html",
+  "sites/cycling/reports/2023-estonia-lv/index.html",
   "sites/cycling/reports/2023-estonia/index.html",
 ];
 

@@ -56,7 +56,7 @@ close will not lose it. **Atmest** throws the draft away.
 | Teritorijas | `content/site/territories.json` |
 | Velo — ekspedīcijas | `sites/cycling/assets/tours.js` |
 | Velo — ekspedīciju lapas | the five `sites/cycling/<tour>/index.html` pages |
-| Velo — atskaites | the six `sites/cycling/reports/*/index.html` pages |
+| Velo — atskaites | the nine `sites/cycling/reports/*/index.html` pages (English originals plus Latvian translations for four of the five tours) |
 
 The cycling pages are hand-written HTML, so they are split at every `<h2>`
 and each section is edited as a block of HTML. Plain sentences can be typed
