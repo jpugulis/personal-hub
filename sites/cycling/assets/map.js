@@ -17,7 +17,10 @@
   var tours = solo ? D.tours.filter(function (t) { return t.slug === solo; }) : D.tours;
   if (!tours.length) return;
   var byRegion = {};
-  tours.forEach(function (t) { byRegion[t.region] = t; });
+  /* first tour in the archive keeps the land-region click; a later tour
+     sharing the same region (e.g. 2025-melnsils sharing "kurzeme" with
+     2026-kurzeme) relies on its own route hit-line below instead. */
+  tours.forEach(function (t) { if (!byRegion[t.region]) byRegion[t.region] = t; });
 
   function el(n, a, parent) {
     var e = document.createElementNS(NS, n);
@@ -104,14 +107,67 @@
   D.lakes.forEach(function (d) { el('path', { d: d, class: 'lake' }, gWater); });
 
   /* ---------- routes ---------- */
+  var DAY_OFFSET = 3.4; /* px separation for out-and-back days that retrace
+                            the same road, so both day colours stay visible
+                            instead of the later day painting over the first */
+
+  function parsePts(s) {
+    return s.trim().split(/\s+/).map(function (p) {
+      var xy = p.split(','); return [parseFloat(xy[0]), parseFloat(xy[1])];
+    });
+  }
+
+  function offsetPolyline(pointsStr, offsetPx) {
+    if (!offsetPx) return pointsStr;
+    var pts = parsePts(pointsStr);
+    if (pts.length < 2) return pointsStr;
+    return pts.map(function (p, i) {
+      var a = pts[Math.max(0, i - 1)], b = pts[Math.min(pts.length - 1, i + 1)];
+      var dx = b[0] - a[0], dy = b[1] - a[1];
+      var len = Math.sqrt(dx * dx + dy * dy) || 1;
+      return (p[0] - dy / len * offsetPx).toFixed(1) + ',' + (p[1] + dx / len * offsetPx).toFixed(1);
+    }).join(' ');
+  }
+
+  /* start->end direction of a route, used to tell an outbound day from a
+     return day that retraces the same road: its tangent (and so its local
+     normal) is flipped, so the naive alternating offset below would push
+     both days to the same physical side instead of separating them. */
+  function overallDir(pointsStr) {
+    var pts = parsePts(pointsStr);
+    var a = pts[0], b = pts[pts.length - 1];
+    return [b[0] - a[0], b[1] - a[1]];
+  }
+
   tours.forEach(function (t) {
+    var refDir = solo && t.routes.length > 1 ? overallDir(t.routes[0]) : null;
     t.routes.forEach(function (pts, i) {
+      var off = 0;
+      if (solo && t.routes.length > 1) {
+        var base = (i - (t.routes.length - 1) / 2) * DAY_OFFSET;
+        var dir = overallDir(pts);
+        var dot = dir[0] * refDir[0] + dir[1] * refDir[1];
+        off = dot < 0 ? -base : base;
+      }
       el('polyline', {
-        points: pts,
+        points: offsetPolyline(pts, off),
         class: 'route' + (solo ? ' on' : ''),
         stroke: solo ? DAY_COL[i % DAY_COL.length] : TOUR_COL[t.slug],
         'data-slug': t.slug
       }, gRoutes);
+
+      /* on the overview map, the route itself is a click target too —
+         needed for any tour whose region is already claimed above,
+         and a nicer hit area everywhere else (you click the seashore
+         you actually see the line follow, not just the land behind it) */
+      if (!solo) {
+        var hit = el('polyline', { points: pts, class: 'routehit' }, gRoutes);
+        hit.setAttribute('data-slug', t.slug);
+        el('title', {}, hit).textContent = t.title + ' — ' + t.dates;
+        hit.addEventListener('click', function () { go(t.slug); });
+        hit.addEventListener('mouseenter', function () { hi(t.slug, true); });
+        hit.addEventListener('mouseleave', function () { hi(t.slug, false); });
+      }
     });
   });
 
