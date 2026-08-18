@@ -105,11 +105,13 @@ function looksBalanced(html) {
 
 const HTML_FILES = [
   "sites/cycling/2026-kurzeme/index.html",
+  "sites/cycling/2025-melnsils/index.html",
   "sites/cycling/2025-latgale/index.html",
   "sites/cycling/2024-gauja/index.html",
   "sites/cycling/2023-estonia/index.html",
   "sites/cycling/reports/2026-kurzeme-lv/index.html",
   "sites/cycling/reports/2026-kurzeme/index.html",
+  "sites/cycling/reports/2025-melnsils/index.html",
   "sites/cycling/reports/2025-latgale/index.html",
   "sites/cycling/reports/2024-gauja/index.html",
   "sites/cycling/reports/2023-estonia/index.html",
@@ -181,7 +183,7 @@ ok("stray close rejected", !looksBalanced("a</p>"));
   const close = raw.lastIndexOf("}");
   const data = JSON.parse(raw.slice(open, close + 1));
   const again = JSON.parse(JSON.stringify(data));
-  ok("tours payload parses", Array.isArray(data.tours) && data.tours.length === 4);
+  ok("tours payload parses", Array.isArray(data.tours) && data.tours.length === 5);
   ok(
     "tours values survive serialization",
     JSON.stringify(data) === JSON.stringify(again)
