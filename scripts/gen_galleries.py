@@ -46,6 +46,7 @@ ZONE_TO_PAGE = {
     "cycling-gnp-2024": "2024-gauja",
     "cycling-latgale-2025": "2025-latgale",
     "cycling-kurzeme-2026": "2026-kurzeme",
+    "cycling-melnsils-2025": "2025-melnsils",
 }
 
 THUMB_PX = 900

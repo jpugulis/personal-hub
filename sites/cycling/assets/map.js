@@ -8,7 +8,7 @@
 
   var NS = 'http://www.w3.org/2000/svg';
   var TOUR_COL = {
-    '2026-kurzeme': 'var(--c2026)', '2025-latgale': 'var(--c2025)',
+    '2026-kurzeme': 'var(--c2026)', '2025-melnsils': 'var(--c2025b)', '2025-latgale': 'var(--c2025)',
     '2024-gauja': 'var(--c2024)', '2023-estonia': 'var(--c2023)'
   };
   var DAY_COL = ['var(--d1)', 'var(--d2)', 'var(--d3)', 'var(--d4)', 'var(--d5)'];
@@ -158,12 +158,14 @@
   }
 
   /* ---------- expedition rows ----------
-     Numbered as atlas sheets: territory 03, chronological from the
-     oldest expedition, so 03-01 is 2023 and the number never shifts
-     when a new tour is added. Display order stays newest-first. */
-  var chron = D.tours.map(function (t) { return t.year; }).sort();
+     Numbered as atlas sheets: territory 03, in the order each expedition
+     was added to the archive (t.sheetOrder), so 03-01 is the first ever
+     written up and a number never shifts when a new tour is added later
+     — even one whose ride date falls earlier than an existing sheet, as
+     with 2025-melnsils (Oct 2025, sheet 05) written up after 2026-kurzeme
+     (Jul 2026, sheet 04). Display order stays newest-ride-first. */
   function sheetNo(t) {
-    return '03-' + ('0' + (chron.indexOf(t.year) + 1)).slice(-2);
+    return '03-' + ('0' + t.sheetOrder).slice(-2);
   }
 
   var list = document.getElementById('tourlist');

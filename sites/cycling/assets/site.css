@@ -30,7 +30,7 @@
   --river:rgba(26,23,18,.20); --lake:#ded4bd; --pen:rgba(26,23,18,.42);
 
   /* expedition inks — drawn from the atlas world palette */
-  --c2026:#C8401F; --c2025:#5C7A2E; --c2024:#B0742A; --c2023:#2E6E9E;
+  --c2026:#C8401F; --c2025:#5C7A2E; --c2025b:#8B5A8F; --c2024:#B0742A; --c2023:#2E6E9E;
   /* per-day inks */
   --d1:#2E6E9E; --d2:#B0742A; --d3:#C8401F; --d4:#5F4E9E; --d5:#3E8578;
 }

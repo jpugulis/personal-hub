@@ -377,6 +377,18 @@
       ]
     },
     {
+      "name": "cycling-melnsils-2025",
+      "region": "DE",
+      "cdn": "cycling-melnsils-2025.b-cdn.net",
+      "hostnames": [
+        "cycling-melnsils-2025.b-cdn.net"
+      ],
+      "counts": {},
+      "bytes": 0,
+      "folders": [],
+      "files": []
+    },
+    {
       "name": "cycling-valga-2023",
       "region": "DE",
       "cdn": "cycling-valga-2023.b-cdn.net",
@@ -1288,20 +1300,43 @@
       "cdn": null,
       "hostnames": [],
       "counts": {
-        "other": 4
+        "other": 7
       },
-      "bytes": 3299155,
+      "bytes": 6778884,
       "folders": [
+        "cycling/2025-melnsils",
         "triatlons/2026-05-17",
+        "triatlons/2026-06-07-fit",
         "triatlons/2026-08-08",
         "triatlons/2026-08-16"
       ],
       "files": [
         {
+          "path": "cycling/2025-melnsils/2025-10-18-jurmala-melnsils.fit",
+          "kind": "other",
+          "bytes": 879035,
+          "changed": "2026-08-18T08:00:12",
+          "url": null
+        },
+        {
+          "path": "cycling/2025-melnsils/2025-10-19-melnsils-riga.fit",
+          "kind": "other",
+          "bytes": 1105582,
+          "changed": "2026-08-18T08:00:12",
+          "url": null
+        },
+        {
           "path": "triatlons/2026-05-17/2026-05-17-run-riga-maratons.fit",
           "kind": "other",
           "bytes": 1250100,
           "changed": "2026-08-17T15:22:28",
+          "url": null
+        },
+        {
+          "path": "triatlons/2026-06-07-fit/2026-06-07-ironman-70-3-warsaw.fit",
+          "kind": "other",
+          "bytes": 1495112,
+          "changed": "2026-08-17T18:01:52",
           "url": null
         },
         {
