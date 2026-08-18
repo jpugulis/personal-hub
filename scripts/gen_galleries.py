@@ -18,6 +18,11 @@ the lightbox. That keeps the repository light without making a gallery of
 Videos are skipped. .mov files off plain storage have no adaptive bitrate,
 and one of them is 104 MB.
 
+Originals that browsers can't display inline — HEIC is the common case,
+straight off an iPhone — are converted to a full-size JPEG and uploaded back
+to the same zone as "<name>-full.jpg"; the lightbox links to that instead of
+the raw HEIC. Web-safe originals (jpg/png/webp) are linked directly, unchanged.
+
 Existing galleries are left alone unless you pass --force, so the hand-picked
 2026 Kurzeme selection is not overwritten by accident.
 
@@ -51,6 +56,9 @@ ZONE_TO_PAGE = {
 
 THUMB_PX = 900
 THUMB_QUALITY = 78
+FULL_PX = 2400
+FULL_QUALITY = 88
+WEB_SAFE_EXT = {".jpg", ".jpeg", ".png", ".webp"}
 PRIMARY_REGIONS = {"", "de", "falkenstein"}
 
 
@@ -90,6 +98,31 @@ def fetch(url: str, key: str) -> bytes:
     req = urllib.request.Request(url, headers={"AccessKey": key})
     with urllib.request.urlopen(req, timeout=300) as r:
         return r.read()
+
+
+def upload(data: bytes, url: str, key: str) -> None:
+    req = urllib.request.Request(url, data=data, method="PUT", headers={
+        "AccessKey": key,
+        "Content-Type": "image/jpeg",
+        "Content-Length": str(len(data)),
+    })
+    with urllib.request.urlopen(req, timeout=120) as r:
+        if r.status not in (200, 201):
+            raise urllib.error.HTTPError(url, r.status, "unexpected status", None, None)
+
+
+def make_full_jpeg(raw: bytes) -> bytes:
+    """Browser-safe full-size version of an original the browser can't
+    render inline (HEIC off an iPhone is the common case)."""
+    from PIL import Image, ImageOps
+    import io
+
+    with Image.open(io.BytesIO(raw)) as im:
+        im = ImageOps.exif_transpose(im)
+        im.thumbnail((FULL_PX, FULL_PX), Image.LANCZOS)
+        out = io.BytesIO()
+        im.convert("RGB").save(out, "JPEG", quality=FULL_QUALITY, optimize=True)
+        return out.getvalue()
 
 
 def make_thumb(raw: bytes, dst: Path) -> str:
@@ -224,16 +257,26 @@ def main() -> None:
         for i, f in enumerate(photos, 1):
             thumb_rel = f"/images/{slug}/{i}-t.jpg"
             thumb_abs = SITE / "images" / slug / f"{i}-t.jpg"
-            full_url = f"https://{zone['cdn']}/{f['path']}"
+            ext = os.path.splitext(f["path"])[1].lower()
+            web_safe = ext in WEB_SAFE_EXT
+            stem = f["path"][: -len(ext)] if ext else f["path"]
+            full_remote = f["path"] if web_safe else f"{stem}-full.jpg"
+            full_url = f"https://{zone['cdn']}/{full_remote}"
             if args.dry_run:
-                print(f"    {i:>2}. would thumb {f['path']}")
+                note = "would thumb" if web_safe else "would thumb + convert full to JPEG"
+                print(f"    {i:>2}. {note} {f['path']}")
             else:
                 try:
                     raw = fetch(f"https://{host}/{zone_name}/{f['path']}", password)
                 except urllib.error.HTTPError as e:
                     print(f"    {i:>2}. ! {f['path']} -> HTTP {e.code}")
                     continue
-                print(f"    {i:>2}. {f['path']} — {make_thumb(raw, thumb_abs)}")
+                note = make_thumb(raw, thumb_abs)
+                if not web_safe:
+                    full_jpeg = make_full_jpeg(raw)
+                    upload(full_jpeg, f"https://{host}/{zone_name}/{full_remote}", password)
+                    note += f", full -> {full_remote} ({len(full_jpeg) / 1024:.0f} KB)"
+                print(f"    {i:>2}. {f['path']} — {note}")
             items.append((thumb_rel, full_url))
 
         if items:

@@ -383,10 +383,189 @@
       "hostnames": [
         "cycling-melnsils-2025.b-cdn.net"
       ],
-      "counts": {},
-      "bytes": 0,
+      "counts": {
+        "video": 13,
+        "photo": 12
+      },
+      "bytes": 226429004,
       "folders": [],
-      "files": []
+      "files": [
+        {
+          "path": "380E27CD-73E1-4545-8B59-E7CA925F616E.mp4",
+          "kind": "video",
+          "bytes": 18775398,
+          "changed": "2026-08-18T09:18:26",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/380E27CD-73E1-4545-8B59-E7CA925F616E.mp4"
+        },
+        {
+          "path": "7BDD740A-984F-4C10-8FCB-2CB1C988E7DE.jpg",
+          "kind": "photo",
+          "bytes": 1971856,
+          "changed": "2026-08-18T09:18:20",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/7BDD740A-984F-4C10-8FCB-2CB1C988E7DE.jpg"
+        },
+        {
+          "path": "9be6d20a-46fa-45c2-b1c5-d583f71024eb.jpg",
+          "kind": "photo",
+          "bytes": 2683224,
+          "changed": "2026-08-18T09:18:17",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/9be6d20a-46fa-45c2-b1c5-d583f71024eb.jpg"
+        },
+        {
+          "path": "B3928510-658B-4B6F-BDA6-B35842761C15.mp4",
+          "kind": "video",
+          "bytes": 9152505,
+          "changed": "2026-08-18T09:18:21",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/B3928510-658B-4B6F-BDA6-B35842761C15.mp4"
+        },
+        {
+          "path": "IMG_4264-full.jpg",
+          "kind": "photo",
+          "bytes": 1209569,
+          "changed": "2026-08-18T09:49:27",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4264-full.jpg"
+        },
+        {
+          "path": "IMG_4264.HEIC",
+          "kind": "photo",
+          "bytes": 2691502,
+          "changed": "2026-08-18T09:18:20",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4264.HEIC"
+        },
+        {
+          "path": "IMG_4265-full.jpg",
+          "kind": "photo",
+          "bytes": 1184795,
+          "changed": "2026-08-18T09:49:28",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4265-full.jpg"
+        },
+        {
+          "path": "IMG_4265.HEIC",
+          "kind": "photo",
+          "bytes": 2633893,
+          "changed": "2026-08-18T09:18:20",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4265.HEIC"
+        },
+        {
+          "path": "IMG_4266-full.jpg",
+          "kind": "photo",
+          "bytes": 1168176,
+          "changed": "2026-08-18T09:49:29",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4266-full.jpg"
+        },
+        {
+          "path": "IMG_4266.HEIC",
+          "kind": "photo",
+          "bytes": 2384429,
+          "changed": "2026-08-18T09:18:20",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4266.HEIC"
+        },
+        {
+          "path": "IMG_4268.MOV",
+          "kind": "video",
+          "bytes": 12102424,
+          "changed": "2026-08-18T09:18:17",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4268.MOV"
+        },
+        {
+          "path": "IMG_4269.MOV",
+          "kind": "video",
+          "bytes": 7841427,
+          "changed": "2026-08-18T09:18:21",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4269.MOV"
+        },
+        {
+          "path": "IMG_4270-full.jpg",
+          "kind": "photo",
+          "bytes": 612648,
+          "changed": "2026-08-18T09:49:30",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4270-full.jpg"
+        },
+        {
+          "path": "IMG_4270.HEIC",
+          "kind": "photo",
+          "bytes": 620935,
+          "changed": "2026-08-18T09:18:21",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4270.HEIC"
+        },
+        {
+          "path": "IMG_4272-full.jpg",
+          "kind": "photo",
+          "bytes": 807769,
+          "changed": "2026-08-18T09:49:31",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4272-full.jpg"
+        },
+        {
+          "path": "IMG_4272.HEIC",
+          "kind": "photo",
+          "bytes": 809509,
+          "changed": "2026-08-18T09:18:21",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4272.HEIC"
+        },
+        {
+          "path": "IMG_4274.MOV",
+          "kind": "video",
+          "bytes": 17959141,
+          "changed": "2026-08-18T09:18:32",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4274.MOV"
+        },
+        {
+          "path": "IMG_4275.MOV",
+          "kind": "video",
+          "bytes": 19000602,
+          "changed": "2026-08-18T09:18:22",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4275.MOV"
+        },
+        {
+          "path": "IMG_4276.MOV",
+          "kind": "video",
+          "bytes": 19418347,
+          "changed": "2026-08-18T09:18:36",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4276.MOV"
+        },
+        {
+          "path": "IMG_4277.MOV",
+          "kind": "video",
+          "bytes": 18136943,
+          "changed": "2026-08-18T09:18:32",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4277.MOV"
+        },
+        {
+          "path": "IMG_4278.MOV",
+          "kind": "video",
+          "bytes": 15177546,
+          "changed": "2026-08-18T09:18:17",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4278.MOV"
+        },
+        {
+          "path": "IMG_4279.MOV",
+          "kind": "video",
+          "bytes": 23594211,
+          "changed": "2026-08-18T09:18:27",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4279.MOV"
+        },
+        {
+          "path": "IMG_4280.MOV",
+          "kind": "video",
+          "bytes": 28619799,
+          "changed": "2026-08-18T09:18:36",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4280.MOV"
+        },
+        {
+          "path": "IMG_4281.MOV",
+          "kind": "video",
+          "bytes": 6107437,
+          "changed": "2026-08-18T09:18:25",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4281.MOV"
+        },
+        {
+          "path": "IMG_4282.MOV",
+          "kind": "video",
+          "bytes": 11764919,
+          "changed": "2026-08-18T09:18:23",
+          "url": "https://cycling-melnsils-2025.b-cdn.net/IMG_4282.MOV"
+        }
+      ]
     },
     {
       "name": "cycling-valga-2023",

@@ -8,9 +8,9 @@
 **Maršruts:** Jūrmala → Ķemeri → Apšuciems → Engure → Mērsrags → Roja → Melnsils, tad atpakaļ tieši tāpat, tikai cauri Jūrmalai līdz Rīgai
 **Ekspedīcijas tips:** Ātrs, seguma ziņā gandrīz pilnībā asfaltēts piekrastes brauciens ar atbalsta automašīnu, kas visu ceļu veda bagāžu.
 
-Pēc vasaras trīs dienu Kurzemes ekspedīcijas šis bija kaut kas apzināti pretējs — nevis garāks un smagāks, bet īsāks un ātrāks. Divas dienas, 249,7 km, gandrīz bez kāpuma (467 m kopā) un vidējais ātrums kustībā 28,0 km/h — abi šie skaitļi padara to par arhīva līdzenāko un ātrāko ekspedīciju līdz šim.
+Pēc vasaras trīs dienu GNP ekspedīcijas šis bija kaut kas apzināti pretējs — nevis garāks un smagāks, bet īsāks un ātrāks. Divas dienas, 249,7 km, gandrīz bez kāpuma (467 m kopā) un vidējais ātrums kustībā 28,0 km/h — abi šie skaitļi padara to par arhīva līdzenāko un ātrāko ekspedīciju līdz šim, ar skaidru pārsvaru pār pārējām četrām.
 
-Grupa brauca sešiem, ar sešiem dažādiem velosipēdiem, un neviens neveda savu bagāžu — Ineses draugs visu ceļu brauca aiz grupas ar automašīnu. Ceļā bija viens kritiens un viens brīdis, kad gandrīz kāds pameta grupu pusceļā; abi beidzās labi.
+Grupa brauca sešiem, ar sešiem dažādiem velosipēdiem, un neviens neveda savu bagāžu — Ineses draudzene Daira visu ceļu brauca aiz grupas ar automašīnu. Ceļā bija viens kritiens un viens brīdis, kad gandrīz kāds pameta grupu pusceļā; abi beidzās labi.
 
 ## Avotu piezīmes
 
@@ -29,15 +29,15 @@ Seši braucēji:
 - Jānis Pūgulis
 - Toms Ģērmanis — jauns GIANT grants velosipēds, pirmais izmēģinājums
 - Inese Grīnbauma — MTB
-- Klāvs Taube — vecs, bet ļoti labā stāvoklī esošs ciklokrosa velosipēds, aizdots no Arvja Pizika
+- Klāvs Taube — vecs, bet normālā stāvoklī esošs velosipēds no Arvja Pizika
 - Kārlis Geidāns — arī vecāka modeļa velosipēds
-- Reinis Ozols
+- Reinis Ozols - labs gravel velosipēds
 
-Uz asfaltētas šosejas velosipēdu tipu starpība parasti sadala grupu. Šoreiz to izlīdzināja divi faktori: neviens neveda bagāžu, un maršruts bija gandrīz pilnībā līdzens.
+Uz asfaltētas šosejas velosipēdu tipu starpība parasti sadala grupu — MTB gandrīz vienmēr atpaliek no gravel vai šosejas velosipēda. Šoreiz to izlīdzināja divi faktori: neviens neveda bagāžu, un maršruts bija gandrīz pilnībā līdzens. 467 m kāpuma uz 250 km ir maz pat piekrastes standartiem, un tas atstāja pietiekami daudz rezerves, lai grupa brauktu kopā, nevis izstieptos garā rindā. Inese gan pamatīgi pārpūlējās pēc pārlieku ilgas maukšanas pa priekšu peletonam, kad pienāca viņas kārta. Tipiska iesācēju kļūda. Bet respect viņai!
 
 ## Loģistika
 
-Ineses draugs visu ceļu brauca aiz grupas ar automašīnu, kurā bija saliktas visu sešu bagāžas — pirmo reizi grupas arhīvā neviens brauciena laikā neveda savu ekipējumu.
+Ineses draudzene Daira visu ceļu brauca aiz grupas ar automašīnu, kurā bija saliktas visu sešu bagāžas un mazais sunītis — pirmo reizi grupas arhīvā neviens brauciena laikā neveda savu ekipējumu.
 
 ### Plānošanas atziņa
 
@@ -79,7 +79,7 @@ Otrajā dienā, braucot peletonā ceļā atpakaļ, Toms nokrita. No malas izskat
 
 ### Klāva vilciens
 
-Izbraucot cauri Slokai, kur ir sava stacija, Klāvam radās doma vienkārši sēsties vilcienā un braukt mājās no turienes. Grupa viņu pierunāja palikt, un viņš izbrauca pēdējos kilometrus līdz Rīgai kopā ar visiem.
+Tuvojoties Slokai, kur ir stacija, Klāvam radās doma vienkārši sēsties vilcienā un braukt mājās no turienes. Grupa viņu pierunāja palikt un pabeigt kopā ar visiem — un viņš to izdarīja, izbraucot pēdējos kilometrus līdz Rīgai.
 
 ## Ekspedīcijas statistika
 
