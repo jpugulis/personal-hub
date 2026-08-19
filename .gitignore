@@ -52,6 +52,11 @@ public/file.svg
 # raw media drop zone (processed by scripts/sync_media.py)
 media-inbox/
 
+# raw GPS polylines (exact coordinates) for scripts/gen_hero.py — local only,
+# never published. The generated output (src/data/heroTracks.ts,
+# stravaRoutes.ts) is what's safe to commit: normalized shapes only.
+scripts/data/strava-polylines.txt
+
 # python venv for scripts/
 .venv/
 
