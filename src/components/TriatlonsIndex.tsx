@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLang } from "@/components/LangProvider";
 import TrainingYear from "@/components/TrainingYear";
 import { daysToRace } from "@/lib/race";
+import type { ReferenceArticle } from "@/lib/references";
 
 interface Card {
   slug: string;
@@ -49,12 +50,13 @@ const T = {
     lv: "",
     en: "The analyses themselves are written in Latvian.",
   },
-  refBadge: { lv: "Atsauce", en: "Reference" },
-  refTitle: { lv: "Jauda pret pulsu", en: "Watts vs beats" },
-  refSub: {
-    lv: "Garās distances tempa atsauce",
-    en: "Long-course pacing reference",
+  headRefs: { lv: "Atsauces", en: "References" },
+  countRefs: { lv: "raksti", en: "articles" },
+  refsLede: {
+    lv: "Nedatēti pamatmateriāli — kā lasīt jaudu, pulsu un pārējos rādītājus, uz ko balstās analīzes augstāk.",
+    en: "Undated background reading — how to read power, heart rate and the other numbers the analyses above are built on.",
   },
+  refBadge: { lv: "Atsauce", en: "Reference" },
   refMeta: { lv: "LV · EN", en: "LV · EN" },
 } as const;
 
@@ -71,9 +73,11 @@ const subscribeToClock = (callback: () => void) => {
 
 export default function TriatlonsIndex({
   sheets,
+  references,
   left: serverLeft,
 }: {
   sheets: Card[];
+  references: ReferenceArticle[];
   /** Days remaining as of the last render. Correct in the HTML, not for ever. */
   left: number;
 }) {
@@ -168,23 +172,39 @@ export default function TriatlonsIndex({
             </span>
           </Link>
         ))}
-        <Link className="art-card" href="/triatlons/atsauces/jauda-pret-pulsu">
-          <span className="n">{T.refBadge[lang]}</span>
-          <span>
-            <h2>{T.refTitle[lang]}</h2>
-            <span className="sub">{T.refSub[lang]}</span>
-          </span>
-          <span className="meta">{T.refMeta[lang]}</span>
-          <span className="arrow" aria-hidden="true">
-            →
-          </span>
-        </Link>
       </div>
 
       <p className="art-soon">
         {T.soon[lang]}
         {lang === "en" && <> {T.lvOnly.en}</>}
       </p>
+
+      {references.length > 0 && (
+        <>
+          <div className="section-head">
+            <span>{T.headRefs[lang]}</span>
+            <span className="r">
+              {String(references.length).padStart(2, "0")} {T.countRefs[lang]}
+            </span>
+          </div>
+          <p className="ty-lede">{T.refsLede[lang]}</p>
+          <div className="art-list">
+            {references.map((r) => (
+              <Link key={r.slug} className="art-card" href={`/triatlons/atsauces/${r.slug}`}>
+                <span className="n">{T.refBadge[lang]}</span>
+                <span>
+                  <h2>{lang === "lv" ? r.titleLv : r.titleEn}</h2>
+                  <span className="sub">{lang === "lv" ? r.subtitleLv : r.subtitleEn}</span>
+                </span>
+                <span className="meta">{T.refMeta[lang]}</span>
+                <span className="arrow" aria-hidden="true">
+                  →
+                </span>
+              </Link>
+            ))}
+          </div>
+        </>
+      )}
     </>
   );
 }

@@ -3,6 +3,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import TriatlonsIndex from "@/components/TriatlonsIndex";
 import { getSheets } from "@/lib/sheets";
+import { REFERENCES } from "@/lib/references";
 import { daysToRace } from "@/lib/race";
 
 const INK = "#C8401F";
@@ -45,7 +46,7 @@ export default function TriatlonsPage() {
     <>
       <Nav sub />
       <div className="art-wrap" style={{ "--w": INK } as React.CSSProperties}>
-        <TriatlonsIndex sheets={sheets} left={daysToRace()} />
+        <TriatlonsIndex sheets={sheets} references={REFERENCES} left={daysToRace()} />
       </div>
       <Footer />
     </>
