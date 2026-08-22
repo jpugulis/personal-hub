@@ -144,6 +144,33 @@ const T = {
     lv: "Šis ir viss mehāniskais arguments par labu vienmērīgai Ironman braukšanai, un to var izteikt, nepieminot ne gribasspēku, ne disciplīnu.",
     en: "This is the entire mechanical argument for riding an Ironman steadily, and it can be stated without reference to willpower or discipline.",
   },
+  s3RealH: { lv: "No šī cikla", en: "From this training cycle" },
+  s3RealP: {
+    lv: "Tas nav tikai teorija. 2026. gada 22. augustā, 67,5 km grupas braucienā Podersdorfas gatavošanās cikla pēdējā slodzes nedēļā, tā pati attiecība parādījās praksē — pretējā virzienā no uzrāviena piemēra augstāk.",
+    en: "It isn't only theory. On 22 August 2026, on a 67.5 km group ride in the final load week before Podersdorf, the same relationship showed up in practice — in the opposite direction from the surging-rider example above.",
+  },
+  s3RealCaption: { lv: "Pirmā puse pret otro, reāls brauciens", en: "First half vs second half, a real ride" },
+  s3RealCols: { lv: ["Pirmā puse", "Otrā puse"], en: ["First half", "Second half"] },
+  s3RealRows: {
+    lv: [
+      ["Normalizētā jauda", "191 W", "213 W"],
+      ["Vid. sirdsdarbība", "139,0", "141,7"],
+      ["EF (NP/SF)", "1,371", "1,500"],
+    ],
+    en: [
+      ["Normalized power", "191 W", "213 W"],
+      ["Avg heart rate", "139.0", "141.7"],
+      ["EF (NP/HR)", "1.371", "1.500"],
+    ],
+  },
+  s3RealClose: {
+    lv: "+9,4 % efektivitātes pieaugums otrajā pusē — divdesmit divi vati vairāk par tikai 2,7 papildu sirdspukstiem. Nevis nogurums, bet uzlabošanās — tieši tas paraugs, ko VI un decoupling skaitļi ir domāti pamanīt.",
+    en: "A +9.4% efficiency gain in the second half — twenty-two more watts for just 2.7 more heartbeats. Not fatigue but improvement — exactly the pattern VI and decoupling are meant to catch.",
+  },
+  s3RealLink: {
+    lv: "Pilnā analīze — 22. augusta sesija →",
+    en: "Full analysis — the 22 August session →",
+  },
 
   s4Kicker: { lv: "04 — Atvasinātie lielumi", en: "04 — Derived quantities" },
   s4H: { lv: "Ko normalizētā jauda baro", en: "What normalized power feeds" },
@@ -399,6 +426,27 @@ export default function WattsVsBeats() {
           <p>{T.s3NoteP1[lang]}</p>
           <p>{T.s3NoteP2[lang]}</p>
         </div>
+
+        <h3>{T.s3RealH[lang]}</h3>
+        <p>{T.s3RealP[lang]}</p>
+        <div className="art-tw">
+          <table className="art-t">
+            <caption>{T.s3RealCaption[lang]}</caption>
+            <thead>
+              <tr><th /><th>{T.s3RealCols[lang][0]}</th><th>{T.s3RealCols[lang][1]}</th></tr>
+            </thead>
+            <tbody>
+              {T.s3RealRows[lang].map((r) => (
+                <tr key={r[0]}><td>{r[0]}</td><td>{r[1]}</td><td>{r[2]}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p>
+          {T.s3RealClose[lang]}
+          <br />
+          <Link href="/triatlons/2026-08-22-nulle-decoupling-nulle-natrijs">{T.s3RealLink[lang]}</Link>
+        </p>
 
         <h2><span className="n">{T.s4Kicker[lang]}</span>{T.s4H[lang]}</h2>
         <p>{T.s4P[lang]}</p>
