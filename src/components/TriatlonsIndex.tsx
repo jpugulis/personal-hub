@@ -49,6 +49,13 @@ const T = {
     lv: "",
     en: "The analyses themselves are written in Latvian.",
   },
+  refBadge: { lv: "Atsauce", en: "Reference" },
+  refTitle: { lv: "Jauda pret pulsu", en: "Watts vs beats" },
+  refSub: {
+    lv: "Garās distances tempa atsauce",
+    en: "Long-course pacing reference",
+  },
+  refMeta: { lv: "LV · EN", en: "LV · EN" },
 } as const;
 
 /**
@@ -161,6 +168,17 @@ export default function TriatlonsIndex({
             </span>
           </Link>
         ))}
+        <Link className="art-card" href="/triatlons/atsauces/jauda-pret-pulsu">
+          <span className="n">{T.refBadge[lang]}</span>
+          <span>
+            <h2>{T.refTitle[lang]}</h2>
+            <span className="sub">{T.refSub[lang]}</span>
+          </span>
+          <span className="meta">{T.refMeta[lang]}</span>
+          <span className="arrow" aria-hidden="true">
+            →
+          </span>
+        </Link>
       </div>
 
       <p className="art-soon">

@@ -1616,6 +1616,104 @@ body::after {
   }
 }
 
+/* ---- reference articles: two-instrument cards, formula, flags, closer ---- */
+.ref-two {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--hair);
+  border: 1px solid var(--hair);
+  margin: 28px 0 8px;
+}
+.ref-two > div {
+  background: var(--paper);
+  padding: 22px 24px;
+}
+.ref-two h4 {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--w, #c8401f);
+  margin-bottom: 10px;
+}
+.ref-two p {
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+  color: var(--ink-soft);
+  margin: 0 !important;
+}
+.ref-formula {
+  border-left: 3px solid var(--w, #c8401f);
+  background: var(--paper-dim);
+  padding: 18px 22px;
+  margin: 22px 0 30px;
+  font-family: var(--mono);
+  font-size: 15px;
+  overflow-x: auto;
+}
+.ref-formula .cap {
+  display: block;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+}
+.ref-flags {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--hair);
+  border: 1px solid var(--hair);
+  margin: 22px 0 30px;
+}
+.ref-flags > div {
+  background: var(--paper);
+  padding: 16px 22px;
+  display: grid;
+  grid-template-columns: minmax(180px, 260px) 1fr;
+  gap: 4px 20px;
+  align-items: baseline;
+}
+.ref-flags .sig {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  color: var(--w, #c8401f);
+  font-weight: 500;
+}
+.ref-flags .mean {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.ref-flags .mean b {
+  color: var(--ink);
+  font-weight: 700;
+}
+@media (max-width: 640px) {
+  .ref-two {
+    grid-template-columns: 1fr;
+  }
+  .ref-flags > div {
+    grid-template-columns: 1fr;
+  }
+}
+.ref-close {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: clamp(18px, 2.2vw, 22px);
+  line-height: 1.45;
+  border-left: 3px solid var(--ink);
+  padding-left: 20px;
+  margin: 34px 0 0;
+  max-width: 60ch;
+}
+.ref-svg text {
+  font-family: var(--mono);
+}
+
+
 /* ---- territory 02: the season, week by week ---- */
 .ty {
   border-top: 1px solid var(--hair);
